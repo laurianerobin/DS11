@@ -11,6 +11,7 @@ https://www.google.com/search?q=d%C3%A9ployer+un+mod%C3%A8le+Machine+Learning+da
 
 import streamlit as st
 import pandas as pd
+import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 
 st.write('''
@@ -96,4 +97,4 @@ model_best.fit(X_train, y_train)
 prediction=model_best.predict(df)
 
 st.subheader("Le prix de la maison est :")
-st.write(prediction)
+st.write(np.exp(prediction))

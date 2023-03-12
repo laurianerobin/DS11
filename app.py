@@ -15,7 +15,9 @@ import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 
 # Ajouter une vidéo en bannière
-st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/lumieres-13441.mp4")
+
+st.title("L'application blabla")
 
 st.write('''
 # Bienvenue dans l'application

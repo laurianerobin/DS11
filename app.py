@@ -73,7 +73,7 @@ df=user_input()
 
 st.write("D'après ce que vous nous avez dit, votre bien comportant")
 
-st.write(df.to_string(index=False, header=False))
+st.write(df.to_string(index=False))
 
 # Chargement des ensembles de test et d'apprentissage
 
@@ -103,4 +103,5 @@ model_best.fit(X_train, y_train)
 prediction=model_best.predict(df)
 
 st.subheader("Le prix de la maison est :")
-st.write(np.exp(prediction).to_string(index=False, header=False))
+pred = np.exp(prediction)
+st.write(pred.to_string(index=False, header=False))

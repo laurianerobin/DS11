@@ -89,7 +89,7 @@ st.write("D'après ce que vous nous avez dit, votre bien comportant",
          df['WoodDeckSF']"WoodDeckSF,",
          df['OpenPorchSF']"OpenPorchSF,",
          df['MS_zoning_RL']"MS_zoning_RL, et",
-         df['ModernityInYears'
+         df['ModernityInYears']
          )
 
 st.write(df)

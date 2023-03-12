@@ -20,7 +20,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 st.title("L'application blabla")
 
 st.write('''
-# Bienvenue.
+# Bienvenue
 Cet outil vous permet de prédire le prix de votre futur maison.
 ''')
 

@@ -72,25 +72,24 @@ def user_input():
 df=user_input()
 
 st.write("D'après ce que vous nous avez dit, votre bien comportant", 
-         df['LotArea'], "LotArea,"
+         df['LotArea'], "LotArea,",
          df['OverallQual'], "OverallQual,",
-         df['ExterQual']"ExterQual,",
-         df['BsmtQual'] "BsmtQual,",
-         df['TotalBsmtSF']"TotalBsmtSF,",
-         df['HeatingQC']"HeatingQC,",
-         df['GrLivArea']"GrLivArea,",
-         df['FullBath']"FullBath,",
-         df['HalfBath']"HalfBath,",
-         df['KitchenQual']"KitchenQual,",
-         df['TotRmsAbvGrd']"TotRmsAbvGrd,",
-         df['Fireplaces']"Fireplaces,",
-         df['GarageCars']"GarageCars,",
-         df['GarageCond']"GarageCond,",
-         df['WoodDeckSF']"WoodDeckSF,",
-         df['OpenPorchSF']"OpenPorchSF,",
-         df['MS_zoning_RL']"MS_zoning_RL, et",
-         df['ModernityInYears']
-         )
+         df['ExterQual'], "ExterQual,",
+         df['BsmtQual'], "BsmtQual,",
+         df['TotalBsmtSF'], "TotalBsmtSF,",
+         df['HeatingQC'], "HeatingQC,",
+         df['GrLivArea'], "GrLivArea,",
+         df['FullBath'], "FullBath,",
+         df['HalfBath'], "HalfBath,",
+         df['KitchenQual'], "KitchenQual,",
+         df['TotRmsAbvGrd'], "TotRmsAbvGrd,",
+         df['Fireplaces'], "Fireplaces,",
+         df['GarageCars'], "GarageCars,",
+         df['GarageCond'], "GarageCond,",
+         df['WoodDeckSF'], "WoodDeckSF,",
+         df['OpenPorchSF'], "OpenPorchSF,",
+         df['MS_zoning_RL'], "MS_zoning_RL, et",
+         df['ModernityInYears'])
 
 st.write(df)
 

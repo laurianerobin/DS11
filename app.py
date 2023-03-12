@@ -76,6 +76,9 @@ X_train = pd.read_csv(url_Xtrain,parse_dates=[0])
 url_ytrain = 'https://raw.githubusercontent.com/laurianerobin/DS11/main/y_train.csv'
 y_train = pd.read_csv(url_ytrain,parse_dates=[0])
 
+url_new = 'https://raw.githubusercontent.com/laurianerobin/DS11/main/new.csv'
+new = pd.read_csv(url_new,parse_dates=[0])
+
 # Application du meilleur modèle retenu
 
 model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100)

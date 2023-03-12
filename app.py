@@ -20,11 +20,11 @@ st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/lumieres-134
 st.title("L'application blabla")
 
 st.write('''
-# Bienvenue dans l'application
-Cet outil permet de prédire le prix de votre futur maison.
+# Bienvenue.
+Cet outil vous permet de prédire le prix de votre futur maison.
 ''')
 
-st.sidebar.header("Les paramètres d'entrée")
+st.sidebar.header("Vous souhaitez que votre future maison présente")
 
 def user_input():
   LotArea=st.sidebar.slider("LotArea", 1000,30000)
@@ -71,7 +71,27 @@ def user_input():
   
 df=user_input()
 
-st.subheader("On veut trouver le prix de la maison")
+st.write("D'après ce que vous nous avez dit, votre bien comportant", 
+         df['LotArea'], "LotArea,"
+         df['OverallQual'], "OverallQual,",
+         df['ExterQual']"ExterQual,",
+         df['BsmtQual'] "BsmtQual,",
+         df['TotalBsmtSF']"TotalBsmtSF,",
+         df['HeatingQC']"HeatingQC,",
+         df['GrLivArea']"GrLivArea,",
+         df['FullBath']"FullBath,",
+         df['HalfBath']"HalfBath,",
+         df['KitchenQual']"KitchenQual,",
+         df['TotRmsAbvGrd']"TotRmsAbvGrd,",
+         df['Fireplaces']"Fireplaces,",
+         df['GarageCars']"GarageCars,",
+         df['GarageCond']"GarageCond,",
+         df['WoodDeckSF']"WoodDeckSF,",
+         df['OpenPorchSF']"OpenPorchSF,",
+         df['MS_zoning_RL']"MS_zoning_RL, et",
+         df['ModernityInYears'
+         )
+
 st.write(df)
 
 # Chargement des ensembles de test et d'apprentissage

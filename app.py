@@ -11,6 +11,7 @@ https://www.google.com/search?q=d%C3%A9ployer+un+mod%C3%A8le+Machine+Learning+da
 
 import streamlit as st
 import pandas as pd
+from sklearn.ensemble import GradientBoostingRegressor
 
 st.write('''
 # Bienvenue dans l'application

@@ -86,7 +86,14 @@ model_best.fit(X_train, y_train)
 
 # Prédiction sur les nouvelles données
 
-pred = model_best.predict(new)
+# Application du meilleur modèle retenu
+
+model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100)
+model_best.fit(X_train, y_train)
+
+# Prédiction sur les données sélectionnées
+
+prediction=model_best.predict(df)
 
 st.subheader("Le prix de la maison est :")
-st.write(pred)
+st.write(prediction)

@@ -14,6 +14,9 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 
+# Ajouter une vidéo en bannière
+st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
 st.write('''
 # Bienvenue dans l'application
 Cet outil permet de prédire le prix de votre futur maison.

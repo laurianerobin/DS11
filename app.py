@@ -21,7 +21,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 # Ajouter une vidéo en bannière
 
-st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+#st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
 # Description
 

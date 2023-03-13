@@ -27,7 +27,7 @@ Cet outil vous permet de prédire le prix de votre futur maison.
 st.sidebar.header("Vous souhaitez que votre future maison présente")
 
 def user_input():
-  LotArea=st.sidebar.slider("LotArea", 1000,30000)
+  LotArea=st.sidebar.slider("LotArea", 1000,30000, index=10000)
   OverallQual=st.sidebar.slider("OverallQual", 0,10)
   ExterQual=st.sidebar.slider("ExterQual", 0,10)
   BsmtQual=st.sidebar.slider("BsmtQual", 0,10)

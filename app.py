@@ -50,7 +50,7 @@ def user_input():
   TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
   
   values_HeatingQC= {"Ex": 5, "Gd": 4, "TA": 3, "Fa": 2, "Po": 1}
-  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", values_HeatingQC, index = values_HeatingQC)
+  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", values_HeatingQC, index = 3)
 
   GrLivArea=st.sidebar.slider("GrLivArea", 1000,4000)
   FullBath=st.sidebar.slider("FullBath", 0,3)

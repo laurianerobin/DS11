@@ -24,15 +24,26 @@ st.write('''
 Cet outil vous permet de prédire le prix de votre futur maison.
 ''')
 
-st.sidebar.header("Vous souhaitez que votre future maison présente")
+# Choix des paramètres pour la maison
+# Utilisation d'une sidebar : les informations peuvent être choisies à l'aide curseurs
+# Des valeurs pré-rentrées sont définies avec value, ou index
+
+st.sidebar.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
 
 def user_input():
-  LotArea=st.sidebar.slider("LotArea", 1000,30000, value=10000)
-  OverallQual=st.sidebar.slider("OverallQual", 0,10)
-  ExterQual=st.sidebar.slider("ExterQual", 0,10)
-  BsmtQual=st.sidebar.slider("BsmtQual", 0,10)
-  TotalBsmtSF=st.sidebar.slider("TotalBsmtSF", 1000,3000)
-  HeatingQC=st.sidebar.slider("HeatingQC", 0,5)
+  LotArea=st.sidebar.slider("Taille de la surface de la maison et de l'extérieur (en mètres carrés)", 50, 20000, value = 100)
+  
+  OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
+  
+  ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
+  
+  BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
+  
+  TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
+  
+  values_HeatingQC= {"Ex": 5, "Gd": 4, "TA": 3, "Fa": 2, "Po": 1}
+  selected_value = st.sidebar.radio("Qualité et condition du chauffage", values_HeatingQC)
+
   GrLivArea=st.sidebar.slider("GrLivArea", 1000,4000)
   FullBath=st.sidebar.slider("FullBath", 0,3)
   HalfBath=st.sidebar.slider("HalfBath", 0,3)

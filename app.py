@@ -9,18 +9,26 @@ Original file is located at
 https://www.google.com/search?q=d%C3%A9ployer+un+mod%C3%A8le+Machine+Learning+dans+une+application+web+python&rlz=1C1GCEA_enFR1040FR1040&sxsrf=AJOqlzUoKc2uoDsDPeJ6oE8fX-ylcHoxAA:1676554155784&source=lnms&tbm=vid&sa=X&ved=2ahUKEwjmwZv3kpr9AhWXY6QEHYnACsMQ_AUoAXoECAIQAw&biw=1280&bih=569&dpr=1.5#fpstate=ive&vld=cid:b07ffca4,vid:u0Syto1oAGA
 """
 
+# Librairies nécessaires
+# Les librairies dont l'installatione est requise sont mentionnées dans le fichier "requirement.txt" dans le github
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 
+# Design de l'application
+
 # Ajouter une vidéo en bannière
-#st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/lumieres-13441.mp4")
+
+st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
+# Description
 
 st.title("L'application blabla")
 
 st.write('''
-# Bienvenue
+# Bienvenue.
 Cet outil vous permet de prédire le prix de votre futur maison.
 ''')
 
@@ -42,7 +50,7 @@ def user_input():
   TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
   
   values_HeatingQC= {"Ex": 5, "Gd": 4, "TA": 3, "Fa": 2, "Po": 1}
-  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", values_HeatingQC)
+  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", values_HeatingQC, value=values['TA'])
 
   GrLivArea=st.sidebar.slider("GrLivArea", 1000,4000)
   FullBath=st.sidebar.slider("FullBath", 0,3)
@@ -94,16 +102,6 @@ X_train = pd.read_csv(url_Xtrain,parse_dates=[0])
 url_ytrain = 'https://raw.githubusercontent.com/laurianerobin/DS11/main/y_train.csv'
 y_train = pd.read_csv(url_ytrain,parse_dates=[0])
 
-url_new = 'https://raw.githubusercontent.com/laurianerobin/DS11/main/new.csv'
-new = pd.read_csv(url_new,parse_dates=[0])
-
-# Application du meilleur modèle retenu
-
-model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100)
-model_best.fit(X_train, y_train)
-
-# Prédiction sur les nouvelles données
-
 # Application du meilleur modèle retenu
 
 model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100)
@@ -115,5 +113,4 @@ prediction=model_best.predict(df)
 pred = np.exp(prediction)
 
 st.subheader("Le prix de la maison est :")
-pred = np.exp(prediction)
 st.write(pred)

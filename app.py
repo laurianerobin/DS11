@@ -49,13 +49,13 @@ def user_input():
   
   TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
   
-  labels_HeatingQC= ["Ex", "Gd", "TA", "Fa", "Po"]
+  labels_HeatingQC= [1, 2, 3, 4, 5]
   options_HeatingQC = {
-    'Ex': 1,
-    'Gd': 2,
-    'TA': 3,
-    'Fa': 4,
-    'Po': 5,
+    1 :'Ex',
+    2 : 'Gd',
+    3 : 'TA',
+    4 : 'Fa',
+    5 : 'Po'
 }
 
   HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])

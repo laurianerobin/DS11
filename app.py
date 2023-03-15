@@ -97,7 +97,7 @@ def user_input():
   OpenPorchSF=st.sidebar.slider("Taille de la véranda (en mètres carrés)", 0,600)
 
   # MS_zoning_RL : densité de l'endroit résidentiel
-  labels_MS_zoning_RL [0,1]
+  labels_MS_zoning_RL = [0,1]
   options_MS_zoning_RL = {
     1 :'Forte densité résidentielle',
     0 : 'Faible densité résidentielle'

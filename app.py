@@ -51,7 +51,7 @@ def user_input():
       if selected_value < min_value or selected_value > max_value:
           raise ValueError
   except ValueError:
-      st.sidebar.warning(f'Veuillez saisir une surface en mètres carrés comprise entre {min_value} et {max_value}.')
+      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value} et {max_value} mètres carrés.')
   else:
     LotArea
     

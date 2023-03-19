@@ -53,7 +53,7 @@ def user_input():
   except ValueError:
       st.warning(f'Veuillez saisir une surface en mètres carrés comprise entre {min_value} et {max_value}.')
   else:
-    LotAre
+    LotArea
     
   if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
       st.error('Attention, la surface doit être entrée en nombre décimal.')

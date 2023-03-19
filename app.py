@@ -182,26 +182,25 @@ def user_input():
   #### ModernityInYears : dernière rénovation
   ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value = 10)
 
-
   #### WoodDeckSF : taille de la terasse (en mètres carrés)
   # On utilise st.checkbox() pour afficher une case à cocher
-  terasse_want_option = st.checkbox("Une terasse ?")
+  terasse_want_option = st.sidebar.checkbox("Une terasse ?")
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if terasse_want_option:
-      WoodDeckSF = st.number_input("Taille de la terasse (en mètres carrés)", value = 10, step = 1)
+      WoodDeckSF = st.sidebar.number_input("Taille de la terasse (en mètres carrés)", value = 10, step = 1)
   else:
       WoodDeckSF = 0
 
   #### OpenPorchSF : taille de la véranda (en mètres carrés)
   # On utilise st.checkbox() pour afficher une case à cocher
-  OpenPorchSF_want_option = st.checkbox("Et une véranda ?")
+  OpenPorchSF_want_option = st.sidebar.checkbox("Et une véranda ?")
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if OpenPorchSF_want_option:
-      OpenPorchSF = st.number_input("Taille de la véranda (en mètres carrés)", value = 10, step = 1)
+      OpenPorchSF = st.sidebar.number_input("Taille de la véranda (en mètres carrés)", value = 10, step = 1)
   else:
-      WoodDeckSF = 0
+      OpenPorchSF = 0
 
   data={'LotArea':LotArea,
         'OverallQual':OverallQual,

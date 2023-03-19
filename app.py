@@ -131,7 +131,7 @@ def user_input():
               5 : 'Pauvre'
           }
   HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, 
-                               format_func=lambda x: options_HeatingQC[x], index=HeatingQC.index(defaultHeat))
+                               format_func=lambda x: options_HeatingQC[x], index=labels_HeatingQC.index(defaultHeat))
   
   #### KitchenQual : qualité de la cuisine
   KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)

@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1ERKrZrEZwNGUfl04C0BRvmhcyHzsHo9s
 
 https://www.google.com/search?q=d%C3%A9ployer+un+mod%C3%A8le+Machine+Learning+dans+une+application+web+python&rlz=1C1GCEA_enFR1040FR1040&sxsrf=AJOqlzUoKc2uoDsDPeJ6oE8fX-ylcHoxAA:1676554155784&source=lnms&tbm=vid&sa=X&ved=2ahUKEwjmwZv3kpr9AhWXY6QEHYnACsMQ_AUoAXoECAIQAw&biw=1280&bih=569&dpr=1.5#fpstate=ive&vld=cid:b07ffca4,vid:u0Syto1oAGA
-
-# 1. Librairies nécessaires
 """
 
 # Installation de streamlit
@@ -23,10 +21,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
-
-"""# 2. Design général
-
-"""
 
 # Design de l'application
 
@@ -43,16 +37,15 @@ st.write('''
 Cet outil vous permet de prédire le prix de votre futur maison.
 ''')
 
-"""# Choix des paramètres de la maison
+# L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
+# selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
 
-L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
-"""
-
-st.sidebar.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
+st.sidebar.header("Choisissez les caractéristiques de votre maison.")
 
 def user_input():
 
-  st.sidebar.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
+  ############### ASPECT GENERAL
+  st.sidebar.header("Si l'on commençait par son aspect général ?")
   
   #### LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir la valeur de la surface
@@ -76,19 +69,34 @@ def user_input():
   else:
         # Convertir la saisie en float
         LotArea_float = float(LotArea)
-        
+
+  #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
+  GrLivArea=st.sidebar.slider("Surface habitable au-dessus du sol (en mètres carrés)", 10,4000)
+
+  #### MS_zoning_RL : densité de l'endroit résidentiel
+  labels_MS_zoning_RL = [0,1]
+  options_MS_zoning_RL = {
+      1 :'Forte densité résidentielle',
+      0 : 'Faible densité résidentielle'
+      }
+  MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
+
   #### OverQual : qualité générale
   OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
   
-  #### ExterQual : qualité extérieure
-  ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
+
+  ############### INTERIEUR
+  st.sidebar.header("Abordons l'intérieur.")
+
+  #### KitchenQual : nombre de pièces
+  TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14)
+
+  #### FullBath : nombre de salle(s) de bain
+  FullBath=st.sidebar.slider("Nombre de salle(s) de bain", 0,5)
   
-  #### BsmtQual : qualité du sous-sol
-  BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
-  
-  #### TotalBsmtSF : taille du sous-sol
-  TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
-  
+  #### HalfBath : nombre de toilette(s) séparées
+  HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5)
+
   #### HeatingQC : qualité du chauffage
   labels_HeatingQC= [1, 2, 3, 4, 5]
   options_HeatingQC = {
@@ -98,48 +106,46 @@ def user_input():
               4 : 'Fa',
               5 : 'Po'
           }
-  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])
-  
-  #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea=st.sidebar.slider("Surface habitable au-dessus du sol (en mètres carrés)", 10,4000)
-  
-  #### FullBath : nombre de salle(s) de bain
-  FullBath=st.sidebar.slider("Nombre de salle(s) de bain", 0,5)
-  
-  #### HalfBath : nombre de toilette(s) séparées
-  HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5)
+  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])
   
   #### KitchenQual : qualité de la cuisine
   KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10)
-  
-  #### KitchenQual : nombre de pièces
-  TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14)
-  
+
+
+  ############### EQUIPEMENTS
+  st.sidebar.header("Des remarques sur les équipements ?")
+
   #### Fireplaces : nombre de cheminée(s)
   Fireplaces=st.sidebar.slider("Nombre de cheminée(s)", 0,4)
   
+  #### TotalBsmtSF : taille du sous-sol
+  TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
+
+  #### BsmtQual : qualité du sous-sol
+  BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
+
   #### GarageCars : capacité du garage en nombre de voiture
-  GarageCars=st.sidebar.slider("Capacité du garage en nombre de voiture", 0,4)
+  GarageCars=st.sidebar.slider("Capacité du garage en nombre de voiture(s)", 0,4)
   
-  #### GarageCond : capacité du garage en nombre de voiture
+  #### GarageCond : qualité du garage
   GarageCond=st.sidebar.slider("Qualité du garage sur 10", 0,10)
   
+
+  ############### EXTERIEUR
+  st.sidebar.header("Terminons par un tour de l'extérieur.")
+
+  #### ExterQual : qualité extérieure
+  ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
+
+  #### ModernityInYears : dernière rénovation
+  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60)
+
   #### WoodDeckSF : taille de la terasse (en mètres carrés)
   WoodDeckSF=st.sidebar.slider("Taille de la terasse (en mètres carrés)", 0,800)
   
   #### OpenPorchSF : taille de la véranda (en mètres carrés)
   OpenPorchSF=st.sidebar.slider("Taille de la véranda (en mètres carrés)", 0,600)
   
-  #### MS_zoning_RL : densité de l'endroit résidentiel
-  labels_MS_zoning_RL = [0,1]
-  options_MS_zoning_RL = {
-      1 :'Forte densité résidentielle',
-      0 : 'Faible densité résidentielle'
-      }
-  MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
-  
-  #### ModernityInYears : dernière rénovation
-  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60)
   data={'LotArea':LotArea,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,

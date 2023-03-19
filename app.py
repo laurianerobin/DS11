@@ -42,7 +42,7 @@ def user_input():
 
   # LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir une option
-  LotArea = st.text_input('Saisissez une option')
+  LotArea = st.sidebar.text_input('Saisissez une option')
 
   # Afficher le résultat de la saisie
   st.write('Vous avez saisi :', LotArea)

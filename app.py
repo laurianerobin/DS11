@@ -118,6 +118,9 @@ def user_input():
   #### OverQual : qualité générale
   OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
 
+  #### KitchenQual : qualité de la cuisine
+  KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)
+
   #### HeatingQC : qualité du chauffage
   labels_HeatingQC= [1, 2, 3, 4, 5]
   defaultHeat=3
@@ -130,9 +133,6 @@ def user_input():
           }
   HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, 
                                format_func=lambda x: options_HeatingQC[x], index=labels_HeatingQC.index(defaultHeat))
-  
-  #### KitchenQual : qualité de la cuisine
-  KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)
 
   #### Fireplaces : nombre de cheminée(s)
   # On utilise st.checkbox() pour afficher une case à cocher
@@ -140,7 +140,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if Fireplaces_want_option:
-    Fireplaces=st.sidebar.slider("Précisez-nous combien", 0,4, value = 0)
+    Fireplaces=st.sidebar.number_input("Précisez-nous combien de cheminée(s)", step =1, value = 0)
   else:
       Fireplaces = 0 
 
@@ -152,7 +152,7 @@ def user_input():
   if TotalBsmtSF_want_option:
 
     # Demander à l'utilisateur de saisir la valeur de la surface
-    min_value_TotalBsmtSF = 0
+    min_value_TotalBsmtSF = 5
     max_value_TotalBsmtSF = 600
     TotalBsmtSF = st.sidebar.text_input("Taille de la surface du sous-sol (en mètres carrés)", value = 20)
     

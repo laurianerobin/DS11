@@ -40,8 +40,6 @@ Cet outil vous permet de prédire le prix de votre futur maison.
 # L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 # selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
 
-st.sidebar.header("Choisissez les caractéristiques de votre maison.")
-
 def user_input():
 
   ############### ASPECT GENERAL
@@ -100,9 +98,6 @@ def user_input():
       0 : 'Faible densité résidentielle'
       }
   MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
-
-  #### OverQual : qualité générale
-  OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
   
 
   ############### INTERIEUR
@@ -119,6 +114,9 @@ def user_input():
 
   ############### EQUIPEMENTS
   st.sidebar.header("Des remarques sur les équipements ?")
+
+  #### OverQual : qualité générale
+  OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
 
   #### HeatingQC : qualité du chauffage
   labels_HeatingQC= [1, 2, 3, 4, 5]
@@ -166,12 +164,19 @@ def user_input():
   #### BsmtQual : qualité du sous-sol
   BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
 
+
   #### GarageCars : capacité du garage en nombre de voiture
-  GarageCars=st.sidebar.slider("Capacité du garage en nombre de voiture(s)", 0,4, value = 1)
-  
-  #### GarageCond : qualité du garage
-  GarageCond=st.sidebar.slider("Qualité du garage sur 10", 0,10, value = 5)
-  
+  # On utilise st.checkbox() pour afficher une case à cocher
+  Garage_want_option = st.sidebar.checkbox("Un garage pour une voiture ou du bricolage ?")
+
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if Garage_want_option:
+      GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 10, step = 1)
+      GarageCond = st.sidebar.slider("Qualité du garage sur 10", 0,10, value = 5)
+  else:
+      GarageCars = 0
+      GarageCond = 0
+
 
   ############### EXTERIEUR
   st.sidebar.header("Terminons par un tour de l'extérieur.")
@@ -188,7 +193,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if terasse_want_option:
-      WoodDeckSF = st.sidebar.number_input("Taille de la terasse (en mètres carrés)", value = 10, step = 1)
+      WoodDeckSF = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1)
   else:
       WoodDeckSF = 0
 
@@ -198,7 +203,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if OpenPorchSF_want_option:
-      OpenPorchSF = st.sidebar.number_input("Taille de la véranda (en mètres carrés)", value = 10, step = 1)
+      OpenPorchSF = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1)
   else:
       OpenPorchSF = 0
 

@@ -67,7 +67,7 @@ def user_input():
         LotArea
   if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
     st.error('La saisie doit être un nombre décimal valide.')
-    else:
+  else:
         # Convertir la saisie en float
         LotArea_float = float(LotArea)
         

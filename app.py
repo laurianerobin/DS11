@@ -65,7 +65,7 @@ def user_input():
   
   # Vérifier le type rentré
   if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
-      st.sidebar.error('La saisie doit être un nombre décimal valide.')
+      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
   else:
         # Convertir la saisie en float
         LotArea_float = float(LotArea)

@@ -171,7 +171,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if Garage_want_option:
-      GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 10, step = 1)
+      GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 5, step = 1)
       GarageCond = st.sidebar.slider("Qualité du garage sur 10", 0,10, value = 5)
   else:
       GarageCars = 0

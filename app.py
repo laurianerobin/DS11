@@ -180,7 +180,7 @@ def user_input():
   ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
 
   #### ModernityInYears : dernière rénovation
-  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60)
+  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value =10)
 
   #### WoodDeckSF : taille de la terasse (en mètres carrés)
   WoodDeckSF=st.sidebar.slider("Taille de la terasse (en mètres carrés)", 0,800)

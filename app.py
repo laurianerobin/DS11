@@ -34,7 +34,7 @@ Cet outil vous permet de prédire le prix de votre futur maison.
 
 # Création des onglets
 tabs = ["Onglet 1", "Onglet 2"]
-selected_tab = st.sidebar.selectbox("Sélectionnez un onglet", tabs)
+selected_tab = st.selectbox("Sélectionnez un onglet", tabs)
 
 # Affichage du contenu de l'onglet sélectionné
 if selected_tab == "Onglet 1":

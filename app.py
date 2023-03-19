@@ -59,13 +59,13 @@ def user_input():
     if selected_value < min_value or selected_value > max_value:
       raise ValueError
   except ValueError:
-      st.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
+      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
   else:
       LotArea
   
   # Vérifier le type rentré
   if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
-      st.error('La saisie doit être un nombre décimal valide.')
+      st.sidebar.error('La saisie doit être un nombre décimal valide.')
   else:
         # Convertir la saisie en float
         LotArea_float = float(LotArea)

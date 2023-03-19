@@ -135,35 +135,50 @@ def user_input():
   KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)
 
   #### Fireplaces : nombre de cheminée(s)
-  Fireplaces=st.sidebar.slider("Nombre de cheminée(s)", 0,4, value = 0)
-  
+  # On utilise st.checkbox() pour afficher une case à cocher
+  Fireplaces_want_option = st.sidebar.checkbox("Vous chauffez-vous aussi avec une cheminée ?")
 
-  #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  # Demander à l'utilisateur de saisir la valeur de la surface
-  min_value_TotalBsmtSF = 0
-  max_value_TotalBsmtSF = 600
-  TotalBsmtSF = st.sidebar.text_input("Taille de la surface du sous-sol (en mètres carrés)", value = 20)
-  
-  # Vérifier que la saisie est valide
-  try:
-    selected_value = int(TotalBsmtSF)
-    if selected_value <= min_value_TotalBsmtSF or selected_value > max_value_TotalBsmtSF:
-      raise ValueError
-  except ValueError:
-      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_TotalBsmtSF} et {max_value_TotalBsmtSF}.')
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if Fireplaces_want_option:
+    Fireplaces=st.sidebar.slider("Précisez-nous combien", 0,4, value = 0)
   else:
-      TotalBsmtSF
-  
-  # Vérifier le type rentré
-  if not TotalBsmtSF.isnumeric() and not TotalBsmtSF.replace('.', '', 1).isnumeric():
-      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
+      Fireplaces = 0 
+
+  #### TotalBsmtSF : taille de la surface du sous-sol 
+  # On utilise st.checkbox() pour afficher une case à cocher
+  TotalBsmtSF = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
+
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if TotalBsmtSF_want_option:
+
+    # Demander à l'utilisateur de saisir la valeur de la surface
+    min_value_TotalBsmtSF = 0
+    max_value_TotalBsmtSF = 600
+    TotalBsmtSF = st.sidebar.text_input("Taille de la surface du sous-sol (en mètres carrés)", value = 20)
+    
+    # Vérifier que la saisie est valide
+    try:
+      selected_value = int(TotalBsmtSF)
+      if selected_value <= min_value_TotalBsmtSF or selected_value > max_value_TotalBsmtSF:
+        raise ValueError
+    except ValueError:
+        st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_TotalBsmtSF} et {max_value_TotalBsmtSF}.')
+    else:
+        TotalBsmtSF
+    
+    # Vérifier le type rentré
+    if not TotalBsmtSF.isnumeric() and not TotalBsmtSF.replace('.', '', 1).isnumeric():
+        st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
+    else:
+          # Convertir la saisie en float
+          TotalBsmtSF_float = float(TotalBsmtSF)
+
+    #### BsmtQual : qualité du sous-sol
+    BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)  
+
   else:
-        # Convertir la saisie en float
-        TotalBsmtSF_float = float(TotalBsmtSF)
-
-  #### BsmtQual : qualité du sous-sol
-  BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
-
+      TotalBsmtSF = 0 
+      BsmtQual = 0
 
   #### GarageCars : capacité du garage en nombre de voiture
   # On utilise st.checkbox() pour afficher une case à cocher
@@ -172,7 +187,7 @@ def user_input():
   # Si la case est cochée, on affiche un curseur st.slider()
   if Garage_want_option:
       GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 5, step = 1)
-      GarageCond = st.sidebar.slider("Qualité du garage sur 10", 0,10, value = 5)
+      GarageCond = st.sidebar.slider("Et vous jugeriez la qualité du garage sur 10", 0,10, value = 5)
   else:
       GarageCars = 0
       GarageCond = 0

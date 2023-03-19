@@ -180,14 +180,29 @@ def user_input():
   ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
 
   #### ModernityInYears : dernière rénovation
-  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value =10)
+  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value = 10)
+
 
   #### WoodDeckSF : taille de la terasse (en mètres carrés)
-  WoodDeckSF=st.sidebar.slider("Taille de la terasse (en mètres carrés)", 0,800)
-  
+  # On utilise st.checkbox() pour afficher une case à cocher
+  terasse_want_option = st.checkbox("Une terasse ?")
+
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if terasse_want_option:
+      WoodDeckSF = st.number_input("Taille de la terasse (en mètres carrés)", value = 10, step = 1)
+  else:
+      WoodDeckSF = 0
+
   #### OpenPorchSF : taille de la véranda (en mètres carrés)
-  OpenPorchSF=st.sidebar.slider("Taille de la véranda (en mètres carrés)", 0,600)
-  
+  # On utilise st.checkbox() pour afficher une case à cocher
+  OpenPorchSF_want_option = st.checkbox("Et une véranda ?")
+
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if OpenPorchSF_want_option:
+      OpenPorchSF = st.number_input("Taille de la véranda (en mètres carrés)", value = 10, step = 1)
+  else:
+      WoodDeckSF = 0
+
   data={'LotArea':LotArea,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,

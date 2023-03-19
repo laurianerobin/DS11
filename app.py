@@ -45,7 +45,7 @@ st.sidebar.header("Choisissez les caractéristiques de votre maison.")
 def user_input():
 
   ############### ASPECT GENERAL
-  st.sidebar.header("Si l'on commençait par son aspect général ?")
+  st.sidebar("Si l'on commençait par son aspect général ?")
   
   #### LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir la valeur de la surface

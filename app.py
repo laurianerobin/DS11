@@ -32,135 +32,138 @@ st.write('''
 Cet outil vous permet de prédire le prix de votre futur maison.
 ''')
 
-  # Choix des paramètres pour la maison
-  # Utilisation d'une sidebar : les informations peuvent être choisies à l'aide curseurs
-  # Des valeurs pré-rentrées sont définies avec value, ou index
+# Création des onglets
+tabs = ["Onglet 1", "Onglet 2"]
+selected_tab = st.sidebar.selectbox("Sélectionnez un onglet", tabs)
 
-with st.sidebar:
-  st.write("# Onglet 1")
+# Affichage du contenu de l'onglet sélectionné
+if selected_tab == "Onglet 1":
+    st.write("# Contenu de l'onglet 1")
+        # Choix des paramètres pour la maison
+    # Utilisation d'une sidebar : les informations peuvent être choisies à l'aide curseurs
+    # Des valeurs pré-rentrées sont définies avec value, ou index
 
-  st.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
+    st.sidebar.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
 
-  def user_input():
+    def user_input():
 
-    # LotArea : taille de la surface 
-    # Demander à l'utilisateur de saisir une option
-    min_value = 10
-    max_value = 3000
-    LotArea = st.text_input("Taille de la maison avec son extérieur (en mètres carrés)", value = 100)
-    # Vérifier que la saisie est valide
-    try:
-        selected_value = int(LotArea)
-        if selected_value < min_value or selected_value > max_value:
-            raise ValueError
-    except ValueError:
-        st.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
-    else:
-        LotArea
+      # LotArea : taille de la surface 
+      # Demander à l'utilisateur de saisir une option
+      min_value = 10
+      max_value = 3000
+      LotArea = st.sidebar.text_input("Taille de la maison avec son extérieur (en mètres carrés)", value = 100)
+      # Vérifier que la saisie est valide
+      try:
+          selected_value = int(LotArea)
+          if selected_value < min_value or selected_value > max_value:
+              raise ValueError
+      except ValueError:
+          st.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
+      else:
+          LotArea
 
-    if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
-        st.error('La saisie doit être un nombre décimal valide.')
-    else:
-        # Convertir la saisie en float
-      LotArea_float = float(LotArea)
+      if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
+          st.error('La saisie doit être un nombre décimal valide.')
+      else:
+          # Convertir la saisie en float
+        LotArea_float = float(LotArea)
 
-    # OverQual : qualité générale
-    OverallQual=st.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
+      # OverQual : qualité générale
+      OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
+      
+      # ExterQual : qualité extérieure
+      ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
+      
+      # ExterQual : qualité du sous-sol
+      BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
+      
+      # TotalBsmtSF : taille du sous-sol
+      TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
+      
+      # HeatingQC : qualité du chauffage
+      labels_HeatingQC= [1, 2, 3, 4, 5]
+      options_HeatingQC = {
+        1 :'Ex',
+        2 : 'Gd',
+        3 : 'TA',
+        4 : 'Fa',
+        5 : 'Po'
+    }
+      HeatingQC = st.sidebar.radio("Qualité et condition du chauffage", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])
+
+      # GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
+      GrLivArea=st.sidebar.slider("Surface habitable au-dessus du sol (en mètres carrés)", 10,4000)
+
+      # FullBath : nombre de salle(s) de bain
+      FullBath=st.sidebar.slider("Nombre de salle(s) de bain", 0,5)
+
+      # HalfBath : nombre de toilette(s) séparées
+      HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5)
+
+      # KitchenQual : qualité de la cuisine
+      KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10)
+
+      # KitchenQual : nombre de pièces
+      TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14)
+
+      # Fireplaces : nombre de cheminée(s)
+      Fireplaces=st.sidebar.slider("Nombre de cheminée(s)", 0,4)
+
+      # GarageCars : capacité du garage en nombre de voiture
+      GarageCars=st.sidebar.slider("Capacité du garage en nombre de voiture", 0,4)
+
+      # GarageCond : capacité du garage en nombre de voiture
+      GarageCond=st.sidebar.slider("Qualité du garage sur 10", 0,10)
+
+      # WoodDeckSF : taille de la terasse (en mètres carrés)
+      WoodDeckSF=st.sidebar.slider("Taille de la terasse (en mètres carrés)", 0,800)
+
+      # OpenPorchSF : taille de la véranda (en mètres carrés)
+      OpenPorchSF=st.sidebar.slider("Taille de la véranda (en mètres carrés)", 0,600)
+
+      # MS_zoning_RL : densité de l'endroit résidentiel
+      labels_MS_zoning_RL = [0,1]
+      options_MS_zoning_RL = {
+        1 :'Forte densité résidentielle',
+        0 : 'Faible densité résidentielle'
+    }
+      MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
+
+      # ModernityInYears : dernière rénovation
+      ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60)
     
-    # ExterQual : qualité extérieure
-    ExterQual=st.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
-    
-    # ExterQual : qualité du sous-sol
-    BsmtQual=st.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
-    
-    # TotalBsmtSF : taille du sous-sol
-    TotalBsmtSF=st.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
-    
-    # HeatingQC : qualité du chauffage
-    labels_HeatingQC= [1, 2, 3, 4, 5]
-    options_HeatingQC = {
-      1 :'Ex',
-      2 : 'Gd',
-      3 : 'TA',
-      4 : 'Fa',
-      5 : 'Po'
-  }
-    HeatingQC = st.radio("Qualité et condition du chauffage", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])
+      data={
+            'LotArea':LotArea,
+            'OverallQual':OverallQual,
+            'ExterQual':ExterQual,
+            'BsmtQual':BsmtQual,
+            'TotalBsmtSF':TotalBsmtSF,
+            'HeatingQC':HeatingQC,
+            'GrLivArea':GrLivArea,
+            'FullBath':FullBath,
+            'HalfBath':HalfBath,
+            'KitchenQual':KitchenQual,
+            'TotRmsAbvGrd':TotRmsAbvGrd,
+            'Fireplaces':Fireplaces,
+            'GarageCars':GarageCars,
+            'GarageCond':GarageCond,
+            'WoodDeckSF':WoodDeckSF,
+            'OpenPorchSF':OpenPorchSF,
+            'MS_zoning_RL':MS_zoning_RL,
+            'ModernityInYears':ModernityInYears
+            }
+      maison_parametre=pd.DataFrame(data,index=[0])
+      return maison_parametre
+      
+    df=user_input()
 
-    # GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-    GrLivArea=st.slider("Surface habitable au-dessus du sol (en mètres carrés)", 10,4000)
+    st.write("D'après ce que vous nous avez dit, votre bien comportant")
 
-    # FullBath : nombre de salle(s) de bain
-    FullBath=st.slider("Nombre de salle(s) de bain", 0,5)
+    st.write(df)
 
-    # HalfBath : nombre de toilette(s) séparées
-    HalfBath=st.slider("Nombre de toilette(s) séparées", 0,5)
 
-    # KitchenQual : qualité de la cuisine
-    KitchenQual=st.slider("Qualité de la cuisine sur 10", 0,10)
-
-    # KitchenQual : nombre de pièces
-    TotRmsAbvGrd=st.slider("Nombre de pièces", 0,14)
-
-    # Fireplaces : nombre de cheminée(s)
-    Fireplaces=st.slider("Nombre de cheminée(s)", 0,4)
-
-    # GarageCars : capacité du garage en nombre de voiture
-    GarageCars=st.slider("Capacité du garage en nombre de voiture", 0,4)
-
-    # GarageCond : capacité du garage en nombre de voiture
-    GarageCond=st.slider("Qualité du garage sur 10", 0,10)
-
-    # WoodDeckSF : taille de la terasse (en mètres carrés)
-    WoodDeckSF=st.slider("Taille de la terasse (en mètres carrés)", 0,800)
-
-    # OpenPorchSF : taille de la véranda (en mètres carrés)
-    OpenPorchSF=st.slider("Taille de la véranda (en mètres carrés)", 0,600)
-
-    # MS_zoning_RL : densité de l'endroit résidentiel
-    labels_MS_zoning_RL = [0,1]
-    options_MS_zoning_RL = {
-      1 :'Forte densité résidentielle',
-      0 : 'Faible densité résidentielle'
-  }
-    MS_zoning_RL = st.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
-
-    # ModernityInYears : dernière rénovation
-    ModernityInYears=st.slider("Nombre d'années avant la dernière rénovation", 0,60)
-  
-    data={
-          'LotArea':LotArea,
-          'OverallQual':OverallQual,
-          'ExterQual':ExterQual,
-          'BsmtQual':BsmtQual,
-          'TotalBsmtSF':TotalBsmtSF,
-          'HeatingQC':HeatingQC,
-          'GrLivArea':GrLivArea,
-          'FullBath':FullBath,
-          'HalfBath':HalfBath,
-          'KitchenQual':KitchenQual,
-          'TotRmsAbvGrd':TotRmsAbvGrd,
-          'Fireplaces':Fireplaces,
-          'GarageCars':GarageCars,
-          'GarageCond':GarageCond,
-          'WoodDeckSF':WoodDeckSF,
-          'OpenPorchSF':OpenPorchSF,
-          'MS_zoning_RL':MS_zoning_RL,
-          'ModernityInYears':ModernityInYears
-          }
-    maison_parametre=pd.DataFrame(data,index=[0])
-    return maison_parametre
-    
-  df=user_input()
-
-with st.sidebar:
-  st.write("# Onglet 2")
-
-  st.header("VOtre maiso ?")
-
-  st.write("D'après ce que vous nous avez dit, votre bien comportant")
-
-  st.write(df)
+else:
+    st.write("# Contenu de l'onglet 2")
 
 # Chargement des ensembles de test et d'apprentissage
 

@@ -42,7 +42,7 @@ def user_input():
 
   # LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir une option
-  LotArea = st.sidebar.text_input('Saisissez une option')
+  LotArea = st.sidebar.text_input('Taille de la maison avec son extérieur (en mètres carrés)')
   
   # OverQual : qualité générale
   OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)

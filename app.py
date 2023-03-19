@@ -109,19 +109,20 @@ def user_input():
   st.sidebar.header("Passons à l'intérieur. Après vous.")
 
   #### KitchenQual : nombre de pièces
-  TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14)
+  TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14, value = 3)
 
   #### FullBath : nombre de salle(s) de bain
-  FullBath=st.sidebar.slider("Nombre de salle(s) de bain", 0,5)
+  FullBath=st.sidebar.slider("Nombre de salle(s) de bain", 0,5, value = 1)
   
   #### HalfBath : nombre de toilette(s) séparées
-  HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5)
+  HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5, value = 1)
 
   ############### EQUIPEMENTS
   st.sidebar.header("Des remarques sur les équipements ?")
 
   #### HeatingQC : qualité du chauffage
   labels_HeatingQC= [1, 2, 3, 4, 5]
+  defaultHeat=3
   options_HeatingQC = {
               1 :'Excellent',
               2 : 'Bon',
@@ -129,13 +130,14 @@ def user_input():
               4 : 'Faible',
               5 : 'Pauvre'
           }
-  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])
+  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, 
+                               format_func=lambda x: options_HeatingQC[x], index=HeatingQC.index(defaultHeat))
   
   #### KitchenQual : qualité de la cuisine
-  KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10)
+  KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)
 
   #### Fireplaces : nombre de cheminée(s)
-  Fireplaces=st.sidebar.slider("Nombre de cheminée(s)", 0,4)
+  Fireplaces=st.sidebar.slider("Nombre de cheminée(s)", 0,4, value = 0)
   
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
@@ -165,10 +167,10 @@ def user_input():
   BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)
 
   #### GarageCars : capacité du garage en nombre de voiture
-  GarageCars=st.sidebar.slider("Capacité du garage en nombre de voiture(s)", 0,4)
+  GarageCars=st.sidebar.slider("Capacité du garage en nombre de voiture(s)", 0,4, value = 1)
   
   #### GarageCond : qualité du garage
-  GarageCond=st.sidebar.slider("Qualité du garage sur 10", 0,10)
+  GarageCond=st.sidebar.slider("Qualité du garage sur 10", 0,10, value = 5)
   
 
   ############### EXTERIEUR

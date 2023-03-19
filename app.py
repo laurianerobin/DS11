@@ -45,7 +45,7 @@ st.sidebar.header("Choisissez les caractéristiques de votre maison.")
 def user_input():
 
   ############### ASPECT GENERAL
-  st.sidebar.write("Si l'on commençait par son aspect général ?")
+  st.sidebar.header("Si l'on commençait par son aspect général ?")
   
   #### LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir la valeur de la surface
@@ -172,8 +172,6 @@ df=user_input()
 
 st.write("D'après ce que vous nous avez dit, votre bien comportant")
 st.write(df)
-
-"""# 3. Exécution du modèle retenu"""
 
 # Chargement des ensembles de test et d'apprentissage
 

@@ -41,7 +41,11 @@ st.sidebar.header("Quelles caractéristiques votre future maison doit-elle prés
 def user_input():
 
   # LotArea : taille de la surface 
-  LotArea=st.text_input.slider("Taille de la surface de la maison et de l'extérieur (en mètres carrés)")
+  # Demander à l'utilisateur de saisir une option
+  LotArea = st.text_input('Saisissez une option')
+
+  # Afficher le résultat de la saisie
+  st.write('Vous avez saisi :', LotArea)
   
   # OverQual : qualité générale
   OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)

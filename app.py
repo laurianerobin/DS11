@@ -153,6 +153,11 @@ with st.sidebar:
     
   df=user_input()
 
+with st.sidebar:
+  st.write("# Onglet 2")
+
+  st.sidebar.header("VOtre maiso ?")
+
   st.write("D'après ce que vous nous avez dit, votre bien comportant")
 
   st.write(df)

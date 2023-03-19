@@ -36,9 +36,9 @@ Cet outil vous permet de prédire le prix de votre futur maison.
 # Des valeurs pré-rentrées sont définies avec value, ou index
 
 with st.sidebar:
-    st.write("# Onglet 1")
+      st.write("# Onglet 1")
 
-    st.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
+      st.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
 
       #### LotArea : taille de la surface 
       # Demander à l'utilisateur de saisir une option

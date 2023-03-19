@@ -53,6 +53,8 @@ def user_input():
   except ValueError:
       st.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
   else:
+    LotAre
+    
   if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
       st.error('La saisie doit être un nombre décimal valide.')
   else:

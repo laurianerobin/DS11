@@ -14,7 +14,7 @@ https://www.google.com/search?q=d%C3%A9ployer+un+mod%C3%A8le+Machine+Learning+da
 # Installation de streamlit
 # Enlever lors de l'exécution de l'application
 
-!pip install streamlit
+# !pip install streamlit
 
 # Librairies nécessaires
 # Les librairies dont l'installation est requise sont mentionnées dans le fichier "requirement.txt" dans le github

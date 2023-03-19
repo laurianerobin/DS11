@@ -146,7 +146,7 @@ def user_input():
 
   #### TotalBsmtSF : taille de la surface du sous-sol 
   # On utilise st.checkbox() pour afficher une case à cocher
-  TotalBsmtSF = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
+  TotalBsmtSF_want_option = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if TotalBsmtSF_want_option:

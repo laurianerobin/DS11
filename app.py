@@ -49,17 +49,17 @@ def user_input():
   
   #### LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir la valeur de la surface
-  min_value = 10
-  max_value = 3000
+  min_value_LotArea = 10
+  max_value_LotArea = 3000
   LotArea = st.sidebar.text_input("Taille de la maison avec son extérieur (en mètres carrés)", value = 100)
   
   # Vérifier que la saisie est valide
   try:
     selected_value = int(LotArea)
-    if selected_value < min_value or selected_value > max_value:
+    if selected_value < min_value_LotArea or selected_value > max_value_LotArea:
       raise ValueError
   except ValueError:
-      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
+      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_LotArea} et {max_value_LotArea}.')
   else:
       LotArea
   
@@ -71,7 +71,27 @@ def user_input():
         LotArea_float = float(LotArea)
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea=st.sidebar.slider("Surface habitable au-dessus du sol (en mètres carrés)", 10,4000)
+  # Demander à l'utilisateur de saisir la valeur de la surface
+  min_value_GrLivArea = 10
+  max_value_GrLivArea = 3000
+  GrLivArea = st.sidebar.text_input("Surface habitable au-dessus du sol (en mètres carrés)", value = 100)
+  
+  # Vérifier que la saisie est valide
+  try:
+    selected_value = int(GrLivArea)
+    if selected_value < min_value_GrLivArea or selected_value > max_value_GrLivArea:
+      raise ValueError
+  except ValueError:
+      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_GrLivArea} et {max_value_GrLivArea}.')
+  else:
+      GrLivArea
+  
+  # Vérifier le type rentré
+  if not GrLivArea.isnumeric() and not GrLivArea.replace('.', '', 1).isnumeric():
+      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
+  else:
+        # Convertir la saisie en float
+        GrLivArea_float = float(GrLivArea)
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -86,7 +106,7 @@ def user_input():
   
 
   ############### INTERIEUR
-  st.sidebar.header("Abordons l'intérieur.")
+  st.sidebar.header("Passons à l'intérieur. Après vous.")
 
   #### KitchenQual : nombre de pièces
   TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14)
@@ -97,29 +117,49 @@ def user_input():
   #### HalfBath : nombre de toilette(s) séparées
   HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5)
 
+  ############### EQUIPEMENTS
+  st.sidebar.header("Des remarques sur les équipements ?")
+
   #### HeatingQC : qualité du chauffage
   labels_HeatingQC= [1, 2, 3, 4, 5]
   options_HeatingQC = {
-              1 :'Ex',
-              2 : 'Gd',
-              3 : 'TA',
-              4 : 'Fa',
-              5 : 'Po'
+              1 :'Excellent',
+              2 : 'Bon',
+              3 : 'Moyen',
+              4 : 'Faible',
+              5 : 'Pauvre'
           }
   HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, format_func=lambda x: options_HeatingQC[x])
   
   #### KitchenQual : qualité de la cuisine
   KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10)
 
-
-  ############### EQUIPEMENTS
-  st.sidebar.header("Des remarques sur les équipements ?")
-
   #### Fireplaces : nombre de cheminée(s)
   Fireplaces=st.sidebar.slider("Nombre de cheminée(s)", 0,4)
   
-  #### TotalBsmtSF : taille du sous-sol
-  TotalBsmtSF=st.sidebar.slider("Taille de la surface du sous-sol (en mètres carrés)", 0,600, value = 20)
+
+  #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
+  # Demander à l'utilisateur de saisir la valeur de la surface
+  min_value_TotalBsmtSF = 0
+  max_value_TotalBsmtSF = 600
+  TotalBsmtSF = st.sidebar.text_input("Taille de la surface du sous-sol (en mètres carrés)", value = 20)
+  
+  # Vérifier que la saisie est valide
+  try:
+    selected_value = int(TotalBsmtSF)
+    if selected_value <= min_value_TotalBsmtSF or selected_value > max_value_TotalBsmtSF:
+      raise ValueError
+  except ValueError:
+      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_TotalBsmtSF} et {max_value_TotalBsmtSF}.')
+  else:
+      TotalBsmtSF
+  
+  # Vérifier le type rentré
+  if not TotalBsmtSF.isnumeric() and not TotalBsmtSF.replace('.', '', 1).isnumeric():
+      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
+  else:
+        # Convertir la saisie en float
+        TotalBsmtSF_float = float(TotalBsmtSF)
 
   #### BsmtQual : qualité du sous-sol
   BsmtQual=st.sidebar.slider("Qualité du sous-sol sur 10", 0, 10, value = 5)

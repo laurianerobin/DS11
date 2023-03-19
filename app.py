@@ -153,10 +153,10 @@ def user_input():
         'MS_zoning_RL':MS_zoning_RL,
         'ModernityInYears':ModernityInYears
         }
-        maison_parametre=pd.DataFrame(data,index=[0])
-        return maison_parametre
-            
-  df=user_input()
+   maison_parametre=pd.DataFrame(data,index=[0])
+   return maison_parametre
+
+df=user_input()
 
 st.write("D'après ce que vous nous avez dit, votre bien comportant")
 st.write(df)

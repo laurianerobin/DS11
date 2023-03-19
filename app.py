@@ -148,11 +148,11 @@ with st.sidebar:
       maison_parametre=pd.DataFrame(data,index=[0])
       return maison_parametre
       
-    df=user_input()
+      df=user_input()
 
-    st.write("D'après ce que vous nous avez dit, votre bien comportant")
+      st.write("D'après ce que vous nous avez dit, votre bien comportant")
 
-    st.write(df)
+      st.write(df)
 
 # Chargement des ensembles de test et d'apprentissage
 

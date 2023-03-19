@@ -153,8 +153,8 @@ def user_input():
         'MS_zoning_RL':MS_zoning_RL,
         'ModernityInYears':ModernityInYears
         }
-   maison_parametre=pd.DataFrame(data,index=[0])
-   return maison_parametre
+  maison_parametre=pd.DataFrame(data,index=[0])
+  return maison_parametre
 
 df=user_input()
 

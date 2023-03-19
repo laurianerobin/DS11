@@ -39,10 +39,25 @@ Cet outil vous permet de prédire le prix de votre futur maison.
 st.sidebar.header("Quelles caractéristiques votre future maison doit-elle présenter ?")
 
 def user_input():
-
+    
   # LotArea : taille de la surface 
   # Demander à l'utilisateur de saisir une option
+  min_value = 10
+  max_value = 3000
   LotArea = st.sidebar.text_input("Taille de la maison avec son extérieur (en mètres carrés)", value = 100)
+  # Vérifier que la saisie est valide
+  try:
+      selected_value = int(LotArea)
+      if selected_value < min_value or selected_value > max_value:
+          raise ValueError
+  except ValueError:
+      st.warning(f'Veuillez saisir un nombre entier entre {min_value} et {max_value}.')
+  else:
+  if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
+      st.error('La saisie doit être un nombre décimal valide.')
+  else:
+      # Convertir la saisie en float
+    LotArea_float = float(LotArea)
   
   # OverQual : qualité générale
   OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)

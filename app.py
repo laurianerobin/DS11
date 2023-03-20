@@ -286,7 +286,7 @@ import streamlit as st
 
 # Définir la locale
 locale.setlocale(locale.LC_ALL, '')
-pred_rounded = round(pred)
+pred_rounded = round(pred, 0)
 
 # Formatter la valeur de pred_rounded en utilisant la locale
 formatted_pred = locale.format('%s', pred_rounded, grouping=True, monetary=True)

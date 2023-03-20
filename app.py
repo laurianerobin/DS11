@@ -80,28 +80,36 @@ def user_input():
 
 
   #### GardenSize : taille de la surface du jardin
-  # Demander à l'utilisateur de saisir la valeur de la surface
-  min_value_GardenSize = 10
-  max_value_GardenSize = 3000
-  GardenSize = st.sidebar.text_input("Taille de l'extérieur de la maison", value = 100)
-  
-  # Vérifier que la saisie est valide
-  try:
-    selected_value = int(GardenSize)
-    if selected_value < min_value_GardenSize or selected_value > max_value_GardenSize:
-      raise ValueError
-  except ValueError:
-      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GardenSize} et {max_value_GardenSize} mètres carrés.')
-  else:
-      GardenSize
-  
-  # Vérifier le type rentré
-  if not GardenSize.isnumeric() and not GardenSize.replace('.', '', 1).isnumeric():
-      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
-  else:
-        # Convertir la saisie en float
-        GardenSize_float = float(GardenSize)
+  # On utilise st.checkbox() pour afficher une case à cocher
+  GardenSize_want_option = st.sidebar.checkbox("Un espace extérieur entourant la maison ?")
 
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if GardenSize_want_option:
+    GardenSize=st.sidebar.text_input("Précisez dans ce cas la surface extérieure de ce jardin (en mètres carrés)", value = 100)
+      # Demander à l'utilisateur de saisir la valeur de la surface
+    min_value_GardenSize = 10
+    max_value_GardenSize = 3000
+    GardenSize = st.sidebar.text_input("Surface extérieure (en mètres carrés)", value = 100)
+    
+    # Vérifier que la saisie est valide
+    try:
+      selected_value = int(GardenSize)
+      if selected_value < min_value_GardenSize or selected_value > max_value_GardenSize:
+        raise ValueError
+    except ValueError:
+        st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GardenSize} et {max_value_GardenSize} mètres carrés.')
+    else:
+        GardenSize
+    
+    # Vérifier le type rentré
+    if not GardenSize.isnumeric() and not GardenSize.replace('.', '', 1).isnumeric():
+        st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
+    else:
+          # Convertir la saisie en float
+          GardenSize_float = float(GardenSize)
+
+  else:
+      GardenSize = 0 
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -217,7 +225,7 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={'LotArea':LotArea,
+  data={'GardenSize':GardenSize,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,
         'BsmtQual':BsmtQual,

@@ -25,7 +25,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 # Design de l'application
 
 # Ajouter une vidéo en bannière
-st.video("https://drive.google.com/file/d/1_1tYLlRkOimiLmj9_5rfoahoNBY7PBxa/view?usp=share_link")
+st.video("https://drive.google.com/file/d/1kn3oNLtVOOej3KjA9D_I3D8aW08_Wj_7/view?usp=share_link")
 
 # Description
 

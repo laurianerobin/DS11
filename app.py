@@ -25,16 +25,22 @@ from sklearn.ensemble import GradientBoostingRegressor
 # Design de l'application
 
 # Ajouter une vidéo en bannière
-
-#st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+# st.video("")
 
 # Description
 
-st.title("L'application blabla")
+st.title("BringItHome")
 
 st.write('''
-# Bienvenue.
-Cet outil vous permet de prédire le prix de votre futur maison.
+# Une maison, un prix.
+Bienvenue chez BringItHome, l'agence immobilière innovante qui vous aide à estimer la valeur de votre propriété en toute simplicité.
+
+Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données de marché de ??. Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.
+Chez Propertize, nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une décision éclairée.
+
+Alors, pourquoi attendre ? Utilisez dès maintenant notre outil de prédiction de prix pour estimer la valeur de votre propriété.
+
+BringItHome - Les clés qui vous donnent le pouvoir.
 ''')
 
 # L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
@@ -57,13 +63,13 @@ def user_input():
     if selected_value < min_value_LotArea or selected_value > max_value_LotArea:
       raise ValueError
   except ValueError:
-      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_LotArea} et {max_value_LotArea}.')
+      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_LotArea} et {max_value_LotArea}.')
   else:
       LotArea
   
   # Vérifier le type rentré
   if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
-      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
+      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
   else:
         # Convertir la saisie en float
         LotArea_float = float(LotArea)
@@ -80,7 +86,7 @@ def user_input():
     if selected_value < min_value_GrLivArea or selected_value > max_value_GrLivArea:
       raise ValueError
   except ValueError:
-      st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_GrLivArea} et {max_value_GrLivArea}.')
+      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GrLivArea} et {max_value_GrLivArea}.')
   else:
       GrLivArea
   
@@ -104,13 +110,13 @@ def user_input():
   st.sidebar.header("Passons à l'intérieur. Après vous.")
 
   #### KitchenQual : nombre de pièces
-  TotRmsAbvGrd=st.sidebar.slider("Nombre de pièces", 0,14, value = 3)
+  TotRmsAbvGrd = st.sidebar.number_input("Nombre de pièce(s)", value = 1, step = 1, min_value=1, max_value=None)
 
   #### FullBath : nombre de salle(s) de bain
-  FullBath=st.sidebar.slider("Nombre de salle(s) de bain", 0,5, value = 1)
+  FullBath = st.sidebar.number_input("Nombre de salle(s) de bain", value = 1, step = 1, min_value=1, max_value=None)
   
   #### HalfBath : nombre de toilette(s) séparées
-  HalfBath=st.sidebar.slider("Nombre de toilette(s) séparées", 0,5, value = 1)
+  HalfBath = st.sidebar.number_input("Nombre de toilette(s) séparées", value = 1, step = 1, min_value=1, max_value=None)
 
   ############### EQUIPEMENTS
   st.sidebar.header("Des remarques sur les équipements ?")
@@ -140,7 +146,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if Fireplaces_want_option:
-    Fireplaces=st.sidebar.number_input("Précisez-nous combien de cheminée(s)", step =1, value = 0)
+    Fireplaces=st.sidebar.number_input("Précisez-nous combien de cheminée(s)", step=1, value=0, min_value=0, max_value=None)
   else:
       Fireplaces = 0 
 
@@ -154,7 +160,7 @@ def user_input():
     # Demander à l'utilisateur de saisir la valeur de la surface
     min_value_TotalBsmtSF = 5
     max_value_TotalBsmtSF = 600
-    TotalBsmtSF = st.sidebar.text_input("Taille de la surface du sous-sol (en mètres carrés)", value = 20)
+    TotalBsmtSF = st.sidebar.text_input("Quelle est sa taille (en mètres carrés) ?", value = 20, min_value=0, max_value=None)
     
     # Vérifier que la saisie est valide
     try:
@@ -186,7 +192,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if Garage_want_option:
-      GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 5, step = 1)
+      GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 1, step = 1, min_value=0, max_value=None)
       GarageCond = st.sidebar.slider("Et vous jugeriez la qualité du garage sur 10", 0,10, value = 5)
   else:
       GarageCars = 0
@@ -202,13 +208,13 @@ def user_input():
   #### ModernityInYears : dernière rénovation
   ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value = 10)
 
-  #### WoodDeckSF : taille de la terasse (en mètres carrés)
+  #### WoodDeckSF : taille de la terrasse (en mètres carrés)
   # On utilise st.checkbox() pour afficher une case à cocher
-  terasse_want_option = st.sidebar.checkbox("Une terasse ?")
+  terrasse_want_option = st.sidebar.checkbox("Une terrasse ?")
 
   # Si la case est cochée, on affiche un curseur st.slider()
-  if terasse_want_option:
-      WoodDeckSF = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1)
+  if terrasse_want_option:
+      WoodDeckSF = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
   else:
       WoodDeckSF = 0
 
@@ -218,7 +224,7 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if OpenPorchSF_want_option:
-      OpenPorchSF = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1)
+      OpenPorchSF = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
   else:
       OpenPorchSF = 0
 
@@ -259,7 +265,7 @@ y_train = pd.read_csv(url_ytrain,parse_dates=[0])
 
 # Application du meilleur modèle retenu
 
-model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100)
+model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100, random_state = 42)
 model_best.fit(X_train, y_train)
 
 # Prédiction sur les données sélectionnées
@@ -269,3 +275,13 @@ pred = np.exp(prediction)
 
 st.subheader("Le prix de la maison est :")
 st.write(pred)
+
+st.write('''
+Notre outil de prédiction est basée sur un modèle d'apprentissage. 
+À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, données consitutées par l'Association Statistique Américaine (ASA).
+''')
+
+score_train = model_best.score(X_train, y_train)
+score_test = model_best.score(X_test, y_test)
+
+st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests.")

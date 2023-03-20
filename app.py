@@ -25,7 +25,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 # Design de l'application
 
 # Ajouter une vidéo en bannière
-# st.video("")
+st.video("https://drive.google.com/file/d/1_1tYLlRkOimiLmj9_5rfoahoNBY7PBxa/view?usp=share_link")
 
 # Description
 
@@ -37,10 +37,11 @@ st.write('''
 ## Une maison, un prix.
 Bienvenue chez BringItHome, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
 
-Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate. **Utilisez le volant déroulant à gauche pour nous décrire votre maison.**
+Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
 
+Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate. **Utilisez le volant déroulant à gauche pour nous décrire votre maison.**
 
-D'après ce que vous nous avez dit, votre maison :
+D'après ce que vous nous avez dit, votre maison avec
 ''')
 
 # L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
@@ -273,7 +274,7 @@ pred_rounded = np.round(pred, 0)
 formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 # Afficher la prédiction en gras et en bleu
-st.write("Le prix de votre maison est estimé à ", f'<span style="color: blue;"><b>{formatted_pred} $</b></span>', ".", unsafe_allow_html=True)
+st.write("Le prix de votre maison est estimé à ", f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 
@@ -285,7 +286,7 @@ if "show_info" not in st.session_state:
     st.session_state.show_info = False
 
 # Afficher le bouton "En savoir plus"
-if st.button("En savoir plus"):
+if st.button("En savoir plus sur notre expertise"):
     st.session_state.show_info = not st.session_state.show_info
 
 # Afficher le texte si la variable de session est définie sur True

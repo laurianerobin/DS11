@@ -161,7 +161,7 @@ def user_input():
     # Demander à l'utilisateur de saisir la valeur de la surface
     min_value_TotalBsmtSF = 5
     max_value_TotalBsmtSF = 600
-    TotalBsmtSF = st.sidebar.text_input("Quelle est sa taille (en mètres carrés) ?", value = 20, min_value=5, max_value=None)
+    TotalBsmtSF = st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, min_value=5, max_value=None)
     
     # Vérifier que la saisie est valide
     try:

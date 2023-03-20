@@ -252,14 +252,7 @@ def user_input():
             
 df=user_input()
 
-# format du nombre pour le prix
-import locale
-locale.setlocale(locale.LC_ALL, '')
-locale._override_localeconv = {'mon_thousands_sep': ' '}
-
-# retranscription du prédix
-st.write("D'après ce que vous nous avez dit, votre bien comportant")
-st.write(locale.format('%s', round(df,0), grouping=True, monetary=True),"$")
+st.write(df)
 
 # Chargement des ensembles de test et d'apprentissage
 
@@ -286,7 +279,16 @@ prediction=model_best.predict(df)
 pred = np.exp(prediction)
 
 st.subheader("Le prix de la maison est :")
+
+# format du nombre pour le prix
+import locale
+locale.setlocale(locale.LC_ALL, '')
+locale._override_localeconv = {'mon_thousands_sep': ' '}
+
 st.write(pred)
+
+# retranscription du prédix
+st.write("Son prix est estimé à ", **:blue[locale.format('%s', round(pred,0), grouping=True, monetary=True) $]**)
 
 st.write('''
 Notre outil de prédiction est basée sur un modèle d'apprentissage. 

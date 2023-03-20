@@ -253,6 +253,7 @@ def user_input():
 df=user_input()
 
 # format du nombre pour le prix
+import locale
 locale.setlocale(locale.LC_ALL, '')
 locale._override_localeconv = {'mon_thousands_sep': ' '}
 

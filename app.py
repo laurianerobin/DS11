@@ -286,11 +286,11 @@ from babel.numbers import format_decimal
 # Arrondir la prédiction
 pred_rounded = np.round(pred, 0)
 
-# Convertir la valeur arrondie en float puis en chaîne de caractères
-formatted_pred = format_decimal(float(pred_rounded), format='#,##0', locale='fr')
+# Formater la prédiction avec des espaces tous les milliers
+formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
-# Afficher la prédiction formatée en gras et en bleu
-st.write("Le prix de votre maison est estimé à ", f"<span style='color:green'>{formatted_pred}</span>", f"<span style='color:green'>"$"</span>", "." unsafe_allow_html=True)
+# Afficher la prédiction en gras et en bleu
+st.write(f"**${formatted_pred}**", unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

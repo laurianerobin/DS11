@@ -278,18 +278,21 @@ model_best.fit(X_train, y_train)
 prediction=model_best.predict(df)
 pred = np.exp(prediction)
 
-st.subheader("Le prix de la maison est :")
 
-# format du nombre pour le prix
+
+### Afficher la prédiction
 import locale
+import streamlit as st
+
+# Définir la locale
 locale.setlocale(locale.LC_ALL, '')
-locale._override_localeconv = {'mon_thousands_sep': ' '}
+pred_rounded = round(pred)
 
-st.write(pred)
+# Formatter la valeur de pred_rounded en utilisant la locale
+formatted_pred = locale.format('%s', pred_rounded, grouping=True, monetary=True)
 
-# retranscription du prédix
-pred_format = locale.format('%s', round(pred,0), grouping=True, monetary=True)
-st.markdown("Son prix est estimé à **:blue[pred_format]**")
+# Afficher la valeur formatée en gras et en bleu
+st.write("Le prix de votre maison est estimé à ", f"<span style='font-weight:bold; color:blue'>{formatted_pred}</span>","$",unsafe_allow_html=True)
 
 st.write('''
 Notre outil de prédiction est basée sur un modèle d'apprentissage. 

@@ -293,11 +293,21 @@ formatted_pred = format_decimal(float(pred_rounded), format='#,##0', locale='fr'
 st.write("Ma prédiction formatée en gras et en bleu : ", f"<span style='color:green'>{formatted_pred}</span>", unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
+
 score_train = model_best.score(X_train, y_train)
 score_test = model_best.score(X_test, y_test)
 
+# Définir une variable de session pour stocker l'état du bouton
+if "show_info" not in st.session_state:
+    st.session_state.show_info = False
+
+# Afficher le bouton "En savoir plus"
 if st.button("En savoir plus"):
-    st.write(''' Notre outil de prédiction est basée sur un modèle d'apprentissage. 
+    st.session_state.show_info = not st.session_state.show_info
+
+# Afficher le texte si la variable de session est définie sur True
+if st.session_state.show_info:
+  st.write(''' Notre outil de prédiction est basée sur un modèle d'apprentissage. 
 À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, données consitutées par l'Association Statistique Américaine (ASA).
 ''')  
-    st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests.")
+  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests.")

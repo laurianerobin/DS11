@@ -25,7 +25,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 # Design de l'application
 
 # Ajouter une vidéo en bannière
-st.video("https://drive.google.com/file/d/1kn3oNLtVOOej3KjA9D_I3D8aW08_Wj_7/view?usp=share_link")
+st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
 
 # Description
 
@@ -35,7 +35,7 @@ st.write("_BringItHome - Les clés qui vous donnent le pouvoir._")
 
 st.write('''
 ## Une maison, un prix.
-Bienvenue chez BringItHome, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
+Bienvenue chez BringItHome, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
 
@@ -46,6 +46,9 @@ D'après ce que vous nous avez dit, votre maison avec
 
 # L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 # selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
+
+st.sidebar.header("C'est ici que l'on dessine les traits de votre futur chez vous.")
+
 
 def user_input():
 
@@ -111,7 +114,7 @@ def user_input():
   st.sidebar.header("Passons à l'intérieur. Après vous.")
 
   #### KitchenQual : nombre de pièces
-  TotRmsAbvGrd = st.sidebar.number_input("Nombre de pièce(s)", value = 1, step = 1, min_value=1, max_value=None)
+  TotRmsAbvGrd = st.sidebar.number_input("Nombre de pièce(s)", value = 4, step = 1, min_value=1, max_value=None)
 
   #### FullBath : nombre de salle(s) de bain
   FullBath = st.sidebar.number_input("Nombre de salle(s) de bain", value = 1, step = 1, min_value=1, max_value=None)

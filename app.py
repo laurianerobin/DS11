@@ -259,7 +259,7 @@ locale._override_localeconv = {'mon_thousands_sep': ' '}
 
 # retranscription du prédix
 st.write("D'après ce que vous nous avez dit, votre bien comportant")
-st.write(locale.format('.f', round(df,0), grouping=True, monetary=True),"$")
+st.write(locale.format('.%s', round(df,0), grouping=True, monetary=True),"$")
 
 # Chargement des ensembles de test et d'apprentissage
 

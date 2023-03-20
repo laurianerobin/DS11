@@ -283,12 +283,14 @@ import locale
 import streamlit as st
 from babel.numbers import format_decimal
 
-# Définir la locale
-locale.setlocale(locale.LC_ALL, '')
+# Arrondir la prédiction
 pred_rounded = np.round(pred, 0)
 
-# Formatter la prédiction avec des espaces entre les milliers
-formatted_pred = format_decimal(pred_rounded, format='#,##0', locale='fr')
+# Convertir la valeur arrondie en float puis en chaîne de caractères
+formatted_pred = format_decimal(float(pred_rounded), format='#,##0', locale='fr')
+
+# Supprimer les espaces entre les milliers
+formatted_pred = formatted_pred.replace(' ', '')
 
 # Afficher la prédiction formatée en gras et en bleu
 st.write("Ma prédiction formatée en gras et en bleu : ", f"<span style='font-weight:bold; color:blue'>{formatted_pred}</span>", unsafe_allow_html=True)

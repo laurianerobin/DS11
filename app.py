@@ -35,7 +35,7 @@ st.write("_BringItHome - Les clés qui vous donnent le pouvoir._")
 
 st.write('''
 ## Une maison, un prix.
-Bienvenue chez BringItHome, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
+Bienvenue chez _**BringItHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
 
@@ -47,42 +47,19 @@ D'après ce que vous nous avez dit, votre maison avec
 # L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 # selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
 
-st.sidebar.header("C'est ici que l'on dessine les traits de votre futur chez vous.")
+st.sidebar.header("C'est ici que l'on dessine les traits de votre chez vous.")
 
 
 def user_input():
 
   ############### ASPECT GENERAL
   st.sidebar.header("Si l'on commençait par son aspect général ?")
-  
-  #### LotArea : taille de la surface 
-  # Demander à l'utilisateur de saisir la valeur de la surface
-  min_value_LotArea = 10
-  max_value_LotArea = 3000
-  LotArea = st.sidebar.text_input("Taille de la maison avec son extérieur (en mètres carrés)", value = 100)
-  
-  # Vérifier que la saisie est valide
-  try:
-    selected_value = int(LotArea)
-    if selected_value < min_value_LotArea or selected_value > max_value_LotArea:
-      raise ValueError
-  except ValueError:
-      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_LotArea} et {max_value_LotArea}.')
-  else:
-      LotArea
-  
-  # Vérifier le type rentré
-  if not LotArea.isnumeric() and not LotArea.replace('.', '', 1).isnumeric():
-      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
-  else:
-        # Convertir la saisie en float
-        LotArea_float = float(LotArea)
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
   # Demander à l'utilisateur de saisir la valeur de la surface
   min_value_GrLivArea = 10
   max_value_GrLivArea = 3000
-  GrLivArea = st.sidebar.text_input("Surface habitable au-dessus du sol (en mètres carrés)", value = 100)
+  GrLivArea = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = 100)
   
   # Vérifier que la saisie est valide
   try:
@@ -90,7 +67,7 @@ def user_input():
     if selected_value < min_value_GrLivArea or selected_value > max_value_GrLivArea:
       raise ValueError
   except ValueError:
-      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GrLivArea} et {max_value_GrLivArea}.')
+      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GrLivArea} et {max_value_GrLivArea} mètres carrés.')
   else:
       GrLivArea
   
@@ -101,6 +78,31 @@ def user_input():
         # Convertir la saisie en float
         GrLivArea_float = float(GrLivArea)
 
+
+  #### GardenSize : taille de la surface du jardin
+  # Demander à l'utilisateur de saisir la valeur de la surface
+  min_value_GardenSize = 10
+  max_value_GardenSize = 3000
+  GardenSize = st.sidebar.text_input("Taille de l'extérieur de la maison", value = 100)
+  
+  # Vérifier que la saisie est valide
+  try:
+    selected_value = int(GardenSize)
+    if selected_value < min_value_GardenSize or selected_value > max_value_GardenSize:
+      raise ValueError
+  except ValueError:
+      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GardenSize} et {max_value_GardenSize} mètres carrés.')
+  else:
+      GardenSize
+  
+  # Vérifier le type rentré
+  if not GardenSize.isnumeric() and not GardenSize.replace('.', '', 1).isnumeric():
+      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
+  else:
+        # Convertir la saisie en float
+        GardenSize_float = float(GardenSize)
+
+
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
   options_MS_zoning_RL = {
@@ -109,7 +111,7 @@ def user_input():
       }
   MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
   
-
+  
   ############### INTERIEUR
   st.sidebar.header("Passons à l'intérieur. Après vous.")
 
@@ -257,7 +259,7 @@ y_test = pd.read_csv(url_ytest,parse_dates=[0])
 
 # Application du meilleur modèle retenu
 
-model_best = GradientBoostingRegressor(learning_rate = 0.1, max_depth = 3, n_estimators = 100, random_state = 42)
+model_best = GradientBoostingRegressor(learning_rate=0.05, n_estimators=300, random_state = 42)
 model_best.fit(X_train, y_train)
 
 # Prédiction sur les données sélectionnées
@@ -297,4 +299,4 @@ if st.session_state.show_info:
   st.write(''' Notre outil de prédiction est basée sur un modèle d'apprentissage. 
 À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, données consitutées par l'Association Statistique Américaine (ASA).
 ''')  
-  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests.")
+  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests et ", round(score_train*100,2), "sur des données servant à la construction du modèle".)

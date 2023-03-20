@@ -286,7 +286,7 @@ import streamlit as st
 
 # Définir la locale
 locale.setlocale(locale.LC_ALL, '')
-pred_rounded = round(pred, 0)
+pred_rounded = np.round(pred, 0)
 
 # Formatter la prédiction avec des espaces tous les milliers
 formatted_pred = locale.format_string('%d', pred_rounded, grouping=True)

@@ -290,7 +290,7 @@ pred_rounded = np.round(pred, 0)
 formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 # Afficher la prédiction en gras et en bleu
-st.write(f'<span style="color: blue;"><b>{formatted_pred} $</b></span>', unsafe_allow_html=True)
+st.write("Le prix de votre maison est estimé à ", f'<span style="color: blue;"><b>{formatted_pred} $</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

@@ -278,20 +278,23 @@ model_best.fit(X_train, y_train)
 prediction=model_best.predict(df)
 pred = np.exp(prediction)
 
-
-
 ### Afficher la prédiction
 import locale
 import streamlit as st
+from babel.numbers import format_decimal
 
 # Définir la locale
 locale.setlocale(locale.LC_ALL, '')
 pred_rounded = np.round(pred, 0)
 
-formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
+# Formatter la prédiction avec des espaces entre les milliers
+formatted_pred = format_decimal(pred_rounded, format='#,##0', locale='fr')
+
+# Convertir la chaîne de caractères formatée en entier
+formatted_pred_int = int(formatted_pred.replace(' ', ''))
 
 # Afficher la prédiction formatée en gras et en bleu
-st.write("Ma prédiction formatée en gras et en bleu : ", f"<span style='font-weight:bold; color:blue'>{formatted_pred}</span>", unsafe_allow_html=True)
+st.write("Ma prédiction formatée en gras et en bleu : ", f"<span style='font-weight:bold; color:blue'>{formatted_pred_int}</span>", unsafe_allow_html=True)
 
 st.write('''
 Notre outil de prédiction est basée sur un modèle d'apprentissage. 

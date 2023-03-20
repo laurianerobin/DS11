@@ -288,8 +288,7 @@ import streamlit as st
 locale.setlocale(locale.LC_ALL, '')
 pred_rounded = np.round(pred, 0)
 
-# Formatter la prédiction avec des espaces tous les milliers
-formatted_pred = locale.format_string('%d', pred_rounded, grouping=True)
+formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 # Afficher la prédiction formatée en gras et en bleu
 st.write("Ma prédiction formatée en gras et en bleu : ", f"<span style='font-weight:bold; color:blue'>{formatted_pred}</span>", unsafe_allow_html=True)

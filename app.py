@@ -299,4 +299,4 @@ if st.session_state.show_info:
   st.write(''' Notre outil de prédiction est basée sur un modèle d'apprentissage. 
 À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, données consitutées par l'Association Statistique Américaine (ASA).
 ''')  
-  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests et ", round(score_train*100,2), "sur des données servant à la construction du modèle".)
+  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests et ", round(score_train*100,2), "sur des données servant à la construction du modèle.")

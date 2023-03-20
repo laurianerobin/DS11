@@ -286,13 +286,13 @@ import streamlit as st
 
 # Définir la locale
 locale.setlocale(locale.LC_ALL, '')
-pred_rounded = np.round(pred, 0)
+pred_rounded = round(pred, 0)
 
-# Formatter la valeur de pred_rounded en utilisant la locale
-formatted_pred = locale.format('%s', pred_rounded, grouping=True, monetary=True)
+# Formatter la prédiction avec des espaces tous les milliers
+formatted_pred = locale.format_string('%d', pred_rounded, grouping=True)
 
-# Afficher la valeur formatée en gras et en bleu
-st.write("Le prix de votre maison est estimé à ", f"<span style='font-weight:bold; color:blue'>{formatted_pred}</span>","$",unsafe_allow_html=True)
+# Afficher la prédiction formatée en gras et en bleu
+st.write("Ma prédiction formatée en gras et en bleu : ", f"<span style='font-weight:bold; color:blue'>{formatted_pred}</span>", unsafe_allow_html=True)
 
 st.write('''
 Notre outil de prédiction est basée sur un modèle d'apprentissage. 

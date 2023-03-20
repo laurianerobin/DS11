@@ -288,7 +288,8 @@ locale._override_localeconv = {'mon_thousands_sep': ' '}
 st.write(pred)
 
 # retranscription du prédix
-st.markdown("Son prix est estimé à **:blue[locale.format('%s', round(pred,0), grouping=True, monetary=True) $]**")
+pred_format = locale.format('%s', round(pred,0), grouping=True, monetary=True)
+st.markdown("Son prix est estimé à **:blue[pred_format]**")
 
 st.write('''
 Notre outil de prédiction est basée sur un modèle d'apprentissage. 

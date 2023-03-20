@@ -161,24 +161,7 @@ def user_input():
     # Demander à l'utilisateur de saisir la valeur de la surface
     min_value_TotalBsmtSF = 5
     max_value_TotalBsmtSF = 600
-    TotalBsmtSF = st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, min_value=5, max_value=None)
-    
-    # Vérifier que la saisie est valide
-    try:
-      selected_value = int(TotalBsmtSF)
-      if selected_value <= min_value_TotalBsmtSF or selected_value > max_value_TotalBsmtSF:
-        raise ValueError
-    except ValueError:
-        st.sidebar.warning(f'Veuillez saisir un nombre entier entre {min_value_TotalBsmtSF} et {max_value_TotalBsmtSF}.')
-    else:
-        TotalBsmtSF
-    
-    # Vérifier le type rentré
-    if not TotalBsmtSF.isnumeric() and not TotalBsmtSF.replace('.', '', 1).isnumeric():
-        st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
-    else:
-          # Convertir la saisie en float
-          TotalBsmtSF_float = float(TotalBsmtSF)
+    TotalBsmtSF = st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, step =1, min_value=5, max_value=None)
 
     #### BsmtQual : qualité du sous-sol
     BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)  
@@ -291,7 +274,7 @@ pred_rounded = np.round(pred, 0)
 formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 # Afficher la prédiction en gras et en bleu
-st.write("Le prix de votre maison est estimé à ", f'<span style="color: blue;"><b>{formatted_pred} $</b></span>', "." , unsafe_allow_html=True)
+st.write("Le prix de votre maison est estimé à ", f'<span style="color: blue;"><b>{formatted_pred} $</b></span>', ".", unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

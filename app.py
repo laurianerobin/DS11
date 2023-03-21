@@ -220,24 +220,24 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={'Taille du jardin':GardenSize,
-        'Qualité globale':OverallQual,
-        'Qualité de l''extérieur':ExterQual,
-        'Qualité du sous-sol':BsmtQual,
-        'Surface du sous-sol':TotalBsmtSF,
-        'Qualité du cchauffage':HeatingQC,
-        'Surface habitable':GrLivArea,
-        'Nombre de salle(s) de bain':FullBath,
-        'Nombre de toilettes séparées':HalfBath,
-        'Qualité de la cuisine':KitchenQual,
-        'Nombre de pièce(s)':TotRmsAbvGrd,
-        'Nombre de cheminée(s)':Fireplaces,
-        'Capacité du garage en voiture':GarageCars,
-        'Qualité du garage':GarageCond,
-        'Surface de la terrasse':WoodDeckSF,
-        'Surface de la véranda':OpenPorchSF,
-        'Densité résidentielle':MS_zoning_RL,
-        'Années avant la dernière rénovation':ModernityInYears
+  data={:'GardenSize':'Taille du jardin',
+        'OverallQual':'Qualité globale',
+        'ExterQual':'Qualité de l''extérieur',
+        'BsmtQual':'Qualité du sous-sol',
+        'TotalBsmtSF':'Surface du sous-sol',
+        'HeatingQC':'Qualité du cchauffage',
+        'GrLivArea':'Surface habitable',
+        'FullBath':'Nombre de salle(s) de bain',
+        'HalfBath':'Nombre de toilettes séparées',
+        'KitchenQual':'Qualité de la cuisine',
+        'TotRmsAbvGrd':'Nombre de pièce(s)',
+        'Fireplaces':'Nombre de cheminée(s)',
+        'GarageCars':'Capacité du garage en voiture',
+        'GarageCond':'Qualité du garage',
+        'WoodDeckSF':'Surface de la terrasse',
+        'OpenPorchSF':'Surface de la véranda',
+        'MS_zoning_RL':'Densité résidentielle',
+        'ModernityInYears':'Années avant la dernière rénovation'
         }
   maison_parametre=pd.DataFrame(data,index=[0])
   return maison_parametre

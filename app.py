@@ -244,8 +244,9 @@ def user_input():
 
 df=user_input()
 
-# Renommer les colonne de df
-df = df.rename(columns={'GardenSize': 'Taille du jardin',
+# Créer le dictionnaire de correspondance entre les noms de colonnes actuels et les noms de colonnes souhaités
+noms_colonnes = {
+    'GardenSize': 'Taille du jardin',
         'OverallQual':'Qualité globale',
         'ExterQual':'Qualité de l''extérieur',
         'BsmtQual':'Qualité du sous-sol',
@@ -262,7 +263,11 @@ df = df.rename(columns={'GardenSize': 'Taille du jardin',
         'WoodDeckSF':'Surface de la terrasse',
         'OpenPorchSF':'Surface de la véranda',
         'MS_zoning_RL':'Densité résidentielle',
-        'ModernityInYears':'Années avant la dernière rénovation'})
+        'ModernityInYears':'Années avant la dernière rénovation'
+}
+
+# Renommer les colonnes du DataFrame
+df = df.rename(columns=noms_colonnes)
 
 # Chargement des ensembles de test et d'apprentissage
 

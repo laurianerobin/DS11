@@ -241,7 +241,12 @@ def user_input():
         }
   maison_parametre=pd.DataFrame(data,index=[0])
   return maison_parametre
-            
+
+# Renommer les colonne de df
+df = df.rename(columns={'GardenSize': 'Taille du jardin'})
+
+
+
 df=user_input()
 
 # Chargement des ensembles de test et d'apprentissage

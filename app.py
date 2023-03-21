@@ -309,8 +309,7 @@ df_sans_index = df_renomme.to_records(index=False)
 
 st.write('''
 ## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
-st.table(df_sans_index)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme.to_html(index=False), '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 
@@ -330,4 +329,4 @@ if st.session_state.show_info:
   st.write(''' Notre outil de prédiction est basée sur un modèle d'apprentissage. 
 À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, données consitutées par l'Association Statistique Américaine (ASA).
 ''')  
-  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests et ", round(score_train*100,2), " % sur des données servant à la construction du modèle.")
+  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,1)," % sur des données de tests et ", round(score_train*100,2), " % sur des données servant à la construction du modèle.")

@@ -54,9 +54,6 @@ def user_input():
   max_value_GrLivArea = 30000000000
   GrLivArea_metrecarre = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = 100)
 
-  # Conversion en pieds carré pour le modèle 
-  GrLivArea = GrLivArea_metrecarre * 10.7639
-
   # Vérifier que la saisie est valide
   try:
     selected_value = int(GrLivArea)
@@ -65,15 +62,17 @@ def user_input():
   except ValueError:
       st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GrLivArea} et {max_value_GrLivArea} mètres carrés.')
   else:
+      # Conversion en pieds carré pour le modèle 
+      GrLivArea = float(GrLivArea_metrecarre) * 10.7639
       GrLivArea
   
   # Vérifier le type rentré
   if not GrLivArea.isnumeric() and not GrLivArea.replace('.', '', 1).isnumeric():
       st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
   else:
-        # Convertir la saisie en float
-        GrLivArea_float = float(GrLivArea)
-
+      # Conversion en pieds carré pour le modèle 
+      GrLivArea = float(GrLivArea_metrecarre) * 10.7639
+      GrLivArea
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -95,9 +94,6 @@ def user_input():
     max_value_GardenSize = 3000
     GardenSize_metrecarre = st.sidebar.text_input("Précisez dans ce cas la surface extérieure (en mètres carrés)", value = 100)
 
-    # Conversion en pieds carré pour le modèle 
-    GardenSize = GardenSize_metrecarre * 10.7639
-
     # Vérifier que la saisie est valide
     try:
       selected_value = int(GardenSize)
@@ -106,14 +102,17 @@ def user_input():
     except ValueError:
         st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GardenSize} et {max_value_GardenSize} mètres carrés.')
     else:
+        # Conversion en pieds carré pour le modèle 
+        GardenSize = float(GardenSize_metrecarre) * 10.7639
         GardenSize
     
     # Vérifier le type rentré
     if not GardenSize.isnumeric() and not GardenSize.replace('.', '', 1).isnumeric():
         st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
     else:
-          # Convertir la saisie en float
-          GardenSize_float = float(GardenSize)
+        # Conversion en pieds carré pour le modèle 
+        GardenSize = float(GardenSize_metrecarre) * 10.7639
+        GardenSize
 
   else:
       GardenSize = 0 
@@ -176,7 +175,7 @@ def user_input():
     TotalBsmtSF_metrecarre = st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, step =1, min_value=5, max_value=None)
 
     # Conversion en pieds carré pour le modèle 
-    TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
+    TotalBsmtSF = float(TotalBsmtSF_metrecarre) * 10.763
 
     #### BsmtQual : qualité du sous-sol
     BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)  
@@ -216,7 +215,7 @@ def user_input():
       WoodDeckSF_metrecarre = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
 
       # Conversion en pieds carré pour le modèle 
-      WoodDeckSF = WoodDeckSF_metrecarre * 10.7639
+      WoodDeckSF = float(WoodDeckSF_metrecarre) * 10.7639
 
   else:
       WoodDeckSF = 0
@@ -230,7 +229,7 @@ def user_input():
       OpenPorchSF_metrecarre = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
 
       # Conversion en pieds carré pour le modèle 
-      OpenPorchSF = OpenPorchSF_metrecarre * 10.7639
+      OpenPorchSF =float(OpenPorchSF_metrecarre) * 10.7639
   
   else:
       OpenPorchSF = 0

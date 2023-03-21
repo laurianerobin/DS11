@@ -267,7 +267,7 @@ noms_colonnes = {
 }
 
 # Renommer les colonnes du DataFrame
-df = df.rename(columns=noms_colonnes)
+df_renomme = df.rename(columns=noms_colonnes)
 
 # Chargement des ensembles de test et d'apprentissage
 
@@ -307,7 +307,7 @@ formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 # Afficher la prédiction en gras et en bleu
 st.write('''
 ## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

@@ -304,12 +304,9 @@ pred_rounded = np.round(pred, 0)
 # Formater la prédiction avec des espaces tous les milliers
 formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
-# Afficher la prédiction en gras et en bleu
-df_renomme_affichage = st.table(df_renomme.iloc[1:])
-
 st.write('''
 ## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme_affichage, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme.to_string(index=False), '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

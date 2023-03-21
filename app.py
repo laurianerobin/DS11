@@ -220,24 +220,24 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={'GrLivArea':GrLivArea,
-        'MS_zoning_RL':MS_zoning_RL,
-        'GardenSize':GardenSize,
-        'TotRmsAbvGrd':TotRmsAbvGrd,
+  data={'GardenSize':GardenSize,
+        'OverallQual':OverallQual,
+        'ExterQual':ExterQual,
+        'BsmtQual':BsmtQual,
+        'TotalBsmtSF':TotalBsmtSF,
+        'HeatingQC':HeatingQC,
+        'GrLivArea':GrLivArea,
         'FullBath':FullBath,
         'HalfBath':HalfBath,
-        'OverallQual':OverallQual,
         'KitchenQual':KitchenQual,
-        'HeatingQC':HeatingQC,
+        'TotRmsAbvGrd':TotRmsAbvGrd,
         'Fireplaces':Fireplaces,
-        'TotalBsmtSF':TotalBsmtSF,
-        'BsmtQual':BsmtQual,
         'GarageCars':GarageCars,
         'GarageCond':GarageCond,
-        'ExterQual':ExterQual,
-        'ModernityInYears':ModernityInYears,
         'WoodDeckSF':WoodDeckSF,
         'OpenPorchSF':OpenPorchSF,
+        'MS_zoning_RL':MS_zoning_RL,
+        'ModernityInYears':ModernityInYears
         }
   maison_parametre=pd.DataFrame(data,index=[0])
   return maison_parametre

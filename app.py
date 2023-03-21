@@ -28,14 +28,11 @@ from sklearn.ensemble import GradientBoostingRegressor
 st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
 
 # Description
-
-st.title("BringItHome")
-
-st.write("_BringItHome - Les clés qui vous donnent le pouvoir._")
+st.write("_BringItOnHome - Les clés qui vous donnent le pouvoir._")
 
 st.write('''
 ## Une maison, un prix.
-Bienvenue chez _**BringItHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
+Bienvenue chez _**BringItOnHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
 

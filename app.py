@@ -247,12 +247,6 @@ def user_input():
             
 df=user_input()
 
-
-st.write('''
-## Voici la vôtre.
-D'après ce que vous nous avez dit, une maison de''', GrLivArea, '''mètres carrés, avec une''', MS_zoning_RL, ''',''', TotRmsAbvGrd, '''pièces''', 
-''',''', FullBath, '''salles de bains''', ''',''', HalfBath, '''toilettes séparées''')
-
 # Chargement des ensembles de test et d'apprentissage
 
 url_Xtrain = 'https://raw.githubusercontent.com/laurianerobin/DS11/main/X_train.csv'
@@ -289,7 +283,9 @@ pred_rounded = np.round(pred, 0)
 formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 # Afficher la prédiction en gras et en bleu
-st.write("Le prix de votre maison est estimé à ", f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+st.write('''
+## Voici la vôtre.
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

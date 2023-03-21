@@ -220,24 +220,24 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={'GardenSize':GardenSize,
-        'OverallQual':OverallQual,
-        'ExterQual':ExterQual,
-        'BsmtQual':BsmtQual,
-        'TotalBsmtSF':TotalBsmtSF,
-        'HeatingQC':HeatingQC,
-        'GrLivArea':GrLivArea,
+  data={'GrLivArea':GrLivArea,
+        'MS_zoning_RL':MS_zoning_RL,
+        'GardenSize':GardenSize,
+        'TotRmsAbvGrd':TotRmsAbvGrd,
         'FullBath':FullBath,
         'HalfBath':HalfBath,
+        'OverallQual':OverallQual,
         'KitchenQual':KitchenQual,
-        'TotRmsAbvGrd':TotRmsAbvGrd,
+        'HeatingQC':HeatingQC,
         'Fireplaces':Fireplaces,
+        'TotalBsmtSF':TotalBsmtSF,
+        'BsmtQual':BsmtQual,
         'GarageCars':GarageCars,
         'GarageCond':GarageCond,
+        'ExterQual':ExterQual,
+        'ModernityInYears':ModernityInYears,
         'WoodDeckSF':WoodDeckSF,
         'OpenPorchSF':OpenPorchSF,
-        'MS_zoning_RL':MS_zoning_RL,
-        'ModernityInYears':ModernityInYears
         }
   maison_parametre=pd.DataFrame(data,index=[0])
   return maison_parametre
@@ -310,6 +310,8 @@ df_sans_index = df_renomme.to_records(index=False)
 st.write('''
 ## Voici la vôtre.
 D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme.to_html(index=False), '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+
+st.dataframe(df_renomme, width=1200)
 
 # Ajouter un bouton "En savoir plus"
 

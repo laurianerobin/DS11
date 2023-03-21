@@ -220,7 +220,32 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={GardenSize:'Taille du jardin',
+  data={GardenSize:'GardenSize',
+        OverallQual:'OverallQual',
+        ExterQual:'ExterQual',
+        BsmtQual:'BsmtQual',
+        TotalBsmtSF:'TotalBsmtSF',
+        HeatingQC:'HeatingQC',
+        GrLivArea:'GrLivArea',
+        FullBath:'FullBath',
+        HalfBath:'HalfBath',
+        KitchenQual:'KitchenQual',
+        TotRmsAbvGrd:'TotRmsAbvGrd)',
+        Fireplaces:'Fireplaces',
+        GarageCars:'GarageCars',
+        GarageCond:'GarageCond',
+        WoodDeckSF:'WoodDeckSF',
+        OpenPorchSF:'OpenPorchSF',
+        MS_zoning_RL:'MS_zoning_RL',
+        ModernityInYears:'ModernityInYears'
+        }
+  maison_parametre=pd.DataFrame(data,index=[0])
+  return maison_parametre
+
+df=user_input()
+
+# Renommer les colonne de df
+df = df.rename(columns={GardenSize: 'Taille du jardin',
         OverallQual:'Qualité globale',
         ExterQual:'Qualité de l''extérieur',
         BsmtQual:'Qualité du sous-sol',
@@ -237,17 +262,7 @@ def user_input():
         WoodDeckSF:'Surface de la terrasse',
         OpenPorchSF:'Surface de la véranda',
         MS_zoning_RL:'Densité résidentielle',
-        ModernityInYears:'Années avant la dernière rénovation'
-        }
-  maison_parametre=pd.DataFrame(data,index=[0])
-  return maison_parametre
-
-# Renommer les colonne de df
-df = df.rename(columns={'GardenSize': 'Taille du jardin'})
-
-
-
-df=user_input()
+        ModernityInYears:'Années avant la dernière rénovation'})
 
 # Chargement des ensembles de test et d'apprentissage
 

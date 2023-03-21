@@ -244,6 +244,31 @@ def user_input():
 
 df=user_input()
 
+# Créer le dictionnaire de correspondance entre les noms de colonnes actuels et les noms de colonnes souhaités
+noms_colonnes = {
+    'GardenSize': 'Taille du jardin',
+        'OverallQual':'Qualité globale',
+        'ExterQual':'Qualité de l''extérieur',
+        'BsmtQual':'Qualité du sous-sol',
+        'TotalBsmtSF':'Surface du sous-sol',
+        'HeatingQC':'Qualité du cchauffage',
+        'GrLivArea':'Surface habitable',
+        'FullBath':'Nombre de salle(s) de bain',
+        'HalfBath':'Nombre de toilettes séparées',
+        'KitchenQual':'Qualité de la cuisine',
+        'TotRmsAbvGrd':'Nombre de pièce(s)',
+        'Fireplaces':'Nombre de cheminée(s)',
+        'GarageCars':'Capacité du garage en voiture',
+        'GarageCond':'Qualité du garage',
+        'WoodDeckSF':'Surface de la terrasse',
+        'OpenPorchSF':'Surface de la véranda',
+        'MS_zoning_RL':'Densité résidentielle',
+        'ModernityInYears':'Années avant la dernière rénovation'
+}
+
+# Renommer les colonnes du DataFrame
+df_renomme = df.rename(columns=noms_colonnes)
+
 # Chargement des ensembles de test et d'apprentissage
 
 url_Xtrain = 'https://raw.githubusercontent.com/laurianerobin/DS11/main/X_train.csv'
@@ -282,7 +307,7 @@ formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 # Afficher la prédiction en gras et en bleu
 st.write('''
 ## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

@@ -118,7 +118,7 @@ def user_input():
   ############### INTERIEUR
   st.sidebar.header("Passons à l'intérieur. Après vous.")
 
-  #### KitchenQual : nombre de pièces
+  #### TotRmsAbvGrd : nombre de pièces
   TotRmsAbvGrd = st.sidebar.number_input("Nombre de pièce(s)", value = 4, step = 1, min_value=1, max_value=None)
 
   #### FullBath : nombre de salle(s) de bain
@@ -220,24 +220,24 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={GardenSize:'GardenSize',
-        OverallQual:'OverallQual',
-        ExterQual:'ExterQual',
-        BsmtQual:'BsmtQual',
-        TotalBsmtSF:'TotalBsmtSF',
-        HeatingQC:'HeatingQC',
-        GrLivArea:'GrLivArea',
-        FullBath:'FullBath',
-        HalfBath:'HalfBath',
-        KitchenQual:'KitchenQual',
-        TotRmsAbvGrd:'TotRmsAbvGrd',
-        Fireplaces:'Fireplaces',
-        GarageCars:'GarageCars',
-        GarageCond:'GarageCond',
-        WoodDeckSF:'WoodDeckSF',
-        OpenPorchSF:'OpenPorchSF',
-        MS_zoning_RL:'MS_zoning_RL',
-        ModernityInYears:'ModernityInYears'
+  data={'GardenSize':GardenSize,
+        'OverallQual':OverallQual,
+        'ExterQual':ExterQual,
+        'BsmtQual':BsmtQual,
+        'TotalBsmtSF':TotalBsmtSF,
+        'HeatingQC':HeatingQC,
+        'GrLivArea':GrLivArea,
+        'FullBath':FullBath,
+        'HalfBath':HalfBath,
+        'KitchenQual':KitchenQual,
+        'TotRmsAbvGrd':TotRmsAbvGrd,
+        'Fireplaces':Fireplaces,
+        'GarageCars':GarageCars,
+        'GarageCond':GarageCond,
+        'WoodDeckSF':WoodDeckSF,
+        'OpenPorchSF':OpenPorchSF,
+        'MS_zoning_RL':MS_zoning_RL,
+        'ModernityInYears':ModernityInYears
         }
   maison_parametre=pd.DataFrame(data,index=[0])
   return maison_parametre

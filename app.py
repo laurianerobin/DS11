@@ -28,8 +28,6 @@ from sklearn.ensemble import GradientBoostingRegressor
 st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
 
 # Description
-st.write("_BringItOnHome - Les clés qui vous donnent le pouvoir._")
-
 st.write('''
 ### Une maison, un prix, l'outil.
 Bienvenue chez _**BringItOnHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
@@ -308,7 +306,31 @@ formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 st.write('''
 ### Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+st.write(df_renomme)
+
+# Afficher le bouton pour voir une maison similaire à ce prix
+
+if st.button("Voir une maison similaire à ce prix"):
+    # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
+    if pred_rounded >= 140000 and pred_rounded < 250000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.png", caption="Maison similaire")
+    elif pred_rounded >= 250000 and pred_rounded < 369000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image2.png", caption="Maison similaire")
+    elif pred_rounded >= 250000 and pred_rounded < 369000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image3.png", caption="Maison similaire")
+    elif pred_rounded >= 369000 and pred_rounded < 456000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image4.png", caption="Maison similaire")
+    elif pred_rounded >= 456000 and pred_rounded < 500000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image5.png", caption="Maison similaire")
+    elif pred_rounded >= 500000 and pred_rounded < 756000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image6.png", caption="Maison similaire")
+    elif pred_rounded >= 756000 and pred_rounded < 925000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image7.png", caption="Maison similaire")
+    elif pred_rounded >= 925000 and pred_rounded < 1000000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image8.png", caption="Maison similaire")
+    else:
+        st.write("Désolé, il n'y a pas de maison similaire dans cette fourchette de prix")
 
 # Ajouter un bouton "En savoir plus"
 

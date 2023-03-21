@@ -230,7 +230,7 @@ def user_input():
         FullBath:'FullBath',
         HalfBath:'HalfBath',
         KitchenQual:'KitchenQual',
-        TotRmsAbvGrd:'TotRmsAbvGrd)',
+        TotRmsAbvGrd:'TotRmsAbvGrd',
         Fireplaces:'Fireplaces',
         GarageCars:'GarageCars',
         GarageCond:'GarageCond',

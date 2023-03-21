@@ -309,7 +309,8 @@ df_sans_index = df_renomme.to_records(index=False)
 
 st.write('''
 ## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', st.table(df_sans_index), '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+st.table(df_sans_index)
 
 # Ajouter un bouton "En savoir plus"
 

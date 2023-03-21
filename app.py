@@ -40,8 +40,6 @@ Bienvenue chez _**BringItHome**_, l'agence immobilière innovante qui vous aide 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
 
 Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate. **Utilisez le volant déroulant à gauche pour nous décrire votre maison.**
-
-D'après ce que vous nous avez dit, votre maison avec
 ''')
 
 # L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
@@ -249,7 +247,11 @@ def user_input():
             
 df=user_input()
 
-st.write(df)
+
+st.write('''
+## Voici la vôtre.
+D'après ce que vous nous avez dit, une maison de''', GrLivArea, '''mètres carrés, avec une''', MS_zoning_RL, ''',''', TotRmsAbvGrd, '''pièces''', 
+''',''', FullBath, '''salles de bains''', ''',''', HalfBath, '''toilettes séparées''')
 
 # Chargement des ensembles de test et d'apprentissage
 

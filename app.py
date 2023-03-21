@@ -52,8 +52,11 @@ def user_input():
   # Demander à l'utilisateur de saisir la valeur de la surface
   min_value_GrLivArea = 10
   max_value_GrLivArea = 30000000000
-  GrLivArea = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = 100)
-  
+  GrLivArea_metrecarre = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = 100)
+
+  # Conversion en pieds carré pour le modèle 
+  GrLivArea = GrLivArea_metrecarre * 10.7639
+
   # Vérifier que la saisie est valide
   try:
     selected_value = int(GrLivArea)
@@ -90,8 +93,11 @@ def user_input():
       # Demander à l'utilisateur de saisir la valeur de la surface
     min_value_GardenSize = 10
     max_value_GardenSize = 3000
-    GardenSize = st.sidebar.text_input("Précisez dans ce cas la surface extérieure (en mètres carrés)", value = 100)
-    
+    GardenSize_metrecarre = st.sidebar.text_input("Précisez dans ce cas la surface extérieure (en mètres carrés)", value = 100)
+
+    # Conversion en pieds carré pour le modèle 
+    GardenSize = GardenSize_metrecarre * 10.7639
+
     # Vérifier que la saisie est valide
     try:
       selected_value = int(GardenSize)
@@ -167,7 +173,10 @@ def user_input():
     # Demander à l'utilisateur de saisir la valeur de la surface
     min_value_TotalBsmtSF = 5
     max_value_TotalBsmtSF = 600
-    TotalBsmtSF = st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, step =1, min_value=5, max_value=None)
+    TotalBsmtSF_metrecarre = st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, step =1, min_value=5, max_value=None)
+
+    # Conversion en pieds carré pour le modèle 
+    TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
 
     #### BsmtQual : qualité du sous-sol
     BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)  
@@ -204,7 +213,11 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if terrasse_want_option:
-      WoodDeckSF = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
+      WoodDeckSF_metrecarre = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
+
+      # Conversion en pieds carré pour le modèle 
+      WoodDeckSF = WoodDeckSF_metrecarre * 10.7639
+
   else:
       WoodDeckSF = 0
 
@@ -214,7 +227,11 @@ def user_input():
 
   # Si la case est cochée, on affiche un curseur st.slider()
   if OpenPorchSF_want_option:
-      OpenPorchSF = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
+      OpenPorchSF_metrecarre = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
+
+      # Conversion en pieds carré pour le modèle 
+      OpenPorchSF = OpenPorchSF_metrecarre * 10.7639
+  
   else:
       OpenPorchSF = 0
 

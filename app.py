@@ -306,11 +306,10 @@ formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 # Afficher le dataframe sans l'index sous forme de tableau
 
 df_sans_index = df_renomme.to_records(index=False)
-df_affichage = st.table(df_sans_index)
 
 st.write('''
 ## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_affichage, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', st.table(df_sans_index), '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

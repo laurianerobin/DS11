@@ -125,7 +125,7 @@ def user_input():
   FullBath = st.sidebar.number_input("Nombre de salle(s) de bain", value = 1, step = 1, min_value=1, max_value=None)
   
   #### HalfBath : nombre de toilette(s) séparées
-  HalfBath = st.sidebar.number_input("Nombre de toilette(s) séparées", value = 1, step = 1, min_value=1, max_value=None)
+  HalfBath = st.sidebar.number_input("Nombre de toilettes séparées", value = 1, step = 1, min_value=1, max_value=None)
 
   ############### EQUIPEMENTS
   st.sidebar.header("Des remarques sur les équipements ?")
@@ -220,24 +220,24 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={'GardenSize':GardenSize,
-        'OverallQual':OverallQual,
-        'ExterQual':ExterQual,
-        'BsmtQual':BsmtQual,
-        'TotalBsmtSF':TotalBsmtSF,
-        'HeatingQC':HeatingQC,
-        'GrLivArea':GrLivArea,
-        'FullBath':FullBath,
-        'HalfBath':HalfBath,
-        'KitchenQual':KitchenQual,
-        'TotRmsAbvGrd':TotRmsAbvGrd,
-        'Fireplaces':Fireplaces,
-        'GarageCars':GarageCars,
-        'GarageCond':GarageCond,
-        'WoodDeckSF':WoodDeckSF,
-        'OpenPorchSF':OpenPorchSF,
-        'MS_zoning_RL':MS_zoning_RL,
-        'ModernityInYears':ModernityInYears
+  data={'Taille du jardin':GardenSize,
+        'Qualité globale':OverallQual,
+        'Qualité de l''extérieur':ExterQual,
+        'Qualité du sous-sol':BsmtQual,
+        'Surface du sous-sol':TotalBsmtSF,
+        'Qualité du cchauffage':HeatingQC,
+        'Surface habitable':GrLivArea,
+        'Nombre de salle(s) de bain':FullBath,
+        'Nombre de toilettes séparées':HalfBath,
+        'Qualité de la cuisine':KitchenQual,
+        'Nombre de pièce(s)':TotRmsAbvGrd,
+        'Nombre de cheminée(s)':Fireplaces,
+        'Capacité du garage en voiture':GarageCars,
+        'Qualité du garage':GarageCond,
+        'Surface de la terrasse':WoodDeckSF,
+        'Surface de la véranda':OpenPorchSF,
+        'Densité résidentielle':MS_zoning_RL,
+        'Années avant la dernière rénovation':ModernityInYears
         }
   maison_parametre=pd.DataFrame(data,index=[0])
   return maison_parametre
@@ -302,4 +302,4 @@ if st.session_state.show_info:
   st.write(''' Notre outil de prédiction est basée sur un modèle d'apprentissage. 
 À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, données consitutées par l'Association Statistique Américaine (ASA).
 ''')  
-  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests et ", round(score_train*100,2), "sur des données servant à la construction du modèle.")
+  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,2)," % sur des données de tests et ", round(score_train*100,2), " % sur des données servant à la construction du modèle.")

@@ -220,7 +220,7 @@ def user_input():
   else:
       OpenPorchSF = 0
 
-  data={:'GardenSize':'Taille du jardin',
+  data={'GardenSize':'Taille du jardin',
         'OverallQual':'Qualité globale',
         'ExterQual':'Qualité de l''extérieur',
         'BsmtQual':'Qualité du sous-sol',

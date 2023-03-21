@@ -51,7 +51,7 @@ def user_input():
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
   # Demander à l'utilisateur de saisir la valeur de la surface
   min_value_GrLivArea = 10
-  max_value_GrLivArea = 3000
+  max_value_GrLivArea = 30000000000
   GrLivArea = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = 100)
   
   # Vérifier que la saisie est valide
@@ -314,7 +314,7 @@ st.write(df_renomme)
 if st.button("Voir une maison similaire à ce prix"):
     # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
     if pred_rounded >= 10000 and pred_rounded < 140000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image0.jpg", caption="Maison similaire")
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image0.png", caption="Maison similaire")
     elif pred_rounded >= 140000 and pred_rounded < 250000:
         st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.jpg", caption="Maison similaire")
     elif pred_rounded >= 250000 and pred_rounded < 369000:

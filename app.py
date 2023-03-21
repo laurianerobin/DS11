@@ -245,24 +245,24 @@ def user_input():
 df=user_input()
 
 # Renommer les colonne de df
-df = df.rename(columns={GardenSize: 'Taille du jardin',
-        OverallQual:'Qualité globale',
-        ExterQual:'Qualité de l''extérieur',
-        BsmtQual:'Qualité du sous-sol',
-        TotalBsmtSF:'Surface du sous-sol',
-        HeatingQC:'Qualité du cchauffage',
-        GrLivArea:'Surface habitable',
-        FullBath:'Nombre de salle(s) de bain',
-        HalfBath:'Nombre de toilettes séparées',
-        KitchenQual:'Qualité de la cuisine',
-        TotRmsAbvGrd:'Nombre de pièce(s)',
-        Fireplaces:'Nombre de cheminée(s)',
-        GarageCars:'Capacité du garage en voiture',
-        GarageCond:'Qualité du garage',
-        WoodDeckSF:'Surface de la terrasse',
-        OpenPorchSF:'Surface de la véranda',
-        MS_zoning_RL:'Densité résidentielle',
-        ModernityInYears:'Années avant la dernière rénovation'})
+df = df.rename(columns={'GardenSize': 'Taille du jardin',
+        'OverallQual':'Qualité globale',
+        'ExterQual':'Qualité de l''extérieur',
+        'BsmtQual':'Qualité du sous-sol',
+        'TotalBsmtSF':'Surface du sous-sol',
+        'HeatingQC':'Qualité du cchauffage',
+        'GrLivArea':'Surface habitable',
+        'FullBath':'Nombre de salle(s) de bain',
+        'HalfBath':'Nombre de toilettes séparées',
+        'KitchenQual':'Qualité de la cuisine',
+        'TotRmsAbvGrd':'Nombre de pièce(s)',
+        'Fireplaces':'Nombre de cheminée(s)',
+        'GarageCars':'Capacité du garage en voiture',
+        'GarageCond':'Qualité du garage',
+        'WoodDeckSF':'Surface de la terrasse',
+        'OpenPorchSF':'Surface de la véranda',
+        'MS_zoning_RL':'Densité résidentielle',
+        'ModernityInYears':'Années avant la dernière rénovation'})
 
 # Chargement des ensembles de test et d'apprentissage
 

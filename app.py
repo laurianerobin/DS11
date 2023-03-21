@@ -31,7 +31,7 @@ st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
 st.write("_BringItOnHome - Les clés qui vous donnent le pouvoir._")
 
 st.write('''
-## Une maison, un prix, l'outil.
+### Une maison, un prix, l'outil.
 Bienvenue chez _**BringItOnHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
@@ -248,7 +248,7 @@ df=user_input()
 noms_colonnes = {
     'GardenSize': 'Taille du jardin',
         'OverallQual':'Qualité globale',
-        'ExterQual':'Qualité de l''extérieur',
+        'ExterQual':'Qualité de l\'extérieur',
         'BsmtQual':'Qualité du sous-sol',
         'TotalBsmtSF':'Surface du sous-sol',
         'HeatingQC':'Qualité du chauffage',
@@ -308,10 +308,8 @@ formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 df_sans_index = df_renomme.to_records(index=False)
 
 st.write('''
-## Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_renomme.to_html(index=False), '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
-
-st.dataframe(df_renomme, width=1200)
+### Voici la vôtre.
+D'après ce que vous nous avez dit, le prix de la maison avec les critères suivants''', df_sans_index, '''est estimé à''',  f'<span style="color: blue;"><b>{formatted_pred} $.</b></span>', unsafe_allow_html=True)
 
 # Ajouter un bouton "En savoir plus"
 

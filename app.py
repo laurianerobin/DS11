@@ -48,7 +48,7 @@ def user_input():
   st.sidebar.header("Si l'on commençait par son aspect général ?")
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea_metrecarre = st.number_input("Surface habitable (en mètres carrés)", min_value=10, max_value=30000, step=1)
+  GrLivArea_metrecarre = st.sidebar.number_input("Surface habitable (en mètres carrés)", min_value=10, max_value=30000, step=1)
   # Vérifier que la saisie est valide
   if GrLivArea_metrecarre is not None:
     try:
@@ -133,7 +133,7 @@ def user_input():
   if oui_bsmt:
 
       # TotalBsmtSF : taille
-      TotalBsmtSF_metrecarre = st.number_input("Veuillez saisir la surface en mètres carrés (entre 10 et 30 000)", min_value=10, max_value=30000)
+      TotalBsmtSF_metrecarre = st.sidebar.number_input("Veuillez saisir la surface en mètres carrés (entre 10 et 30 000)", min_value=10, max_value=30000)
       if TotalBsmtSF_metrecarre:
           # Convertir la surface de mètres carrés en pieds carrés
           TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
@@ -199,11 +199,11 @@ def user_input():
   else:
     OpenPorchSF = None
 
-  data={'GardenSize_metrecarre':GardenSize_metrecarre,
+  data={'GardenSize':GardenSize,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,
         'BsmtQual':BsmtQual,
-        'TotalBsmtSF_metrecarre':TotalBsmtSF_metrecarre,
+        'TotalBsmtSF':TotalBsmtSF,
         'HeatingQC':HeatingQC,
         'GrLivArea_metrecarre':GrLivArea_metrecarre,
         'FullBath':FullBath,
@@ -213,8 +213,8 @@ def user_input():
         'Fireplaces':Fireplaces,
         'GarageCars':GarageCars,
         'GarageCond':GarageCond,
-        'WoodDeckSF_metrecarre':WoodDeckSF_metrecarre,
-        'OpenPorchSF_metrecarre':OpenPorchSF_metrecarre,
+        'WoodDeckSF':WoodDeckSF,
+        'OpenPorchSF':OpenPorchSF,
         'MS_zoning_RL':MS_zoning_RL,
         'ModernityInYears':ModernityInYears
         }
@@ -225,11 +225,11 @@ df=user_input()
 
 # Créer le dictionnaire de correspondance entre les noms de colonnes actuels et les noms de colonnes souhaités
 noms_colonnes = {
-    'GardenSize_metrecarre': 'Taille du jardin',
+    'GardenSize': 'Taille du jardin',
         'OverallQual':'Qualité globale',
         'ExterQual':'Qualité de l\'extérieur',
         'BsmtQual':'Qualité du sous-sol',
-        'TotalBsmtSF_metrecarre':'Surface du sous-sol',
+        'TotalBsmtSF':'Surface du sous-sol',
         'HeatingQC':'Qualité du chauffage',
         'GrLivArea':'Surface habitable',
         'FullBath':'Nombre de salle(s) de bain',
@@ -239,8 +239,8 @@ noms_colonnes = {
         'Fireplaces':'Nombre de cheminée(s)',
         'GarageCars':'Capacité du garage en voiture',
         'GarageCond':'Qualité du garage',
-        'WoodDeckSF_metrecarre':'Surface de la terrasse',
-        'OpenPorchSF_metrecarre':'Surface de la véranda',
+        'WoodDeckSF':'Surface de la terrasse',
+        'OpenPorchSF':'Surface de la véranda',
         'MS_zoning_RL':'Densité résidentielle',
         'ModernityInYears':'Années avant la dernière rénovation'
 }

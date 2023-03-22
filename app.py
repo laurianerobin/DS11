@@ -150,7 +150,7 @@ def user_input():
       BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)
 
   else:
-    TotalBsmtSF = None
+    TotalBsmtSF = 0
     BsmtQual = 0 
 
   #### GarageCars : capacité du garage en nombre de voiture
@@ -188,7 +188,7 @@ def user_input():
       else:
           st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
-    WoodDeckSF = None
+    WoodDeckSF = 0
 
   #### OpenPorchSF : taille de la véranda (en mètres carrés)
   # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la véranda
@@ -203,7 +203,7 @@ def user_input():
       else:
           st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
-    OpenPorchSF = None
+    OpenPorchSF = 0
 
   data={'GardenSize':GardenSize,
         'OverallQual':OverallQual,

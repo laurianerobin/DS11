@@ -199,13 +199,13 @@ def user_input():
   else:
     OpenPorchSF = None
 
-  data={'GardenSize':GardenSize,
+  data={'GardenSize':GardenSize_metrecarre,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,
         'BsmtQual':BsmtQual,
-        'TotalBsmtSF':TotalBsmtSF,
+        'TotalBsmtSF':TotalBsmtSF_metrecarre,
         'HeatingQC':HeatingQC,
-        'GrLivArea_metrecarre':GrLivArea_metrecarre,
+        'GrLivArea':GrLivArea_metrecarre,
         'FullBath':FullBath,
         'HalfBath':HalfBath,
         'KitchenQual':KitchenQual,
@@ -213,7 +213,7 @@ def user_input():
         'Fireplaces':Fireplaces,
         'GarageCars':GarageCars,
         'GarageCond':GarageCond,
-        'WoodDeckSF':WoodDeckSF,
+        'WoodDeckSF':WoodDeckSF_metrecarre,
         'OpenPorchSF':OpenPorchSF,
         'MS_zoning_RL':MS_zoning_RL,
         'ModernityInYears':ModernityInYears

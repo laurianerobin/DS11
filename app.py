@@ -52,11 +52,12 @@ def user_input():
   # Vérifier que la saisie est valide
   try:
     # Convertit la valeur en pieds carrés
-    if GrLivArea_metre < 10 or GrLivArea_metre > 30000:
-      st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
-      GrLivArea = 0
-    else:
-      GrLivArea = GrLivArea_metre * 10.7639
+    if type(GrLivArea_metre) == float:
+      if GrLivArea_metre < 10 or GrLivArea_metre > 30000:
+        st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
+        GrLivArea = 0
+      else:
+        GrLivArea = GrLivArea_metre * 10.7639
   except ValueError:
     st.warning("Veuillez saisir une valeur numérique.")
     GrLivArea = 0

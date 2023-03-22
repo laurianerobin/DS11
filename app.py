@@ -53,8 +53,8 @@ def user_input():
   GrLivArea = 0
   try:
     # Convertit la valeur en pieds carrés
-    if type(GrLivArea_metre) == float:
-      if GrLivArea_metre < 10 or GrLivArea_metre > 30000:
+    if GrLivArea_metre.replace(".", "", 1).isdigit():
+      if float(GrLivArea_metre) < 10 or float(GrLivArea_metre) > 30000:
         st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
         GrLivArea = 0
       else:

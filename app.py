@@ -79,7 +79,7 @@ def user_input():
         if GardenSize_metrecarre:
           # Convertir la surface de mètres carrés en pieds carrés
           GardenSize = GardenSize_metrecarre * 10.7639
-      else:
+        else:
           st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
         GardenSize = None

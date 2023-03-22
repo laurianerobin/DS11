@@ -48,16 +48,16 @@ def user_input():
   st.sidebar.header("Si l'on commençait par son aspect général ?")
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea_metre = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "100")
+  GrLivArea = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "100")
   # Vérifier que la saisie est valide
   try:
     # Convertit la valeur en pieds carrés
-    if type(GrLivArea_metre) == float:
-      if GrLivArea_metre < 10 or GrLivArea_metre > 30000:
+    if type(GrLivArea) == float:
+      if GrLivArea < 10 or GrLivArea > 30000:
         st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
         GrLivArea = 0
       else:
-        GrLivArea = GrLivArea_metre * 10.7639
+        GrLivArea = GrLivArea * 10.7639
   except ValueError:
     st.warning("Veuillez saisir une valeur numérique.")
     GrLivArea = 0

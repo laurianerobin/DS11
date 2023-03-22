@@ -48,19 +48,18 @@ def user_input():
   st.sidebar.header("Si l'on commençait par son aspect général ?")
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea_texte = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "100")
+  GrLivArea_metre = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "100")
   # Vérifier que la saisie est valide
   try:
     # Convertit la valeur en pieds carrés
-    GrLivArea_metrecarre = float(GrLivArea_texte)
-    if GrLivArea_metrecarre < 10 or GrLivArea_metrecarre > 30000:
+    if GrLivArea_metre < 10 or GrLivArea_metre > 30000:
       st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
-      GrLivArea = None
+      GrLivArea = 0
     else:
-      GrLivArea = GrLivArea_metrecarre * 10.764
+      GrLivArea = GrLivArea_metre * 10.7639
   except ValueError:
     st.warning("Veuillez saisir une valeur numérique.")
-    GrLivArea = None
+    GrLivArea = 0
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -76,10 +75,10 @@ def user_input():
   
   # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
   if oui_garden:
-      GardenSize_metrecarre = st.number_input("Veuillez saisir la surface en mètres carrés (entre 10 et 30 000)", min_value=10, max_value=30000)
-      if GardenSize_metrecarre:
+        GardenSize_metrecarre = st.number_input("Veuillez saisir la surface en mètres carrés (entre 10 et 30 000)", min_value=10, max_value=30000)
+        if GardenSize_metrecarre:
           # Convertir la surface de mètres carrés en pieds carrés
-          GardenSize = GardenSize_metrecarre * 10.764
+          GardenSize = GardenSize_metrecarre * 10.7639
       else:
           st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:

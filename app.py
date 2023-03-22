@@ -48,15 +48,19 @@ def user_input():
   st.sidebar.header("Si l'on commençait par son aspect général ?")
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea_metrecarre = st.sidebar.number_input("Surface habitable (en mètres carrés)", min_value=10, max_value=30000, step=1)
+  GrLivArea_texte = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "100")
   # Vérifier que la saisie est valide
-  if GrLivArea_metrecarre is not None:
-    try:
-        # Convertit la valeur en pieds carrés
-        GrLivArea = GrLivArea_metrecarre * 10.7639
-    except:
-        # Affiche un message d'erreur si une exception est levée
-        st.write("Une erreur est survenue. Veuillez saisir une valeur numérique valide.")
+  try:
+    # Convertit la valeur en pieds carrés
+    GrLivArea_metrecarre = float(GrLivArea_texte)
+    if GrLivArea_metrecarre < 10 or GrLivArea_metrecarre > 30000:
+      st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
+      GrLivArea = None
+    else:
+      GrLivArea = GrLivArea_metrecarre * 10.764
+  except ValueError:
+    st.warning("Veuillez saisir une valeur numérique.")
+    GrLivArea = None
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -80,7 +84,8 @@ def user_input():
           st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
     GardenSize = None
-  
+
+
   ############### INTERIEUR
   st.sidebar.header("Passons à l'intérieur. Après vous.")
 
@@ -199,13 +204,13 @@ def user_input():
   else:
     OpenPorchSF = None
 
-  data={'GardenSize_metrecarre':GardenSize,
+  data={'GardenSize':GardenSize,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,
         'BsmtQual':BsmtQual,
-        'TotalBsmtSF_metrecarre':TotalBsmtSF,
+        'TotalBsmtSF':TotalBsmtSF,
         'HeatingQC':HeatingQC,
-        'GrLivArea_metrecarre':GrLivArea,
+        'GrLivArea':GrLivArea,
         'FullBath':FullBath,
         'HalfBath':HalfBath,
         'KitchenQual':KitchenQual,
@@ -213,8 +218,8 @@ def user_input():
         'Fireplaces':Fireplaces,
         'GarageCars':GarageCars,
         'GarageCond':GarageCond,
-        'WoodDeckSF_metrecarre':WoodDeckSF,
-        'OpenPorchSF_metrecarre':OpenPorchSF,
+        'WoodDeckSF':WoodDeckSF,
+        'OpenPorchSF':OpenPorchSF,
         'MS_zoning_RL':MS_zoning_RL,
         'ModernityInYears':ModernityInYears
         }

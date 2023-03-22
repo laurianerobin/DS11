@@ -199,13 +199,13 @@ def user_input():
   else:
     OpenPorchSF = None
 
-  data={'GardenSize':GardenSize,
+  data={'GardenSize_metrecarre':GardenSize_metrecarre,
         'OverallQual':OverallQual,
         'ExterQual':ExterQual,
         'BsmtQual':BsmtQual,
-        'TotalBsmtSF':TotalBsmtSF,
+        'TotalBsmtSF_metrecarre':TotalBsmtSF_metrecarre,
         'HeatingQC':HeatingQC,
-        'GrLivArea':GrLivArea,
+        'GrLivArea_metrecarre':GrLivArea_metrecarre,
         'FullBath':FullBath,
         'HalfBath':HalfBath,
         'KitchenQual':KitchenQual,
@@ -213,8 +213,8 @@ def user_input():
         'Fireplaces':Fireplaces,
         'GarageCars':GarageCars,
         'GarageCond':GarageCond,
-        'WoodDeckSF':WoodDeckSF,
-        'OpenPorchSF':OpenPorchSF,
+        'WoodDeckSF_metrecarre':WoodDeckSF_metrecarre,
+        'OpenPorchSF_metrecarre':OpenPorchSF_metrecarre,
         'MS_zoning_RL':MS_zoning_RL,
         'ModernityInYears':ModernityInYears
         }
@@ -225,11 +225,11 @@ df=user_input()
 
 # Créer le dictionnaire de correspondance entre les noms de colonnes actuels et les noms de colonnes souhaités
 noms_colonnes = {
-    'GardenSize': 'Taille du jardin',
+    'GardenSize_metrecarre': 'Taille du jardin',
         'OverallQual':'Qualité globale',
         'ExterQual':'Qualité de l\'extérieur',
         'BsmtQual':'Qualité du sous-sol',
-        'TotalBsmtSF':'Surface du sous-sol',
+        'TotalBsmtSF_metrecarre':'Surface du sous-sol',
         'HeatingQC':'Qualité du chauffage',
         'GrLivArea':'Surface habitable',
         'FullBath':'Nombre de salle(s) de bain',
@@ -239,8 +239,8 @@ noms_colonnes = {
         'Fireplaces':'Nombre de cheminée(s)',
         'GarageCars':'Capacité du garage en voiture',
         'GarageCond':'Qualité du garage',
-        'WoodDeckSF':'Surface de la terrasse',
-        'OpenPorchSF':'Surface de la véranda',
+        'WoodDeckSF_metrecarre':'Surface de la terrasse',
+        'OpenPorchSF_metrecarre':'Surface de la véranda',
         'MS_zoning_RL':'Densité résidentielle',
         'ModernityInYears':'Années avant la dernière rénovation'
 }

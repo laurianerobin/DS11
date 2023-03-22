@@ -58,7 +58,7 @@ def user_input():
         st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
         GrLivArea = 0
       else:
-        GrLivArea = GrLivArea_metre * 10.7639
+        GrLivArea = float(GrLivArea_metre) * 10.7639
   except ValueError:
     st.warning("Veuillez saisir une valeur numérique.")
     GrLivArea = 0

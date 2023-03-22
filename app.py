@@ -84,7 +84,7 @@ def user_input():
         else:
           st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
-        GardenSize = None
+        GardenSize = 0
 
 
   ############### INTERIEUR

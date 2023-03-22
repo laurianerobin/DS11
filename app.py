@@ -42,38 +42,21 @@ Il vous suffit de renseigner les caractéristiques de votre propriété, telles 
 
 st.sidebar.header("C'est ici que l'on dessine les traits de votre chez vous.")
 
-
 def user_input():
 
   ############### ASPECT GENERAL
   st.sidebar.header("Si l'on commençait par son aspect général ?")
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  # Demander à l'utilisateur de saisir la valeur de la surface
-  min_value_GrLivArea = 10
-  max_value_GrLivArea = 30000000000
-  GrLivArea_metrecarre = float(st.sidebar.text_input("Surface habitable (en mètres carrés)", value = 100))
-  GrLivArea = GrLivArea_metrecarre * 10.7639
-
+  GrLivArea_metrecarre = st.number_input("Surface habitable (en mètres carrés)", min_value=10, max_value=30000, step=1)
   # Vérifier que la saisie est valide
-  try:
-    selected_value = int(GrLivArea)
-    if selected_value < min_value_GrLivArea or selected_value > max_value_GrLivArea:
-      raise ValueError
-  except ValueError:
-      st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GrLivArea} et {max_value_GrLivArea} mètres carrés.')
-  else:
-      # Conversion en pieds carré pour le modèle 
-      GrLivArea = float(GrLivArea_metrecarre) * 10.7639
-      GrLivArea
-  
-  # Vérifier le type rentré
-  if not GrLivArea.isnumeric() and not GrLivArea.replace('.', '', 1).isnumeric():
-      st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre décimal.')
-  else:
-      # Conversion en pieds carré pour le modèle 
-      GrLivArea = float(GrLivArea_metrecarre) * 10.7639
-      GrLivArea
+  if GrLivArea_metrecarre is not None:
+    try:
+        # Convertit la valeur en pieds carrés
+        GrLivArea = GrLivArea_metrecarre * 10.7639
+    except:
+        # Affiche un message d'erreur si une exception est levée
+        st.write("Une erreur est survenue. Veuillez saisir une valeur numérique valide.")
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -83,41 +66,20 @@ def user_input():
       }
   MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
 
-
   #### GardenSize : taille de la surface du jardin
-  # On utilise st.checkbox() pour afficher une case à cocher
-  GardenSize_want_option = st.sidebar.checkbox("Un espace extérieur entourant la maison ?")
-
-  # Si la case est cochée, on affiche un curseur st.slider()
-  if GardenSize_want_option:
-      # Demander à l'utilisateur de saisir la valeur de la surface
-    min_value_GardenSize = 10
-    max_value_GardenSize = 3000
-    GardenSize_metrecarre = float(st.sidebar.text_input("Précisez dans ce cas la surface extérieure (en mètres carrés)", value = 100))
-
-    # Vérifier que la saisie est valide
-    try:
-      selected_value = int(GardenSize)
-      if selected_value < min_value_GardenSize or selected_value > max_value_GardenSize:
-        raise ValueError
-    except ValueError:
-        st.sidebar.warning(f'Veuillez saisir une surface comprise entre {min_value_GardenSize} et {max_value_GardenSize} mètres carrés.')
-    else:
-        # Conversion en pieds carré pour le modèle 
-        GardenSize = float(GardenSize_metrecarre) * 10.7639
-        GardenSize
-    
-    # Vérifier le type rentré
-    if not GardenSize.isnumeric() and not GardenSize.replace('.', '', 1).isnumeric():
-        st.sidebar.error('La surface en mètres carrés doit être inscrite en nombre entier.')
-    else:
-        # Conversion en pieds carré pour le modèle 
-        GardenSize = float(GardenSize_metrecarre) * 10.7639
-        GardenSize
-
-  else:
-      GardenSize = 0 
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la surface
+  oui_garden = st.sidebar.checkbox("Un espace extérieur entourant la maison ?")
   
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_garden:
+      GardenSize_metrecarre = st.number_input("Veuillez saisir la surface en mètres carrés (entre 10 et 30 000)", min_value=10, max_value=30000)
+      if GardenSize_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          GardenSize = GardenSize_metrecarre * 10.764
+      else:
+          st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
+  else:
+    GardenSize = None
   
   ############### INTERIEUR
   st.sidebar.header("Passons à l'intérieur. Après vous.")
@@ -164,33 +126,33 @@ def user_input():
       Fireplaces = 0 
 
   #### TotalBsmtSF : taille de la surface du sous-sol 
-  # On utilise st.checkbox() pour afficher une case à cocher
-  TotalBsmtSF_want_option = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la surface
+  oui_bsmt = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
+  
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_bsmt:
 
-  # Si la case est cochée, on affiche un curseur st.slider()
-  if TotalBsmtSF_want_option:
-
-    # Demander à l'utilisateur de saisir la valeur de la surface
-    min_value_TotalBsmtSF = 5
-    max_value_TotalBsmtSF = 600
-    TotalBsmtSF_metrecarre = float(st.sidebar.number_input("Quelle est sa taille (en mètres carrés) ?", value = 20, step =1, min_value=5, max_value=None))
-
-    # Conversion en pieds carré pour le modèle 
-    TotalBsmtSF = float(TotalBsmtSF_metrecarre) * 10.763
-
-    #### BsmtQual : qualité du sous-sol
-    BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)  
+      # TotalBsmtSF : taille
+      TotalBsmtSF_metrecarre = st.number_input("Veuillez saisir la surface en mètres carrés (entre 10 et 30 000)", min_value=10, max_value=30000)
+      if TotalBsmtSF_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
+      else:
+          st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
+      
+      #### BsmtQual : qualité du sous-sol
+      BsmtQual=st.sidebar.slider("La qualité de cet espace sur 10", 0, 10, value = 5)
 
   else:
-      TotalBsmtSF = 0 
-      BsmtQual = 0
+    TotalBsmtSF = None
+    BsmtQual = 0 
 
   #### GarageCars : capacité du garage en nombre de voiture
   # On utilise st.checkbox() pour afficher une case à cocher
-  Garage_want_option = st.sidebar.checkbox("Un garage pour une voiture ou du bricolage ?")
+  oui_garage = st.sidebar.checkbox("Un garage pour une voiture ou du bricolage ?")
 
   # Si la case est cochée, on affiche un curseur st.slider()
-  if Garage_want_option:
+  if oui_garage:
       GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 1, step = 1, min_value=0, max_value=None)
       GarageCond = st.sidebar.slider("Et vous jugeriez la qualité du garage sur 10", 0,10, value = 5)
   else:
@@ -208,32 +170,34 @@ def user_input():
   ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value = 10)
 
   #### WoodDeckSF : taille de la terrasse (en mètres carrés)
-  # On utilise st.checkbox() pour afficher une case à cocher
-  terrasse_want_option = st.sidebar.checkbox("Une terrasse ?")
-
-  # Si la case est cochée, on affiche un curseur st.slider()
-  if terrasse_want_option:
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la terrasse
+  oui_terrasse = st.sidebar.checkbox("Une terrasse ?")
+  
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_terrasse:
       WoodDeckSF_metrecarre = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
-
-      # Conversion en pieds carré pour le modèle 
-      WoodDeckSF = float(WoodDeckSF_metrecarre) * 10.7639
-
+      if WoodDeckSF_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          WoodDeckSF = WoodDeckSF_metrecarre * 10.764
+      else:
+          st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
-      WoodDeckSF = 0
+    WoodDeckSF = None
 
   #### OpenPorchSF : taille de la véranda (en mètres carrés)
-  # On utilise st.checkbox() pour afficher une case à cocher
-  OpenPorchSF_want_option = st.sidebar.checkbox("Et une véranda ?")
-
-  # Si la case est cochée, on affiche un curseur st.slider()
-  if OpenPorchSF_want_option:
-      OpenPorchSF_metrecarre = float(st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None))
-
-      # Conversion en pieds carré pour le modèle 
-      OpenPorchSF =float(OpenPorchSF_metrecarre) * 10.7639
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la véranda
+  oui_veranda = st.sidebar.checkbox("Et une véranda ?")
   
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_veranda:
+      OpenPorchSF_metrecarre = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
+      if OpenPorchSF_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          OpenPorchSF = OpenPorchSF_metrecarre * 10.764
+      else:
+          st.warning("Veuillez saisir une valeur valide entre 10 et 30 000.")
   else:
-      OpenPorchSF = 0
+    OpenPorchSF = None
 
   data={'GardenSize':GardenSize,
         'OverallQual':OverallQual,

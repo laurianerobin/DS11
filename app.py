@@ -49,8 +49,8 @@ def user_input():
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
   GrLivArea_metre = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "100")
-  GrLivArea = GrLivArea_metre
   # Vérifier que la saisie est valide
+  GrLivArea = 0
   try:
     # Convertit la valeur en pieds carrés
     if type(GrLivArea_metre) == float:

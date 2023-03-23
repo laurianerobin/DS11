@@ -351,13 +351,13 @@ from PIL import Image
 media_list = [
     "https://raw.githubusercontent.com/laurianerobin/DS11/main/30760007.JPG",
     "https://raw.githubusercontent.com/laurianerobin/DS11/main/30760005.JPG",
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/VID_20220814_215608.MP4"
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/VID_20220815_175453.mp4"
 ]
 
 # Boucle sur les éléments de la liste et affiche l'image ou la vidéo
 for media in media_list:
     # Vérifie si l'élément actuel est une image
-    if media.endswith(".jpg"):
+    if media.endswith(".JPG"):
         # Télécharger l'image à partir de l'URL et afficher l'image
         image = Image.open(media)
         st.image(image, caption="Image")

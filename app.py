@@ -357,13 +357,13 @@ media_list = [
 # Boucle sur les éléments de la liste et affiche l'image ou la vidéo
 for media in media_list:
     # Vérifie si l'élément actuel est une image
-    if media.endswith(".jpg"):
+    if media.endswith(".png"):
         # Télécharger l'image à partir de l'URL et afficher l'image
         image = Image.open(media)
         st.image(image, caption="Image")
 
     # Vérifie si l'élément actuel est une vidéo
-    elif media.endswith(".mp4"):
+    elif media.endswith(".mov"):
         # Afficher la vidéo et la contrôler avec des boutons de lecture
         video_file = open(media, 'rb')
         video_bytes = video_file.read()

@@ -46,7 +46,7 @@ st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
 
 # Description
 st.write('''
-### Une maison, un prix, l'outil.
+### Un prix, une maison, l'outil.
 Bienvenue chez _**BringItOnHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
@@ -74,12 +74,12 @@ def user_input():
     # Convertit la valeur en pieds carrés
     if GrLivArea_metre.replace(".", "", 1).isdigit():
       if float(GrLivArea_metre) < 10 or float(GrLivArea_metre) > 10000:
-        st.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
+        st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
         GrLivArea = 0
       else:
         GrLivArea = float(GrLivArea_metre) * 10.7639
   except ValueError:
-    st.warning("Veuillez saisir une valeur numérique.")
+    st.sidebar.warning("Veuillez saisir une valeur numérique.")
     GrLivArea = 0
 
 
@@ -103,7 +103,7 @@ def user_input():
           # Convertir la surface de mètres carrés en pieds carrés
           GardenSize = GardenSize_metrecarre * 10.7639
         else:
-          st.warning("Veuillez saisir une surface comprise entre 10 et 30 000 mètres carrés.")
+          st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 30 000 mètres carrés.")
   else:
         GardenSize = 0
 
@@ -174,7 +174,7 @@ def user_input():
           # Convertir la surface de mètres carrés en pieds carrés
           TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
       else:
-          st.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
+          st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
       
       #### BsmtQual : qualité du sous-sol
       BsmtQual=st.sidebar.slider("Jugez la qualité de cet espace sur 10", 0, 10, value = 5)
@@ -220,7 +220,7 @@ def user_input():
           # Convertir la surface de mètres carrés en pieds carrés
           WoodDeckSF = WoodDeckSF_metrecarre * 10.7639
       else:
-          st.warning("Veuillez saisir une surface comprise valide entre 10 et 30 000 mètres carrés.")
+          st.sidebar.warning("Veuillez saisir une surface comprise valide entre 10 et 30 000 mètres carrés.")
   else:
     WoodDeckSF = 0
 
@@ -236,7 +236,7 @@ def user_input():
           # Convertir la surface de mètres carrés en pieds carrés
           OpenPorchSF = OpenPorchSF_metrecarre * 10.764
       else:
-          st.warning("Veuillez saisir une valeur valide entre 10 et 500 mètres carrés.")
+          st.sidebar.warning("Veuillez saisir une valeur valide entre 10 et 500 mètres carrés.")
   else:
     OpenPorchSF = 0
 
@@ -338,12 +338,15 @@ st.write(df_renomme)
 
 ### Afficher le bouton pour voir une maison similaire à ce prix
 # Pour ajouter une réponse davantage concrète et plus profonde qu'une simple estimation de prix
-# Une image correspondant à une maison dans la ville d'Ames (Iowa, États-Unis) est affichée selon une plage de prix correspondate
+# Une image correspondant à une maison dans la ville d'Ames (Iowa, États-Unis) est affichée selon une plage de prix correspondante
 # Ces images proviennent du site https://www.homes.com/ames-ia/houses-for-sale/?gclsrc=aw.ds&gclid=Cj0KCQjw8e-gBhD0ARIsAJiDsaWQ2kw7d6R69_3_pKlMXEd7Mlt9Wpk9wWPW0PY0lwfGMZbhgfIFBUEaAuLjEALw_wcB 
+
+# défiler une image, puis un aperçu de Google Maps où on peut zoomer, et une vue de Street View sur Streamlit 
+# en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
 
 if st.button("Voir une maison similaire à ce prix"):
     # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
-    if pred_rounded >= 10000 and pred_rounded < 140000:
+    if pred_rounded >=  and pred_rounded < 140000:
         st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image0.png", caption="Maison similaire")
     elif pred_rounded >= 140000 and pred_rounded < 250000:
         st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.jpg", caption="Maison similaire")
@@ -364,6 +367,49 @@ if st.button("Voir une maison similaire à ce prix"):
     else:
         st.write("Désolé, il n'y a pas de maison similaire dans cette fourchette de prix")
 
+import streamlit as st
+from streamlit_embedcode import embedcode
+from PIL import Image
+
+# Charger l'image
+maison140 = Image.open("maison140.jpg")
+
+# Créer une liste des images, des aperçus de Google Maps et des vues de Street View
+images = [image, "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10775.384705224166!2d-118.3582800217585!3d34.06367391490578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3aae10267d85f2b4!2sThe%20Broad!5e0!3m2!1sen!2sus!4v1648102837435!5m2!1sen!2sus", "https://www.google.com/maps/embed?pb=!4v1648102913375!6m8!1m7!1sCAoSLEFGMVFpcFBYQ2FnTUtQT2FLc1JNY0JyM0R4dFpLZjJZb19PZnJrWUxGWHUw!2m2!1d34.0169466!2d-118.4926957!3f196.80428360517733!4f-1.597029965780905!5f0.7820865974627469"]
+
+# Créer une liste des noms des lieux correspondants
+locations = ["une maison", "The Broad à Los Angeles", "le Getty Center à Los Angeles"]
+
+# Initialiser l'index de l'image à afficher
+index = 0
+
+# Afficher l'image courante
+st.image(images[index], use_column_width=True)
+
+# Ajouter des flèches pour faire défiler les images
+if st.button("Image précédente") and index > 0:
+    index -= 1
+    st.image(images[index], use_column_width=True)
+if st.button("Image suivante") and index < len(images) - 1:
+    index += 1
+    st.image(images[index], use_column_width=True)
+
+# Afficher l'aperçu de Google Maps correspondant à l'image courante
+if index == 1:
+    st.write(f"Voici un aperçu de {locations[index]} :")
+    embedcode(images[index], height=300)
+elif index == 2:
+    st.write(f"Voici un aperçu de {locations[index]} :")
+    embedcode(images[index], height=300)
+    
+# Afficher la vue de Street View correspondant à l'image courante
+if index == 0:
+    st.write(f"Voici une vue de {locations[index]} :")
+    st.image("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=34.063696,-118.358284&fov=80&heading=70&pitch=0&key=YOUR_API_KEY")
+elif index == 1:
+    st.write(f"Voici une vue de {locations[index]} :")
+    st.image("https
+
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 
 # le travail effectué en amont pour élaborer le modèle de prédiction aboutissant à la prédiction obtenue
@@ -381,9 +427,9 @@ if st.button("En savoir plus sur notre expertise"):
 
 # Afficher le texte si la variable de session est définie sur True
   # lien hypertexte vers le concours kaggle
-lien = "https://www.example.com"
+lien = "https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data"
 texte = "données constituées"
 
 if st.session_state.show_info:
-  st.write(f"Notre outil de prédiction est basée sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, {texte} ({lien}) par l'Association Statistique Américaine.")  
+  st.write(f"Notre outil de prédiction est basé sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, [{texte}]({lien}) par l'Association Statistique Américaine.")  
   st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,1)," % sur des données de tests et ", round(score_train*100,2), " % sur des données servant à la construction du modèle.")

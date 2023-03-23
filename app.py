@@ -348,7 +348,7 @@ if st.button("Voir une maison similaire à ce prix"):
     # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
     if pred_rounded >= 0 and pred_rounded < 140000:
         st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.png", caption="Maison similaire")
-        st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.mov", caption="Maison similaire")
+        st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.mov")
     elif pred_rounded >= 140000 and pred_rounded < 250000:
         st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.jpg", caption="Maison similaire")
     elif pred_rounded >= 250000 and pred_rounded < 369000:

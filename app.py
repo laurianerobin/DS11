@@ -347,9 +347,13 @@ st.write(df_renomme)
 import streamlit as st
 from PIL import Image
 
-# Afficher une image avec une flèche pour faire défiler
-image = Image.open("https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg")
-st.image(image, caption="Image avec une flèche pour faire défiler", use_column_width=True)
+# Télécharger l'image depuis l'URL
+url = "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg"
+response = requests.get(url)
+img = Image.open(BytesIO(response.content))
+
+# Afficher l'image
+st.image(img, caption="Maison 140", use_column_width=True)
 
 # Afficher une carte Google Maps avec zoom
 st.write("Carte Google Maps")

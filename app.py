@@ -349,9 +349,9 @@ from PIL import Image
 
 # Définir une liste d'images et de vidéos
 media_list = [
-    "https://github.com/laurianerobin/DS11/blob/main/30760007.jpg",
-    "https://github.com/laurianerobin/DS11/blob/main/30760005.JPG",
-    "https://github.com/laurianerobin/DS11/blob/main/VID_20220814_215608.mp4"
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140map.jpg",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.mov"
 ]
 
 # Boucle sur les éléments de la liste et affiche l'image ou la vidéo
@@ -363,7 +363,7 @@ for media in media_list:
         st.image(image, caption="Image")
 
     # Vérifie si l'élément actuel est une vidéo
-    elif media.endswith(".mp4"):
+    elif media.endswith(".mov"):
         # Afficher la vidéo et la contrôler avec des boutons de lecture
         video_file = open(media, 'rb')
         video_bytes = video_file.read()

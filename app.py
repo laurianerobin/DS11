@@ -349,9 +349,9 @@ from PIL import Image
 
 # Définir une liste d'images et de vidéos
 media_list = [
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.png",
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140map.png",
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.mov"
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140map.jpg",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.mp4"
 ]
 
 # Boucle sur les éléments de la liste et affiche l'image ou la vidéo
@@ -372,10 +372,10 @@ for media in media_list:
 # Afficher des flèches pour faire défiler les images et les vidéos
 if len(media_list) > 1:
     current_media = 0
-    if st.button("<"):
+    if st.button("Précédent"):
         current_media = (current_media - 1) % len(media_list)
     st.image(media_list[current_media], caption="Image")
-    if st.button(">"):
+    if st.button("Suivant"):
         current_media = (current_media + 1) % len(media_list)
 
 ### Ajouter un bouton "En savoir plus"

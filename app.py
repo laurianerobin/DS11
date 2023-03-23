@@ -345,47 +345,29 @@ st.write(df_renomme)
 # en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
 
 import streamlit as st
-from streamlit_embedcode import embedcode
-from PIL import Image
+import requests
 
-# Charger l'image
-maison140 = Image.open("maison140.jpg")
+# Coordonnées de l'adresse
+address = '3110 Oakland St, Ames, IA 50014, États-Unis'
+params = {
+    'key': 'AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI',
+    'address': address
+}
+response = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params).json()
+location = response['results'][0]['geometry']['location']
 
-# Créer une liste des images, des aperçus de Google Maps et des vues de Street View
-images = [image, "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10775.384705224166!2d-118.3582800217585!3d34.06367391490578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3aae10267d85f2b4!2sThe%20Broad!5e0!3m2!1sen!2sus!4v1648102837435!5m2!1sen!2sus", "https://www.google.com/maps/embed?pb=!4v1648102913375!6m8!1m7!1sCAoSLEFGMVFpcFBYQ2FnTUtQT2FLc1JNY0JyM0R4dFpLZjJZb19PZnJrWUxGWHUw!2m2!1d34.0169466!2d-118.4926957!3f196.80428360517733!4f-1.597029965780905!5f0.7820865974627469"]
+# Affichage de l'image
+st.image(f"https://maps.googleapis.com/maps/api/streetview?size=600x300&location={location['lat']},{location['lng']}&key=AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI")
 
-# Créer une liste des noms des lieux correspondants
-locations = ["une maison", "The Broad à Los Angeles", "le Getty Center à Los Angeles"]
+# Affichage de l'aperçu Google Maps
+st.write(f"Voici l'aperçu Google Maps pour l'adresse {address}:")
+st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI&q={address}'></iframe>",
+         unsafe_allow_html=True)
 
-# Initialiser l'index de l'image à afficher
-index = 0
-
-# Afficher l'image courante
-st.image(images[index], use_column_width=True)
-
-# Ajouter des flèches pour faire défiler les images
-if st.button("Image précédente") and index > 0:
-    index -= 1
-    st.image(images[index], use_column_width=True)
-if st.button("Image suivante") and index < len(images) - 1:
-    index += 1
-    st.image(images[index], use_column_width=True)
-
-# Afficher l'aperçu de Google Maps correspondant à l'image courante
-if index == 1:
-    st.write(f"Voici un aperçu de {locations[index]} :")
-    embedcode(images[index], height=300)
-elif index == 2:
-    st.write(f"Voici un aperçu de {locations[index]} :")
-    embedcode(images[index], height=300)
-    
-# Afficher la vue de Street View correspondant à l'image courante
-if index == 0:
-    st.write(f"Voici une vue de {locations[index]} :")
-    st.image("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=34.063696,-118.358284&fov=80&heading=70&pitch=0&key=YOUR_API_KEY")
-elif index == 1:
-    st.write(f"Voici une vue de {locations[index]} :")
-    st.image("https
+# Affichage de la vue Street View
+st.write(f"Voici la vue Street View pour l'adresse {address}:")
+st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/streetview?key=AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI&location={location['lat']},{location['lng']}&heading=210&pitch=10'></iframe>",
+         unsafe_allow_html=True)
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

@@ -347,7 +347,7 @@ st.write(df_renomme)
 if st.button("Voir une maison similaire à ce prix"):
     # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
     if pred_rounded >= 0 and pred_rounded < 140000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.jpg", caption="Maison similaire")
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/30760005.JPG", caption="Maison similaire")
         st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/VID_20220815_175453.mp4")
     elif pred_rounded >= 140000 and pred_rounded < 250000:
         st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.jpg", caption="Maison similaire")

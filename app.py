@@ -345,29 +345,25 @@ st.write(df_renomme)
 # en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
 
 import streamlit as st
-import requests
+from PIL import Image
 
-# Coordonnées de l'adresse
-address = '3110 Oakland St, Ames, IA 50014, États-Unis'
-params = {
-    'key': 'AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y',
-    'address': address
-}
-response = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params).json()
-location = response['results'][0]['geometry']['location']
+# Afficher une image avec une flèche pour faire défiler
+image = Image.open("https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg")
+st.image(image, caption="Image avec une flèche pour faire défiler", use_column_width=True)
 
-# Affichage de l'image
-st.image(f"https://maps.googleapis.com/maps/api/streetview?size=600x300&location={location['lat']},{location['lng']}&key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y")
+# Afficher une carte Google Maps avec zoom
+st.write("Carte Google Maps")
+lat = 37.7749
+lon = -122.4194
+zoom = 12
+map_url = f"https://www.google.com/maps/embed/v1/view?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&center={lat},{lon}&zoom={zoom}"
+st.components.v1.iframe(map_url, width=700, height=500)
 
-# Affichage de l'aperçu Google Maps
-st.write(f"Voici l'aperçu Google Maps pour l'adresse {address}:")
-st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&q={address}'></iframe>",
-         unsafe_allow_html=True)
-
-# Affichage de la vue Street View
-st.write(f"Voici la vue Street View pour l'adresse {address}:")
-st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/streetview?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&location={location['lat']},{location['lng']}&heading=210&pitch=10'></iframe>",
-         unsafe_allow_html=True)
+# Afficher une vue Street View
+st.write("Vue Street View")
+pano_id = "PLACE_PANO_ID_HERE"
+pano_url = f"https://www.google.com/maps/embed/v1/streetview?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&pano={pano_id}"
+st.components.v1.iframe(pano_url, width=700, height=500)
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

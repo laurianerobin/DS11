@@ -350,23 +350,23 @@ import requests
 # Coordonnées de l'adresse
 address = '3110 Oakland St, Ames, IA 50014, États-Unis'
 params = {
-    'key': 'AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI',
+    'key': 'AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y',
     'address': address
 }
 response = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=params).json()
 location = response['results'][0]['geometry']['location']
 
 # Affichage de l'image
-st.image(f"https://maps.googleapis.com/maps/api/streetview?size=600x300&location={location['lat']},{location['lng']}&key=AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI")
+st.image(f"https://maps.googleapis.com/maps/api/streetview?size=600x300&location={location['lat']},{location['lng']}&key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y")
 
 # Affichage de l'aperçu Google Maps
 st.write(f"Voici l'aperçu Google Maps pour l'adresse {address}:")
-st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI&q={address}'></iframe>",
+st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&q={address}'></iframe>",
          unsafe_allow_html=True)
 
 # Affichage de la vue Street View
 st.write(f"Voici la vue Street View pour l'adresse {address}:")
-st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/streetview?key=AIzaSyChZ19CNBh1owmurM50ryAn_rsob377kOI&location={location['lat']},{location['lng']}&heading=210&pitch=10'></iframe>",
+st.write(f"<iframe width='100%' height='500' src='https://www.google.com/maps/embed/v1/streetview?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&location={location['lat']},{location['lng']}&heading=210&pitch=10'></iframe>",
          unsafe_allow_html=True)
 
 ### Ajouter un bouton "En savoir plus"

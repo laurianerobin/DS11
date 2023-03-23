@@ -380,11 +380,10 @@ if st.button("En savoir plus sur notre expertise"):
     st.session_state.show_info = not st.session_state.show_info
 
 # Afficher le texte si la variable de session est définie sur True
+  # lien hypertexte vers le concours kaggle
 lien = "https://www.example.com"
-texte = "Cliquez ici pour accéder au site web"
-
-st.write(f"Vous pouvez  [en suivant ce lien]({lien}).")
+texte = "données constituées"
 
 if st.session_state.show_info:
-  st.write(f"Notre outil de prédiction est basée sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, {texte} données consitutées ({lien}) par l'Association Statistique Américaine.")  
+  st.write(f"Notre outil de prédiction est basée sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, {texte} ({lien}) par l'Association Statistique Américaine.")  
   st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,1)," % sur des données de tests et ", round(score_train*100,2), " % sur des données servant à la construction du modèle.")

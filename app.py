@@ -348,10 +348,9 @@ import streamlit as st
 from PIL import Image
 from io import BytesIO
 
-# Télécharger l'image depuis l'URL
-url = "https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif"
-response = requests.get(url)
-img = Image.open(BytesIO(response.content))
+# Afficher une image avec une flèche pour faire défiler
+image = Image.open("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
+st.image(image, caption="Image avec une flèche pour faire défiler", use_column_width=True)
 
 # Afficher l'image
 st.image(img, caption="Maison 140", use_column_width=True)

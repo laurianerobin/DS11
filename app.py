@@ -344,39 +344,29 @@ st.write(df_renomme)
 # défiler une image, puis un aperçu de Google Maps où on peut zoomer, et une vue de Street View sur Streamlit 
 # en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
 
-import streamlit as st
-from PIL import Image
-
-# Définir une liste d'images et de vidéos
-media_list = [
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/30760007.JPG",
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/30760005.JPG",
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/VID_20220815_175453.mp4"
-]
-
-# Boucle sur les éléments de la liste et affiche l'image ou la vidéo
-for media in media_list:
-    # Vérifie si l'élément actuel est une image
-    if media.endswith(".JPG"):
-        # Télécharger l'image à partir de l'URL et afficher l'image
-        image = Image.open(media)
-        st.image(image, caption="Image")
-
-    # Vérifie si l'élément actuel est une vidéo
-    elif media.endswith(".mp4"):
-        # Afficher la vidéo et la contrôler avec des boutons de lecture
-        video_file = open(media, 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes)
-
-# Afficher des flèches pour faire défiler les images et les vidéos
-if len(media_list) > 1:
-    current_media = 0
-    if st.button("Précédent"):
-        current_media = (current_media - 1) % len(media_list)
-    st.image(media_list[current_media], caption="Image")
-    if st.button("Suivant"):
-        current_media = (current_media + 1) % len(media_list)
+if st.button("Voir une maison similaire à ce prix"):
+    # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
+    if pred_rounded >= 0 and pred_rounded < 140000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.png", caption="Maison similaire")
+        st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.mov", caption="Maison similaire")
+    elif pred_rounded >= 140000 and pred_rounded < 250000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.jpg", caption="Maison similaire")
+    elif pred_rounded >= 250000 and pred_rounded < 369000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image2.jpg", caption="Maison similaire")
+    elif pred_rounded >= 250000 and pred_rounded < 369000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image3.jpg", caption="Maison similaire")
+    elif pred_rounded >= 369000 and pred_rounded < 456000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image4.jpg", caption="Maison similaire")
+    elif pred_rounded >= 456000 and pred_rounded < 500000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image5.jpg", caption="Maison similaire")
+    elif pred_rounded >= 500000 and pred_rounded < 756000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image6.jpg", caption="Maison similaire")
+    elif pred_rounded >= 756000 and pred_rounded < 925000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image7.jpg", caption="Maison similaire")
+    elif pred_rounded >= 925000 and pred_rounded < 1000000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image8.jpg", caption="Maison similaire")
+    else:
+        st.write("Désolé, il n'y a pas de maison similaire dans cette fourchette de prix")
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

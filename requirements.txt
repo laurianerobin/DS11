@@ -5,4 +5,3 @@ scikit-learn
 ensemble
 babel
 Pillow==8.3.1
-io

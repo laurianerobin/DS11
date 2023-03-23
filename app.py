@@ -349,7 +349,7 @@ from PIL import Image
 
 # Définir une liste d'images et de vidéos
 media_list = [
-    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.png",
     "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140map.png",
     "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.mov"
 ]

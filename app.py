@@ -349,7 +349,7 @@ from PIL import Image
 from io import BytesIO
 
 # Télécharger l'image depuis l'URL
-url = "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg"
+url = "https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif"
 response = requests.get(url)
 img = Image.open(BytesIO(response.content))
 

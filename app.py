@@ -346,21 +346,37 @@ st.write(df_renomme)
 
 import streamlit as st
 from PIL import Image
-from io import BytesIO
 
-# Afficher une carte Google Maps avec zoom
-st.write("Carte Google Maps")
-lat = 37.7749
-lon = -122.4194
-zoom = 12
-map_url = f"https://www.google.com/maps/embed/v1/view?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&center={lat},{lon}&zoom={zoom}"
-st.components.v1.iframe(map_url, width=700, height=500)
+# Définir une liste d'images et de vidéos
+media_list = [
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140map.png",
+    "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.mov"
+]
 
-# Afficher une vue Street View
-st.write("Vue Street View")
-pano_id = "PLACE_PANO_ID_HERE"
-pano_url = f"https://www.google.com/maps/embed/v1/streetview?key=AIzaSyB5J8pCvSl18Bb1MmD7_XXnfkmUk1IWi-Y&pano={pano_id}"
-st.components.v1.iframe(pano_url, width=700, height=500)
+# Boucle sur les éléments de la liste et affiche l'image ou la vidéo
+for media in media_list:
+    # Vérifie si l'élément actuel est une image
+    if media.endswith(".jpg"):
+        # Télécharger l'image à partir de l'URL et afficher l'image
+        image = Image.open(media)
+        st.image(image, caption="Image")
+
+    # Vérifie si l'élément actuel est une vidéo
+    elif media.endswith(".mp4"):
+        # Afficher la vidéo et la contrôler avec des boutons de lecture
+        video_file = open(media, 'rb')
+        video_bytes = video_file.read()
+        st.video(video_bytes)
+
+# Afficher des flèches pour faire défiler les images et les vidéos
+if len(media_list) > 1:
+    current_media = 0
+    if st.button("<"):
+        current_media = (current_media - 1) % len(media_list)
+    st.image(media_list[current_media], caption="Image")
+    if st.button(">"):
+        current_media = (current_media + 1) % len(media_list)
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

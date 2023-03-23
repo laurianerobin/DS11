@@ -346,6 +346,7 @@ st.write(df_renomme)
 
 import streamlit as st
 from PIL import Image
+from io import BytesIO
 
 # Télécharger l'image depuis l'URL
 url = "https://raw.githubusercontent.com/laurianerobin/DS11/main/maison140.jpg"

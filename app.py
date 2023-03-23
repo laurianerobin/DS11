@@ -349,9 +349,9 @@ from PIL import Image
 
 # Définir une liste d'images et de vidéos
 media_list = [
-    "https://github.com/laurianerobin/DS11/blob/161aa671732a9e4ed3e1af310a335c4b09ccac51/maison140.jpg",
-    "https://github.com/laurianerobin/DS11/blob/161aa671732a9e4ed3e1af310a335c4b09ccac51/maison140map.jpg",
-    "https://github.com/laurianerobin/DS11/blob/161aa671732a9e4ed3e1af310a335c4b09ccac51/maison140.mp4"
+    "https://github.com/laurianerobin/DS11/main/30760007.jpg",
+    "https://github.com/laurianerobin/DS11/main/30760005.jpg",
+    "https://github.com/laurianerobin/DS11/main/VID_20220814_215608.mp4"
 ]
 
 # Boucle sur les éléments de la liste et affiche l'image ou la vidéo

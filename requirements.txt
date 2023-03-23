@@ -5,4 +5,3 @@ scikit-learn
 ensemble
 babel
 PIL
-streamlit_embedcode

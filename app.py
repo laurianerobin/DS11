@@ -344,29 +344,26 @@ st.write(df_renomme)
 # défiler une image, puis un aperçu de Google Maps où on peut zoomer, et une vue de Street View sur Streamlit 
 # en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
 
-if st.button("Voir une maison similaire à ce prix"):
-    # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
-    if pred_rounded >= 0 and pred_rounded < 140000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/30760005.JPG", caption="Maison similaire")
-        st.video("https://raw.githubusercontent.com/laurianerobin/DS11/main/VID_20220815_175453.mp4")
-    elif pred_rounded >= 140000 and pred_rounded < 250000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image1.jpg", caption="Maison similaire")
-    elif pred_rounded >= 250000 and pred_rounded < 369000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image2.jpg", caption="Maison similaire")
-    elif pred_rounded >= 250000 and pred_rounded < 369000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image3.jpg", caption="Maison similaire")
-    elif pred_rounded >= 369000 and pred_rounded < 456000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image4.jpg", caption="Maison similaire")
-    elif pred_rounded >= 456000 and pred_rounded < 500000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image5.jpg", caption="Maison similaire")
-    elif pred_rounded >= 500000 and pred_rounded < 756000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image6.jpg", caption="Maison similaire")
-    elif pred_rounded >= 756000 and pred_rounded < 925000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image7.jpg", caption="Maison similaire")
-    elif pred_rounded >= 925000 and pred_rounded < 1000000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/Image8.jpg", caption="Maison similaire")
+st.write('''
+### Et voici ce à quoi elle pourrait ressembler.
+''')
+# Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
+    if pred_rounded >= 100000 and pred_rounded < 150000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif", caption="Maison similaire selon vos critères")
+    elif pred_rounded >= 150000  and pred_rounded < 230000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif", caption="Maison similaire selon vos critères")
+    elif pred_rounded >= 230000 and pred_rounded < 260000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house250.gif", caption="Maison similaire selon vos critères")
+    elif pred_rounded >= 260000 and pred_rounded < 280000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house275.gif", caption="Maison similaire selon vos critères")
+    elif pred_rounded >= 280000 and pred_rounded < 320000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house300.gif", caption="Maison similaire selon vos critères")
+    elif pred_rounded >= 320000 and pred_rounded < 350000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house345.gif", caption="Maison similaire selon vos critères")
+    elif pred_rounded >= 350000 and pred_rounded < 410000:
+        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house400.gif", caption="Maison similaire selon vos critères")
     else:
-        st.write("Désolé, il n'y a pas de maison similaire dans cette fourchette de prix")
+        st.write("Désolé, nous n'avons pas trouvé de maison similaire actuellement en vente dans cette fourchette de prix à Ames (Iowa).")
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

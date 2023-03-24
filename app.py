@@ -336,7 +336,7 @@ st.write(f'''
 ''')
 
 # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
-if pred_rounded >= 100000 and pred_rounded < 160000:
+if pred_rounded >= 120000 and pred_rounded < 160000:
   lienhomes = "https://www.homes.com/property/3110-oakland-st-ames-ia/ewmmx3md3nv1v/"
   homes = "actuellement en vente ici"
   st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)

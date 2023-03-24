@@ -342,12 +342,12 @@ if pred_rounded >= 120000 and pred_rounded < 160000:
   st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif")
 elif pred_rounded >= 160000  and pred_rounded < 215000:
-  lienhomes = "https://www.homes.com/property/1115-orchard-dr-ames-ia/z1ze8vl58blgv/"
+  lienhomes = "https://www.homes.com/property/209-17th-st-ames-ia/q0e3f712bzm9q/"
   homes = "actuellement en vente ici"
   st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house210.gif")
 elif pred_rounded >= 215000  and pred_rounded < 230000:
-  lienhomes = "https://www.homes.com/property/209-17th-st-ames-ia/q0e3f712bzm9q/"
+  lienhomes = "https://www.homes.com/property/1115-orchard-dr-ames-ia/z1ze8vl58blgv/"
   homes = "actuellement en vente ici"
   st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif")

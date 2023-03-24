@@ -344,15 +344,18 @@ st.write(df_renomme)
 # défiler une image, puis un aperçu de Google Maps où on peut zoomer, et une vue de Street View sur Streamlit 
 # en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
 
-st.write('''
+lienhomes = "https://www.homes.com/ames-ia/houses-for-sale/?so=1"
+homes = "Homes"
+
+st.write(f'''
 ### Et voici ce à quoi elle pourrait ressembler.
+Nous avons trouvé une maison similaire actuellement en vente par l'agence immobilière américaine [{homes}]({lienhomes}). 
 ''')
 
 # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
 if pred_rounded >= 100000 and pred_rounded < 150000:
-  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif")
-  homescom = "https://www.homes.com/ames-ia/houses-for-sale/?so=1"
-  caption = f'<a href="{homescom}"><img src="https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif"/></a>'
+  url = "https://www.homes.com/property/3110-oakland-st-ames-ia/ewmmx3md3nv1v"
+  caption = f'<a href="{url}"><img src="https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif"/></a>'
   st.markdown(caption, unsafe_allow_html=True)
 elif pred_rounded >= 150000  and pred_rounded < 230000:
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif", caption="Maison similaire selon vos critères")

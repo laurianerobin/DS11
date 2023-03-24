@@ -98,12 +98,12 @@ def user_input():
   
   # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
   if oui_garden:
-        GardenSize_metrecarre = st.number_input("Indiquez sa taille (en mètres carrés)", min_value=10, max_value=30000)
+        GardenSize_metrecarre = st.number_input("Indiquez sa taille (en mètres carrés)", value = 40, min_value=10, max_value=30000)
         if GardenSize_metrecarre:
           # Convertir la surface de mètres carrés en pieds carrés
           GardenSize = GardenSize_metrecarre * 10.7639
         else:
-          st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 30 000 mètres carrés.")
+          st.sidebar.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 30 000 mètres carrés.")
   else:
         GardenSize = 0
 

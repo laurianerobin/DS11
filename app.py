@@ -336,83 +336,85 @@ st.write(f'''
 ''')
 
 # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
+# Conditionner l'affichage d'un lien hyper texte en fonction de la valeur de la prédiction
+
 if pred_rounded >= 120000 and pred_rounded < 160000:
   lienhomes = "https://www.homes.com/property/3110-oakland-st-ames-ia/ewmmx3md3nv1v/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif")
 elif pred_rounded >= 160000  and pred_rounded < 215000:
   lienhomes = "https://www.homes.com/property/209-17th-st-ames-ia/q0e3f712bzm9q/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house210.gif")
 elif pred_rounded >= 215000  and pred_rounded < 230000:
   lienhomes = "https://www.homes.com/property/1115-orchard-dr-ames-ia/z1ze8vl58blgv/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif")
 elif pred_rounded >= 230000 and pred_rounded < 260000:
   lienhomes = "https://www.homes.com/property/1214-garfield-cir-ames-ia/s05cvk2j4gh7n/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house250.gif")
 elif pred_rounded >= 260000 and pred_rounded < 280000:
   lienhomes = "https://www.homes.com/property/6516-prairie-ridge-rd-ames-ia/ey78yn0483e9l/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house275.gif")
 elif pred_rounded >= 280000 and pred_rounded < 320000:
   lienhomes = "https://www.homes.com/property/5334-543rd-ave-ames-ia/3ezh3gv5x1bnl/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house300.gif")
 elif pred_rounded >= 320000 and pred_rounded < 350000:
   lienhomes = "https://www.homes.com/property/5308-clemens-blvd-ames-ia/zevydzvc4x05n/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house345.gif")
 elif pred_rounded >= 350000 and pred_rounded < 410000:
   lienhomes = "https://www.homes.com/property/5521-westfield-dr-ames-ia/z88vnx2ze4rsw/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house400.gif")
 elif pred_rounded >= 410000 and pred_rounded < 450000:
   lienhomes = "https://www.homes.com/property/3102-beckley-st-ames-ia/s9w42tz0gb8mw/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house440.gif")
 elif pred_rounded >= 450000 and pred_rounded < 525000:
   lienhomes = "https://www.homes.com/property/3403-cameron-school-rd-ames-ia/pjzmbp1r6hyef/?l=d1234fhq6c332"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house500.gif")
 elif pred_rounded >= 525000 and pred_rounded < 560000:
   lienhomes = "https://www.homes.com/property/4401-everest-cir-ames-ia/qmm7e14hky70m/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house550.gif")
 elif pred_rounded >= 560000 and pred_rounded < 630000:
   lienhomes = "https://www.homes.com/property/1402-ohio-ave-ames-ia/jz2vpdlg4d18x/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house615.gif")
 elif pred_rounded >= 630000 and pred_rounded < 710000:
   lienhomes = "https://www.homes.com/property/50254-prairie-point-dr-ames-ia/8z71x3m061229/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house700.gif")
 elif pred_rounded >= 710000 and pred_rounded < 760000:
   lienhomes = "https://www.homes.com/property/1816-ledges-dr-ames-ia/qfqhrynr4zsvl/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house756.gif")
 elif pred_rounded >= 760000 and pred_rounded < 1000000:
   lienhomes = "https://www.homes.com/property/2329-163rd-pl-ames-ia/9242hfhj9fdpy/"
   homes = "actuellement en vente ici"
-  st.write(f"Il semblerait que votre recherche soit proche de cette maison similaire, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
+  st.write(f"Il semblerait que votre recherche soit similaire à cette maison, <a href='{lienhomes}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{homes}</a> par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house925.gif")
 else:
-  st.write("Désolé, nous n'avons pas trouvé de maison similaire actuellement en vente dans cette fourchette de prix à Ames (Iowa).")
+  st.write("Désolé, nous n'avons pas trouvé de maison similaire actuellement en vente dans cette fourchette de prix à Ames (Iowa). Vous pouvez néanmoins vous référencer au prix estimé.")
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

@@ -352,7 +352,7 @@ st.write('''
 if pred_rounded >= 100000 and pred_rounded < 150000:
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif")
   homescom = "https://www.homes.com/ames-ia/houses-for-sale/?so=1"
-  house140 = f'<a href="{homescom}"><img src="https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif"/></a>'
+  caption = f'<a href="{homescom}"><img src="https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif"/></a>'
   st.markdown(caption, unsafe_allow_html=True)
 elif pred_rounded >= 150000  and pred_rounded < 230000:
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif", caption="Maison similaire selon vos critères")

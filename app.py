@@ -352,7 +352,7 @@ st.write(f'''
 if pred_rounded >= 100000 and pred_rounded < 150000:
   lienhomes = "https://www.homes.com/property/3110-oakland-st-ames-ia/ewmmx3md3nv1v/"
   homes = "cette maison similaire"
-  st.write(f"Il semblerait que votre recherche soit proche de <a href='{lienhomes}' style='color:{'#2B92A5'}'>{homes}</a>, actuellement en vente par l'agence immobilière américaine Homes.")
+  st.write(f"Il semblerait que votre recherche soit proche de <a href='{lienhomes}' style='color:{'#2B92A5'}'>{homes}</a>, actuellement en vente par l'agence immobilière américaine Homes.", unsafe_allow_html=True)
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif")
 elif pred_rounded >= 150000  and pred_rounded < 230000:
   st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif", caption="Maison similaire selon vos critères")

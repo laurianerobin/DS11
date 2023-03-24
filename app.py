@@ -348,22 +348,22 @@ st.write('''
 ### Et voici ce à quoi elle pourrait ressembler.
 ''')
 # Conditionner l'affichage de l'image en fonction de la valeur de la prédiction
-    if pred_rounded >= 100000 and pred_rounded < 150000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif", caption="Maison similaire selon vos critères")
-    elif pred_rounded >= 150000  and pred_rounded < 230000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif", caption="Maison similaire selon vos critères")
-    elif pred_rounded >= 230000 and pred_rounded < 260000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house250.gif", caption="Maison similaire selon vos critères")
-    elif pred_rounded >= 260000 and pred_rounded < 280000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house275.gif", caption="Maison similaire selon vos critères")
-    elif pred_rounded >= 280000 and pred_rounded < 320000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house300.gif", caption="Maison similaire selon vos critères")
-    elif pred_rounded >= 320000 and pred_rounded < 350000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house345.gif", caption="Maison similaire selon vos critères")
-    elif pred_rounded >= 350000 and pred_rounded < 410000:
-        st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house400.gif", caption="Maison similaire selon vos critères")
-    else:
-        st.write("Désolé, nous n'avons pas trouvé de maison similaire actuellement en vente dans cette fourchette de prix à Ames (Iowa).")
+if pred_rounded >= 100000 and pred_rounded < 150000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house140.gif", caption="Maison similaire selon vos critères")
+elif pred_rounded >= 150000  and pred_rounded < 230000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house225.gif", caption="Maison similaire selon vos critères")
+elif pred_rounded >= 230000 and pred_rounded < 260000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house250.gif", caption="Maison similaire selon vos critères")
+elif pred_rounded >= 260000 and pred_rounded < 280000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house275.gif", caption="Maison similaire selon vos critères")
+elif pred_rounded >= 280000 and pred_rounded < 320000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house300.gif", caption="Maison similaire selon vos critères")
+elif pred_rounded >= 320000 and pred_rounded < 350000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house345.gif", caption="Maison similaire selon vos critères")
+elif pred_rounded >= 350000 and pred_rounded < 410000:
+  st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house400.gif", caption="Maison similaire selon vos critères")
+else:
+  st.write("Désolé, nous n'avons pas trouvé de maison similaire actuellement en vente dans cette fourchette de prix à Ames (Iowa).")
 
 ### Ajouter un bouton "En savoir plus"
 # Ce bouton activé permet à l'utilisateur de lire un court paragraphe sur les données utilisées et 

@@ -65,22 +65,10 @@ def user_input():
 
 
   #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-  GrLivArea_metre = st.sidebar.text_input("Surface habitable (en mètres carrés)", value = "150")
+  GrLivArea_metre = st.sidebar.number_input("Surface habitable (en mètres carrés)", value = 150, min_value=10, step=5)
 
-  # Vérifier que la saisie est valide
-  GrLivArea = 0
-  try:
-    # Convertit la valeur en pieds carrés
-    if GrLivArea_metre.replace(".", "", 1).isdigit():
-      if float(GrLivArea_metre) < 10 or float(GrLivArea_metre) > 10000:
-        st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
-        GrLivArea = 0
-      else:
-        GrLivArea = float(GrLivArea_metre) * 10.7639
-  except ValueError:
-    st.sidebar.warning("Veuillez saisir une valeur numérique.")
-    GrLivArea = 0
-
+  # Conversion en pieds carrés pour le modèle
+  GrLivArea = GrLivArea_metre * 10.7639
 
   #### MS_zoning_RL : densité de l'endroit résidentiel
   labels_MS_zoning_RL = [0,1]
@@ -125,7 +113,7 @@ def user_input():
 
 
   ############### EQUIPEMENTS
-  st.sidebar.header("Des remarques sur les équipements ?")
+  st.sidebar.header("Des remarques à noter sur les équipements ?")
 
   #### OverQual : qualité générale
   OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)

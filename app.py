@@ -333,7 +333,7 @@ formatted_pred = format_decimal(int(pred_rounded), format='#,##0', locale='fr')
 
 st.write('''
 ### Voici la vôtre.
-D'après ce que vous nous avez dit, le prix de votre maison est estimé à''',  f'<span style="color:#2B92A5; font-size:40px"><b>{formatted_pred} $</b></span>.', unsafe_allow_html=True)
+D'après ce que vous nous avez dit, le prix de votre maison est estimé à''',  f'<span style="color:#2B92A5; font-size:30px"><b>{formatted_pred} $</b></span>.', unsafe_allow_html=True)
 st.write(df_renomme)
 
 ### Afficher le bouton pour voir une maison similaire à ce prix

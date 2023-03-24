@@ -49,7 +49,7 @@ st.write('''
 ### Un prix, une maison, l'outil.
 Bienvenue chez _BringItOnHome_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.''')
 
-st.write(f"Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.<a style='color:#2B92A5; font-weight:bold;'>Utilisez le volant déroulant à gauche pour nous décrire votre maison</a>.", unsafe_allow_html=True)
+st.write(f"<span style='color:#2B92A5; font-size:21px'><b>Utilisez le volant déroulant à gauche pour nous décrire votre maison</b></span>. Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.", unsafe_allow_html=True)
 
 st.write("Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du **marché immobilier américain**.")
 

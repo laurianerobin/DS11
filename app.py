@@ -408,5 +408,5 @@ lien = "https://www.kaggle.com/competitions/house-prices-advanced-regression-tec
 texte = "données constituées"
 
 if st.session_state.show_info:
-  st.write(f"Notre outil de prédiction est basé sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, <a href='{lien}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{texte}</a> par l'Association Statistique Américaine.")  
+  st.write(f"Notre outil de prédiction est basé sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, <a href='{lien}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{texte}</a> par l'Association Statistique Américaine.", unsafe_allow_html=True)  
   st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,1)," % sur des données de tests et ", round(score_train*100,2), " % sur des données servant à la construction du modèle.")

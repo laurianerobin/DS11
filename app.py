@@ -47,12 +47,11 @@ st.image("https://raw.githubusercontent.com/laurianerobin/DS11/main/house.gif")
 # Description
 st.write('''
 ### Un prix, une maison, l'outil.
-Bienvenue chez _**BringItOnHome**_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.
+Bienvenue chez _BringItOnHome_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.''')
 
-Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
+st.write(f"Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.<a style='color:#2B92A5; font-weight:bold;'>Utilisez le volant déroulant à gauche pour nous décrire votre maison</a>.", unsafe_allow_html=True))
 
-Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate. **Utilisez le volant déroulant à gauche pour nous décrire votre maison.**
-''')
+st.write("Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du **marché immobilier américain**.")
 
 ### L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 ### selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.

@@ -51,13 +51,8 @@ Bienvenue chez _**BringItOnHome**_, l'agence immobilière innovante qui vous aid
 
 Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du marché immobilier américain. 
 
-Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.
+Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate. **Utilisez le volant déroulant à gauche pour nous décrire votre maison.**
 ''')
-
-st.write("<style>h1{color:#2B92A5;font-weight:bold;}</style><h1>Utilisez le volant déroulant à gauche pour nous décrire votre maison.</h1>", 
-         unsafe_allow_html=True, 
-         unsafe_allow_custom_html=True, 
-         )
 
 ### L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 ### selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.

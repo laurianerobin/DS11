@@ -299,7 +299,7 @@ y_test = pd.read_csv(url_ytest,parse_dates=[0])
 
 # Application du meilleur modèle retenu
 
-model_best = GradientBoostingRegressor(learning_rate=0.05, n_estimators=300, random_state = 42)
+model_best = GradientBoostingRegressor(n_estimators = 230, min_samples_split = 4, min_samples_leaf = 1, max_depth = 3, learning_rate = 0.046415888336127774, random_state = 42)
 model_best.fit(X_train, y_train)
 
 # Prédiction sur les données sélectionnées par l'utilisateur (user_input de df)

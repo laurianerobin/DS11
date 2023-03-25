@@ -325,10 +325,7 @@ D'après ce que vous nous avez dit, le prix de votre maison est estimé à''',  
 ### Afficher le bouton pour voir une maison similaire à ce prix
 # Pour ajouter une réponse davantage concrète et plus profonde qu'une simple estimation de prix
 # Une image correspondant à une maison dans la ville d'Ames (Iowa, États-Unis) est affichée selon une plage de prix correspondante
-# Ces images proviennent du site https://www.homes.com/ames-ia/houses-for-sale/?gclsrc=aw.ds&gclid=Cj0KCQjw8e-gBhD0ARIsAJiDsaWQ2kw7d6R69_3_pKlMXEd7Mlt9Wpk9wWPW0PY0lwfGMZbhgfIFBUEaAuLjEALw_wcB 
-
-# défiler une image, puis un aperçu de Google Maps où on peut zoomer, et une vue de Street View sur Streamlit 
-# en utilisant des bibliothèques telles que streamlit_embedcode, googlemaps, et google_streetview.
+# Ces images proviennent du site https://www.homes.com/ames-ia/houses-for-sale/?gclsrc=aw.ds&gclid=Cj0KCQjw8e-gBhD0ARIsAJiDsaWQ2kw7d6R69_3_pKlMXEd7Mlt9Wpk9wWPW0PY0lwfGMZbhgfIFBUEaAuLjEALw_wcB
 
 st.write(f'''
 ### Et voici ce à quoi elle pourrait ressembler. 
@@ -438,5 +435,5 @@ inflation = 0.348
 
 if st.session_state.show_info:
   st.write(f"Notre outil de prédiction est basé sur un modèle d'apprentissage dit de régresseur à _gradient boosting_. Ce dernier utilise plusieurs arbres de décision pour prédire les valeurs. À titre informatif, ce modèle a été entraîné sur l'analyse de plus d'un millier de maisons résidentielles à Ames dans l'Iowa, <a href='{lien}' style='color:#2B92A5; font-weight:bold; text-decoration:none;'>{texte}</a> par l'Association Statistique Américaine.", unsafe_allow_html=True)  
-  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,1)," % sur des données de tests et ", round(score_train*100,1), " % sur des données servant à la construction du modèle.")
-  st.write("Selon l'indice des prix de l'immobilier (CPI-UE) aux États-Unis, publié par le _Bureau of Labor Statistics_, le taux d'inflation dans l'immobilier aux États-Unis entre 2010 et 2021 est de ", round(inflation*100,1), " %. Dans la mesure où les dernières données utilisées datent de 2010, ce taux a été appliqué dans le prix estimé pour permettre un prix comparable.")
+  st.write("Sur ces données, nos équipes de data analysts sont parvenus à prédire correctement", round(score_test*100,0)," % sur des données de tests et ", round(score_train*100,0), " % sur des données servant à la construction du modèle.")
+  st.write("Selon l'indice des prix de l'immobilier (CPI-UE) aux États-Unis, publié par le _Bureau of Labor Statistics_, le taux d'inflation dans l'immobilier aux États-Unis entre 2010 et 2021 est de ", round(inflation*100,0), " %. Dans la mesure où les dernières données utilisées datent de 2010, ce taux a été appliqué dans le prix estimé pour permettre un prix comparable.")

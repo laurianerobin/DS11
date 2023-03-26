@@ -49,212 +49,207 @@ st.write('''
 ### Un prix, une maison, l'outil.
 Bienvenue chez _BringItOnHome_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.''')
 
-st.write(f"<span style='color:#2B92A5;'><b>Utilisez le volant déroulant à gauche pour nous décrire votre maison</b></span>. Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.", unsafe_allow_html=True)
-
-st.write("Notre outil de prédiction de prix utilise les dernières technologies d'apprentissage automatique pour fournir des estimations précises et fiables, en se basant sur des données du **marché immobilier américain**.")
+# Créer un lien hypertexte qui active le menu déroulant
+st.write(f"Utilisez <a href='#' onclick=\"document.getElementsByClassName('element-container collapse-button')[0].click(); return false;\"><span style='color:#2B92A5;'><b>le menu déroulant à gauche</b></span></a> pour nous décrire votre maison. Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.", unsafe_allow_html=True)
 
 ### L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 ### selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
 
-# Créer un lien hypertexte qui active le menu déroulant
-if st.sidebar.button('Cliquez ici pour ouvrir le menu déroulant'):
-    st.sidebar.markdown('## Mon menu déroulant')
+st.sidebar.header("C'est ici que l'on dessine les traits de votre chez vous.")
 
-    st.sidebar.header("C'est ici que l'on dessine les traits de votre chez vous.")
+def user_input():
 
-    def user_input():
-
-      ############### ASPECT GENERAL
-      st.sidebar.header("Si l'on commençait par son aspect général ?")
+  ############### ASPECT GENERAL
+  st.sidebar.header("Si l'on commençait par son aspect général ?")
 
 
-      #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
-      GrLivArea_metre = st.sidebar.number_input("Surface habitable (en mètres carrés)", value = 100, min_value=10, step=5)
+  #### GrLivArea : surface habitable au-dessus du sol (en mètres carrés)
+  GrLivArea_metre = st.sidebar.number_input("Surface habitable (en mètres carrés)", value = 100, min_value=10, step=5)
 
-      # Conversion en pieds carrés pour le modèle
-      GrLivArea = GrLivArea_metre * 10.7639
+  # Conversion en pieds carrés pour le modèle
+  GrLivArea = GrLivArea_metre * 10.7639
 
-      #### MS_zoning_RL : densité de l'endroit résidentiel
-      labels_MS_zoning_RL = [0,1]
-      options_MS_zoning_RL = {
-          1 :'Forte densité résidentielle',
-          0 : 'Faible densité résidentielle'
+  #### MS_zoning_RL : densité de l'endroit résidentiel
+  labels_MS_zoning_RL = [0,1]
+  options_MS_zoning_RL = {
+      1 :'Forte densité résidentielle',
+      0 : 'Faible densité résidentielle'
+      }
+  MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
+
+
+  #### GardenSize : taille de la surface du jardin
+  # Ajouter une case à cocher pour permettre à l'utilisateur de choisir si oui ou non il souhaite un extérieur
+  oui_garden = st.sidebar.checkbox("Un espace extérieur entourant la maison ?")
+  
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_garden:
+        GardenSize_metrecarre = st.sidebar.number_input("Indiquez sa taille (en mètres carrés)", value = 40, min_value=10, max_value=30000, step=10)
+        if GardenSize_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          GardenSize = GardenSize_metrecarre * 10.7639
+        else:
+          st.sidebar.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 30 000 mètres carrés.")
+  else:
+        GardenSize = 0
+
+
+  ############### INTERIEUR
+  st.sidebar.header("Passons à l'intérieur. Après vous.")
+
+
+  #### TotRmsAbvGrd : nombre de pièces
+  TotRmsAbvGrd = st.sidebar.number_input("Nombre de pièce(s)", value = 4, step = 1, min_value=1, max_value=None)
+
+
+  #### FullBath : nombre de salle(s) de bain
+  FullBath = st.sidebar.number_input("Nombre de salle(s) de bain", value = 1, step = 1, min_value=1, max_value=None)
+  
+
+  #### HalfBath : nombre de toilette(s) séparées
+  HalfBath = st.sidebar.number_input("Nombre de toilettes séparées", value = 1, step = 1, min_value=1, max_value=None)
+
+
+
+  ############### EQUIPEMENTS
+  st.sidebar.header("Des remarques à noter sur les équipements ?")
+
+  #### OverQual : qualité générale
+  OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
+
+
+  #### KitchenQual : qualité de la cuisine
+  KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)
+
+
+  #### HeatingQC : qualité du chauffage
+  labels_HeatingQC= [1, 2, 3, 4, 5]
+  defaultHeat=3
+  options_HeatingQC = {
+              1 :'Excellent',
+              2 : 'Bon',
+              3 : 'Moyen',
+              4 : 'Faible',
+              5 : 'Pauvre'
           }
-      MS_zoning_RL = st.sidebar.radio("Densité du quartier", labels_MS_zoning_RL, format_func=lambda x: options_MS_zoning_RL[x])
+  HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, 
+                               format_func=lambda x: options_HeatingQC[x], index=labels_HeatingQC.index(defaultHeat))
 
 
-      #### GardenSize : taille de la surface du jardin
-      # Ajouter une case à cocher pour permettre à l'utilisateur de choisir si oui ou non il souhaite un extérieur
-      oui_garden = st.sidebar.checkbox("Un espace extérieur entourant la maison ?")
+  #### Fireplaces : nombre de cheminée(s)
+  # On utilise st.checkbox() pour afficher une case à cocher
+  Fireplaces_want_option = st.sidebar.checkbox("Vous chauffez-vous aussi avec une cheminée ?")
+
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if Fireplaces_want_option:
+    Fireplaces=st.sidebar.number_input("Précisez-nous combien de cheminée(s)", step=1, value=0, min_value=0, max_value=None)
+  else:
+      Fireplaces = 0 
+
+
+  #### TotalBsmtSF : taille de la surface du sous-sol 
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la surface
+  oui_bsmt = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
+  
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_bsmt:
+
+      # TotalBsmtSF : taille
+      TotalBsmtSF_metrecarre = st.sidebar.number_input("Précisez la taille de cette surface (en mètres carrés)", min_value=10, max_value=10000)
+      if TotalBsmtSF_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
+      else:
+          st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
       
-      # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
-      if oui_garden:
-            GardenSize_metrecarre = st.sidebar.number_input("Indiquez sa taille (en mètres carrés)", value = 40, min_value=10, max_value=30000, step=10)
-            if GardenSize_metrecarre:
-              # Convertir la surface de mètres carrés en pieds carrés
-              GardenSize = GardenSize_metrecarre * 10.7639
-            else:
-              st.sidebar.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 30 000 mètres carrés.")
+      #### BsmtQual : qualité du sous-sol
+      BsmtQual=st.sidebar.slider("Jugez la qualité de cet espace sur 10", 0, 10, value = 5)
+
+  else:
+    TotalBsmtSF = 0
+    BsmtQual = 0 
+
+
+  #### GarageCars : capacité du garage en nombre de voiture
+  # On utilise st.checkbox() pour afficher une case à cocher
+  oui_garage = st.sidebar.checkbox("Un garage pour une voiture ou du bricolage ?")
+
+  # Si la case est cochée, on affiche un curseur st.slider()
+  if oui_garage:
+      GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 1, step = 1, min_value=0, max_value=None)
+      GarageCond = st.sidebar.slider("Et quelle note donneriez-vous sur 10 pour sa qualité ?", 0,10, value = 5)
+  else:
+      GarageCars = 0
+      GarageCond = 0
+
+
+  ############### EXTERIEUR
+  st.sidebar.header("Terminons par un tour de l'extérieur.")
+
+
+  #### ExterQual : qualité extérieure
+  ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
+
+
+  #### ModernityInYears : dernière rénovation
+  ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value = 10)
+
+
+  #### WoodDeckSF : taille de la terrasse (en mètres carrés)
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la terrasse
+  oui_terrasse = st.sidebar.checkbox("Une terrasse ?")
+  
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_terrasse:
+      WoodDeckSF_metrecarre = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
+      if WoodDeckSF_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          WoodDeckSF = WoodDeckSF_metrecarre * 10.7639
       else:
-            GardenSize = 0
+          st.sidebar.warning("Veuillez saisir une surface comprise valide entre 10 et 30 000 mètres carrés.")
+  else:
+    WoodDeckSF = 0
 
 
-      ############### INTERIEUR
-      st.sidebar.header("Passons à l'intérieur. Après vous.")
-
-
-      #### TotRmsAbvGrd : nombre de pièces
-      TotRmsAbvGrd = st.sidebar.number_input("Nombre de pièce(s)", value = 4, step = 1, min_value=1, max_value=None)
-
-
-      #### FullBath : nombre de salle(s) de bain
-      FullBath = st.sidebar.number_input("Nombre de salle(s) de bain", value = 1, step = 1, min_value=1, max_value=None)
-      
-
-      #### HalfBath : nombre de toilette(s) séparées
-      HalfBath = st.sidebar.number_input("Nombre de toilettes séparées", value = 1, step = 1, min_value=1, max_value=None)
-
-
-
-      ############### EQUIPEMENTS
-      st.sidebar.header("Des remarques à noter sur les équipements ?")
-
-      #### OverQual : qualité générale
-      OverallQual=st.sidebar.slider("Qualité du matériau global et de la finition sur 10", 0,10, value = 5)
-
-
-      #### KitchenQual : qualité de la cuisine
-      KitchenQual=st.sidebar.slider("Qualité de la cuisine sur 10", 0,10, value = 5)
-
-
-      #### HeatingQC : qualité du chauffage
-      labels_HeatingQC= [1, 2, 3, 4, 5]
-      defaultHeat=3
-      options_HeatingQC = {
-                  1 :'Excellent',
-                  2 : 'Bon',
-                  3 : 'Moyen',
-                  4 : 'Faible',
-                  5 : 'Pauvre'
-              }
-      HeatingQC = st.sidebar.radio("Qualité et condition du chauffage et de la consommation énergétique", labels_HeatingQC, 
-                                  format_func=lambda x: options_HeatingQC[x], index=labels_HeatingQC.index(defaultHeat))
-
-
-      #### Fireplaces : nombre de cheminée(s)
-      # On utilise st.checkbox() pour afficher une case à cocher
-      Fireplaces_want_option = st.sidebar.checkbox("Vous chauffez-vous aussi avec une cheminée ?")
-
-      # Si la case est cochée, on affiche un curseur st.slider()
-      if Fireplaces_want_option:
-        Fireplaces=st.sidebar.number_input("Précisez-nous combien de cheminée(s)", step=1, value=0, min_value=0, max_value=None)
+  #### OpenPorchSF : taille de la véranda (en mètres carrés)
+  # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la véranda
+  oui_veranda = st.sidebar.checkbox("Et une véranda ?")
+  
+  # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
+  if oui_veranda:
+      OpenPorchSF_metrecarre = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
+      if OpenPorchSF_metrecarre:
+          # Convertir la surface de mètres carrés en pieds carrés
+          OpenPorchSF = OpenPorchSF_metrecarre * 10.764
       else:
-          Fireplaces = 0 
+          st.sidebar.warning("Veuillez saisir une valeur valide entre 10 et 500 mètres carrés.")
+  else:
+    OpenPorchSF = 0
 
 
-      #### TotalBsmtSF : taille de la surface du sous-sol 
-      # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la surface
-      oui_bsmt = st.sidebar.checkbox("Un sous-sol est une surface supplémentaire. Qu'en dites-vous ?")
-      
-      # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
-      if oui_bsmt:
+  ############### Faire correspondre les input précédents dans un dataframe. Ce dataframe sera utilisé pour la prédiction du prix en fonction des valeurs choisies
 
-          # TotalBsmtSF : taille
-          TotalBsmtSF_metrecarre = st.sidebar.number_input("Précisez la taille de cette surface (en mètres carrés)", min_value=10, max_value=10000)
-          if TotalBsmtSF_metrecarre:
-              # Convertir la surface de mètres carrés en pieds carrés
-              TotalBsmtSF = TotalBsmtSF_metrecarre * 10.7639
-          else:
-              st.sidebar.warning("Veuillez saisir une surface comprise entre 10 et 10 000 mètres carrés.")
-          
-          #### BsmtQual : qualité du sous-sol
-          BsmtQual=st.sidebar.slider("Jugez la qualité de cet espace sur 10", 0, 10, value = 5)
-
-      else:
-        TotalBsmtSF = 0
-        BsmtQual = 0 
-
-
-      #### GarageCars : capacité du garage en nombre de voiture
-      # On utilise st.checkbox() pour afficher une case à cocher
-      oui_garage = st.sidebar.checkbox("Un garage pour une voiture ou du bricolage ?")
-
-      # Si la case est cochée, on affiche un curseur st.slider()
-      if oui_garage:
-          GarageCars = st.sidebar.number_input("Pour combien de voitures à mettre à l'abri ?", value = 1, step = 1, min_value=0, max_value=None)
-          GarageCond = st.sidebar.slider("Et quelle note donneriez-vous sur 10 pour sa qualité ?", 0,10, value = 5)
-      else:
-          GarageCars = 0
-          GarageCond = 0
-
-
-      ############### EXTERIEUR
-      st.sidebar.header("Terminons par un tour de l'extérieur.")
-
-
-      #### ExterQual : qualité extérieure
-      ExterQual=st.sidebar.slider("Qualité du matériau extérieur sur 10", 0, 10, value = 5)
-
-
-      #### ModernityInYears : dernière rénovation
-      ModernityInYears=st.sidebar.slider("Nombre d'années avant la dernière rénovation", 0,60, value = 10)
-
-
-      #### WoodDeckSF : taille de la terrasse (en mètres carrés)
-      # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la terrasse
-      oui_terrasse = st.sidebar.checkbox("Une terrasse ?")
-      
-      # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
-      if oui_terrasse:
-          WoodDeckSF_metrecarre = st.sidebar.number_input("Quelle taille donc (en mètres carrés) ?", value = 10, step = 1, min_value=0, max_value=None)
-          if WoodDeckSF_metrecarre:
-              # Convertir la surface de mètres carrés en pieds carrés
-              WoodDeckSF = WoodDeckSF_metrecarre * 10.7639
-          else:
-              st.sidebar.warning("Veuillez saisir une surface comprise valide entre 10 et 30 000 mètres carrés.")
-      else:
-        WoodDeckSF = 0
-
-
-      #### OpenPorchSF : taille de la véranda (en mètres carrés)
-      # Ajouter une case à cocher pour permettre à l'utilisateur de répondre ou non à la question de la véranda
-      oui_veranda = st.sidebar.checkbox("Et une véranda ?")
-      
-      # Si la case est cochée, demander à l'utilisateur de saisir la surface en mètres carrés
-      if oui_veranda:
-          OpenPorchSF_metrecarre = st.sidebar.number_input("C'est noté ! Dites-nous sa taille (en mètres carrés)", value = 10, step = 1, min_value=0, max_value=None)
-          if OpenPorchSF_metrecarre:
-              # Convertir la surface de mètres carrés en pieds carrés
-              OpenPorchSF = OpenPorchSF_metrecarre * 10.764
-          else:
-              st.sidebar.warning("Veuillez saisir une valeur valide entre 10 et 500 mètres carrés.")
-      else:
-        OpenPorchSF = 0
-
-
-      ############### Faire correspondre les input précédents dans un dataframe. Ce dataframe sera utilisé pour la prédiction du prix en fonction des valeurs choisies
-
-      data={'GardenSize':GardenSize,
-            'OverallQual':OverallQual,
-            'ExterQual':ExterQual,
-            'BsmtQual':BsmtQual,
-            'TotalBsmtSF':TotalBsmtSF,
-            'HeatingQC':HeatingQC,
-            'GrLivArea':GrLivArea,
-            'FullBath':FullBath,
-            'HalfBath':HalfBath,
-            'KitchenQual':KitchenQual,
-            'TotRmsAbvGrd':TotRmsAbvGrd,
-            'Fireplaces':Fireplaces,
-            'GarageCars':GarageCars,
-            'GarageCond':GarageCond,
-            'WoodDeckSF':WoodDeckSF,
-            'OpenPorchSF':OpenPorchSF,
-            'MS_zoning_RL':MS_zoning_RL,
-            'ModernityInYears':ModernityInYears
-            }
-      maison_parametre=pd.DataFrame(data,index=[0])
-      return maison_parametre
+  data={'GardenSize':GardenSize,
+        'OverallQual':OverallQual,
+        'ExterQual':ExterQual,
+        'BsmtQual':BsmtQual,
+        'TotalBsmtSF':TotalBsmtSF,
+        'HeatingQC':HeatingQC,
+        'GrLivArea':GrLivArea,
+        'FullBath':FullBath,
+        'HalfBath':HalfBath,
+        'KitchenQual':KitchenQual,
+        'TotRmsAbvGrd':TotRmsAbvGrd,
+        'Fireplaces':Fireplaces,
+        'GarageCars':GarageCars,
+        'GarageCond':GarageCond,
+        'WoodDeckSF':WoodDeckSF,
+        'OpenPorchSF':OpenPorchSF,
+        'MS_zoning_RL':MS_zoning_RL,
+        'ModernityInYears':ModernityInYears
+        }
+  maison_parametre=pd.DataFrame(data,index=[0])
+  return maison_parametre
 
 df=user_input()
 

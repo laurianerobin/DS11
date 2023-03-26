@@ -49,8 +49,8 @@ st.write('''
 ### Un prix, une maison, l'outil.
 Bienvenue chez _BringItOnHome_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.''')
 
-# Créer un lien hypertexte qui active le menu déroulant
-st.write(f"Utilisez <a href='#' onclick=\"document.getElementsByClassName('element-container collapse-button')[0].click(); return false;\"><span style='color:#2B92A5;'><b>le menu déroulant à gauche</b></span></a> pour nous décrire votre maison. Il vous suffit de renseigner les caractéristiques de votre propriété, telles que la taille, l'emplacement et les équipements, pour obtenir une estimation immédiate.", unsafe_allow_html=True)
+# Créer un lien hypertexte qui ouvre ou ferme le menu déroulant
+st.markdown('<a href="#" onclick="if (document.getElementsByClassName(\'element-container\')[0].classList.contains(\'collapsed\')) {document.getElementsByClassName(\'element-container\')[0].classList.remove(\'collapsed\');} else {document.getElementsByClassName(\'element-container\')[0].classList.add(\'collapsed\');}">Le menu déroulant à gauche</a>', unsafe_allow_html=True)
 
 ### L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 ### selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.

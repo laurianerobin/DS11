@@ -50,7 +50,10 @@ st.write('''
 Bienvenue chez _BringItOnHome_, l'agence immobilière innovante qui vous aide à **estimer la valeur de votre propriété en toute simplicité**. Nous comprenons que la vente ou l'achat d'une propriété est une décision importante, c'est pourquoi nous sommes déterminés à vous fournir les informations les plus précises possibles pour vous aider à prendre une **décision éclairée**.''')
 
 # Créer un lien hypertexte qui ouvre ou ferme le menu déroulant
-st.markdown('<a href="#" onclick="if (document.getElementsByClassName(\'element-container\')[0].classList.contains(\'collapsed\')) {document.getElementsByClassName(\'element-container\')[0].classList.remove(\'collapsed\');} else {document.getElementsByClassName(\'element-container\')[0].classList.add(\'collapsed\');}">Le menu déroulant à gauche</a>', unsafe_allow_html=True)
+st.markdown('<a href="#" onclick="st.empty();">Le menu déroulant à gauche</a>', unsafe_allow_html=True)
+
+# Forcer l'ouverture du menu déroulant
+st.empty()
 
 ### L'utilisateur répond à des questions et entre les paramètres correspondant à son souait, selon des variables regroupées 
 ### selon un "thème", comme l'aspect général de la maison, ses extérieurs, ou sa modernité.
